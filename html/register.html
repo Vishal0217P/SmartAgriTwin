@@ -1,0 +1,360 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <meta
+        name="description"
+        content="Create your SmartAgriTwin farmer account."
+    >
+
+    <title>SmartAgriTwin | Create Account</title>
+
+    <link rel="stylesheet" href="../css/auth.css">
+</head>
+
+<body>
+
+    <main class="auth-page">
+
+        <!-- =====================================================
+             LEFT INFORMATION SECTION
+             ===================================================== -->
+
+        <section class="auth-info">
+
+            <div class="brand">
+
+                <div class="brand-icon">🌱</div>
+
+                <div>
+                    <h1>SmartAgriTwin</h1>
+                    <p>AI-Powered Smart Agriculture</p>
+                </div>
+
+            </div>
+
+
+            <div class="info-content">
+
+                <h2>
+                    Build a Smarter<br>
+                    Farm Future.
+                </h2>
+
+                <p>
+                    Create your farmer account and manage your farm,
+                    crops, irrigation and AI-powered recommendations
+                    from one intelligent platform.
+                </p>
+
+
+                <div class="feature-list">
+
+                    <div class="feature-item">
+
+                        <span>🌾</span>
+
+                        <div>
+                            <h3>Manage Your Farm</h3>
+
+                            <p>
+                                Keep your farm and crop information
+                                organized in one place.
+                            </p>
+                        </div>
+
+                    </div>
+
+
+                    <div class="feature-item">
+
+                        <span>🤖</span>
+
+                        <div>
+                            <h3>AI-Based Decisions</h3>
+
+                            <p>
+                                Get intelligent recommendations
+                                based on farm conditions.
+                            </p>
+                        </div>
+
+                    </div>
+
+
+                    <div class="feature-item">
+
+                        <span>💧</span>
+
+                        <div>
+                            <h3>Optimize Resources</h3>
+
+                            <p>
+                                Make better irrigation and
+                                resource management decisions.
+                            </p>
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <footer class="auth-footer">
+                © 2026 SmartAgriTwin. All rights reserved.
+            </footer>
+
+        </section>
+
+
+        <!-- =====================================================
+             RIGHT REGISTER SECTION
+             ===================================================== -->
+
+        <section class="auth-card-section">
+
+            <div class="auth-card">
+
+                <div class="auth-header">
+
+                    <h2>Create Account 🌱</h2>
+
+                    <p>
+                        Join SmartAgriTwin and start managing
+                        your farm smarter.
+                    </p>
+
+                </div>
+
+
+                <!-- Registration Form -->
+
+                <form id="registerForm" novalidate>
+
+
+                    <!-- Full Name -->
+
+                    <div class="form-group">
+
+                        <label for="registerName">
+                            Full Name
+                        </label>
+
+                        <input
+                            type="text"
+                            id="registerName"
+                            name="name"
+                            placeholder="Enter your full name"
+                            autocomplete="name"
+                            required
+                        >
+
+                        <small
+                            class="error-message"
+                            id="registerNameError"
+                        ></small>
+
+                    </div>
+
+
+                    <!-- Email -->
+
+                    <div class="form-group">
+
+                        <label for="registerEmail">
+                            Email Address
+                        </label>
+
+                        <input
+                            type="email"
+                            id="registerEmail"
+                            name="email"
+                            placeholder="Enter your email"
+                            autocomplete="email"
+                            required
+                        >
+
+                        <small
+                            class="error-message"
+                            id="registerEmailError"
+                        ></small>
+
+                    </div>
+
+
+                    <!-- Phone -->
+
+                    <div class="form-group">
+
+                        <label for="registerPhone">
+                            Phone Number
+                        </label>
+
+                        <input
+                            type="tel"
+                            id="registerPhone"
+                            name="phone"
+                            placeholder="Enter 10-digit mobile number"
+                            autocomplete="tel"
+                            inputmode="numeric"
+                            maxlength="10"
+                            required
+                        >
+
+                        <small
+                            class="error-message"
+                            id="registerPhoneError"
+                        ></small>
+
+                    </div>
+
+
+                    <!-- Password -->
+
+                    <div class="form-group">
+
+                        <label for="registerPassword">
+                            Password
+                        </label>
+
+                        <div class="password-wrapper">
+
+                            <input
+                                type="password"
+                                id="registerPassword"
+                                name="password"
+                                placeholder="Create a password"
+                                autocomplete="new-password"
+                                required
+                            >
+
+                            <button
+                                type="button"
+                                class="password-toggle"
+                                id="toggleRegisterPassword"
+                                aria-label="Show password"
+                            >
+                                👁
+                            </button>
+
+                        </div>
+
+                        <small
+                            class="error-message"
+                            id="registerPasswordError"
+                        ></small>
+
+                    </div>
+
+
+                    <!-- Confirm Password -->
+
+                    <div class="form-group">
+
+                        <label for="confirmPassword">
+                            Confirm Password
+                        </label>
+
+                        <div class="password-wrapper">
+
+                            <input
+                                type="password"
+                                id="confirmPassword"
+                                name="confirmPassword"
+                                placeholder="Confirm your password"
+                                autocomplete="new-password"
+                                required
+                            >
+
+                            <button
+                                type="button"
+                                class="password-toggle"
+                                id="toggleConfirmPassword"
+                                aria-label="Show password"
+                            >
+                                👁
+                            </button>
+
+                        </div>
+
+                        <small
+                            class="error-message"
+                            id="confirmPasswordError"
+                        ></small>
+
+                    </div>
+
+
+                    <!-- General Message -->
+
+                    <div
+                        id="registerMessage"
+                        class="form-message"
+                        role="alert"
+                        aria-live="polite"
+                    ></div>
+
+
+                    <!-- Register Button -->
+
+                    <button
+                        type="submit"
+                        class="primary-button"
+                        id="registerButton"
+                    >
+
+                        <span id="registerButtonText">
+                            Create Account
+                        </span>
+
+                    </button>
+
+                </form>
+
+
+                <!-- Login Link -->
+
+                <div class="auth-divider">
+                    <span>Already have an account?</span>
+                </div>
+
+
+                <a
+                    href="../index.html"
+                    class="secondary-button"
+                >
+                    Sign In
+                </a>
+
+
+                <!-- Demo Notice -->
+
+                <div class="demo-notice">
+
+                    <span>ℹ️</span>
+
+                    <p>
+                        <strong>Demo Mode:</strong>
+                        Account data will be connected to the
+                        backend database in the next stage.
+                    </p>
+
+                </div>
+
+            </div>
+
+        </section>
+
+    </main>
+
+
+    <!-- JavaScript -->
+
+    <script src="../js/auth.js"></script>
+
+</body>
+</html>

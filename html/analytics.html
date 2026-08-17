@@ -1,0 +1,775 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <meta
+        name="description"
+        content="SmartAgriTwin Farm Analytics"
+    >
+
+    <title>SmartAgriTwin | Analytics</title>
+
+    <link
+        rel="stylesheet"
+        href="../css/dashboard.css"
+    >
+
+    <link
+        rel="stylesheet"
+        href="../css/analytics.css"
+    >
+</head>
+
+<body>
+
+<div class="app-layout">
+
+    <!-- =====================================================
+         SIDEBAR
+         ===================================================== -->
+
+    <aside class="sidebar" id="sidebar">
+
+        <div class="sidebar-brand">
+
+            <div class="brand-logo">
+                🌱
+            </div>
+
+            <div>
+                <h1>SmartAgriTwin</h1>
+                <span>Smart Agriculture</span>
+            </div>
+
+        </div>
+
+
+        <nav class="sidebar-nav">
+
+            <p class="nav-section-title">
+                MAIN
+            </p>
+
+            <a href="dashboard.html" class="nav-item">
+                <span class="nav-icon">📊</span>
+                <span>Dashboard</span>
+            </a>
+
+            <a href="crop-soil.html" class="nav-item">
+                <span class="nav-icon">🌾</span>
+                <span>Crop & Soil</span>
+            </a>
+
+            <a href="irrigation.html" class="nav-item">
+                <span class="nav-icon">💧</span>
+                <span>Irrigation</span>
+            </a>
+
+            <a href="weather.html" class="nav-item">
+                <span class="nav-icon">🌦️</span>
+                <span>Weather</span>
+            </a>
+
+
+            <p class="nav-section-title">
+                AI & ANALYTICS
+            </p>
+
+            <a href="ai-recommendation.html" class="nav-item">
+                <span class="nav-icon">🤖</span>
+                <span>AI Recommendations</span>
+            </a>
+
+            <a href="digital-twin.html" class="nav-item">
+                <span class="nav-icon">🔮</span>
+                <span>Digital Twin</span>
+            </a>
+
+            <a
+                href="analytics.html"
+                class="nav-item active"
+            >
+                <span class="nav-icon">📈</span>
+                <span>Analytics</span>
+            </a>
+
+
+            <p class="nav-section-title">
+                FARMER
+            </p>
+
+            <a href="farmer-passport.html" class="nav-item">
+                <span class="nav-icon">👨‍🌾</span>
+                <span>Farmer Passport</span>
+            </a>
+
+        </nav>
+
+
+        <div class="sidebar-bottom">
+
+            <button
+                type="button"
+                class="logout-button"
+                id="logoutButton"
+            >
+                <span>🚪</span>
+                <span>Logout</span>
+            </button>
+
+        </div>
+
+    </aside>
+
+
+    <!-- =====================================================
+         MAIN CONTENT
+         ===================================================== -->
+
+    <main class="main-content">
+
+        <header class="topbar">
+
+            <div class="topbar-left">
+
+                <button
+                    type="button"
+                    class="menu-button"
+                    id="menuButton"
+                    aria-label="Open menu"
+                >
+                    ☰
+                </button>
+
+                <div>
+
+                    <p class="page-label">
+                        ANALYTICS
+                    </p>
+
+                    <h2>
+                        Farm Analytics
+                    </h2>
+
+                </div>
+
+            </div>
+
+
+            <div class="topbar-right">
+
+                <button
+                    type="button"
+                    class="notification-button"
+                    aria-label="Notifications"
+                >
+                    🔔
+                    <span class="notification-dot"></span>
+                </button>
+
+
+                <div class="user-profile">
+
+                    <div class="user-avatar">
+                        👨‍🌾
+                    </div>
+
+                    <div class="user-details">
+
+                        <strong id="userName">
+                            Farmer
+                        </strong>
+
+                        <span>
+                            Farmer Account
+                        </span>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </header>
+
+
+        <!-- =================================================
+             CONTENT
+             ================================================= -->
+
+        <div class="dashboard-content">
+
+
+            <!-- PAGE HEADER -->
+
+            <section class="analytics-page-header">
+
+                <div>
+
+                    <p class="welcome-label">
+                        FARM PERFORMANCE
+                    </p>
+
+                    <h1>
+                        Data-Driven Farm Insights 📈
+                    </h1>
+
+                    <p>
+                        Track your farm's performance,
+                        resource usage and productivity
+                        over time.
+                    </p>
+
+                </div>
+
+
+                <div class="period-selector">
+
+                    <button
+                        type="button"
+                        class="period-button active"
+                        data-period="7"
+                    >
+                        7 Days
+                    </button>
+
+                    <button
+                        type="button"
+                        class="period-button"
+                        data-period="30"
+                    >
+                        30 Days
+                    </button>
+
+                    <button
+                        type="button"
+                        class="period-button"
+                        data-period="90"
+                    >
+                        90 Days
+                    </button>
+
+                </div>
+
+            </section>
+
+
+            <!-- =================================================
+                 SUMMARY CARDS
+                 ================================================= -->
+
+            <section class="analytics-summary-grid">
+
+
+                <article class="analytics-summary-card">
+
+                    <div class="summary-icon">
+                        🌾
+                    </div>
+
+                    <div>
+
+                        <span>
+                            Crop Productivity
+                        </span>
+
+                        <strong>
+                            4.8 Ton/Ha
+                        </strong>
+
+                        <small class="positive">
+                            ↑ 8.4% vs last period
+                        </small>
+
+                    </div>
+
+                </article>
+
+
+                <article class="analytics-summary-card">
+
+                    <div class="summary-icon water-icon">
+                        💧
+                    </div>
+
+                    <div>
+
+                        <span>
+                            Water Efficiency
+                        </span>
+
+                        <strong>
+                            82%
+                        </strong>
+
+                        <small class="positive">
+                            ↑ 12.2% improvement
+                        </small>
+
+                    </div>
+
+                </article>
+
+
+                <article class="analytics-summary-card">
+
+                    <div class="summary-icon profit-icon">
+                        💰
+                    </div>
+
+                    <div>
+
+                        <span>
+                            Estimated Profit
+                        </span>
+
+                        <strong>
+                            ₹1.42 L
+                        </strong>
+
+                        <small class="positive">
+                            ↑ 6.7% vs last period
+                        </small>
+
+                    </div>
+
+                </article>
+
+
+                <article class="analytics-summary-card">
+
+                    <div class="summary-icon health-icon">
+                        ❤️
+                    </div>
+
+                    <div>
+
+                        <span>
+                            Farm Health
+                        </span>
+
+                        <strong>
+                            86/100
+                        </strong>
+
+                        <small class="positive">
+                            ↑ 4 points
+                        </small>
+
+                    </div>
+
+                </article>
+
+            </section>
+
+
+            <!-- =================================================
+                 CHARTS
+                 ================================================= -->
+
+            <section class="analytics-chart-grid">
+
+
+                <!-- PRODUCTIVITY -->
+
+                <article class="analytics-chart-card">
+
+                    <div class="chart-header">
+
+                        <div>
+
+                            <span class="card-label">
+                                PRODUCTIVITY TREND
+                            </span>
+
+                            <h2>
+                                Crop Productivity
+                            </h2>
+
+                        </div>
+
+                        <span class="chart-value">
+                            4.8 Ton/Ha
+                        </span>
+
+                    </div>
+
+
+                    <div class="chart-container">
+
+                        <div class="chart-y-axis">
+
+                            <span>5.0</span>
+                            <span>4.0</span>
+                            <span>3.0</span>
+                            <span>2.0</span>
+                            <span>1.0</span>
+
+                        </div>
+
+
+                        <div class="line-chart">
+
+                            <div class="grid-line line-1"></div>
+                            <div class="grid-line line-2"></div>
+                            <div class="grid-line line-3"></div>
+                            <div class="grid-line line-4"></div>
+                            <div class="grid-line line-5"></div>
+
+
+                            <svg
+                                viewBox="0 0 700 250"
+                                preserveAspectRatio="none"
+                                aria-label="Crop productivity chart"
+                            >
+
+                                <polyline
+                                    points="
+                                    0,190
+                                    100,165
+                                    200,175
+                                    300,135
+                                    400,145
+                                    500,95
+                                    600,105
+                                    700,65
+                                    "
+                                    fill="none"
+                                    stroke="currentColor"
+                                    stroke-width="4"
+                                />
+
+                                <circle
+                                    cx="0"
+                                    cy="190"
+                                    r="5"
+                                />
+
+                                <circle
+                                    cx="100"
+                                    cy="165"
+                                    r="5"
+                                />
+
+                                <circle
+                                    cx="200"
+                                    cy="175"
+                                    r="5"
+                                />
+
+                                <circle
+                                    cx="300"
+                                    cy="135"
+                                    r="5"
+                                />
+
+                                <circle
+                                    cx="400"
+                                    cy="145"
+                                    r="5"
+                                />
+
+                                <circle
+                                    cx="500"
+                                    cy="95"
+                                    r="5"
+                                />
+
+                                <circle
+                                    cx="600"
+                                    cy="105"
+                                    r="5"
+                                />
+
+                                <circle
+                                    cx="700"
+                                    cy="65"
+                                    r="5"
+                                />
+
+                            </svg>
+
+
+                            <div class="chart-x-axis">
+
+                                <span>Mon</span>
+                                <span>Tue</span>
+                                <span>Wed</span>
+                                <span>Thu</span>
+                                <span>Fri</span>
+                                <span>Sat</span>
+                                <span>Sun</span>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                </article>
+
+
+                <!-- WATER -->
+
+                <article class="analytics-chart-card">
+
+                    <div class="chart-header">
+
+                        <div>
+
+                            <span class="card-label">
+                                RESOURCE USAGE
+                            </span>
+
+                            <h2>
+                                Water Consumption
+                            </h2>
+
+                        </div>
+
+                        <span class="chart-value">
+                            18,000 L
+                        </span>
+
+                    </div>
+
+
+                    <div class="bar-chart">
+
+                        <div class="bar-item">
+
+                            <div
+                                class="bar"
+                                style="height: 72%;"
+                            ></div>
+
+                            <span>Mon</span>
+
+                        </div>
+
+
+                        <div class="bar-item">
+
+                            <div
+                                class="bar"
+                                style="height: 61%;"
+                            ></div>
+
+                            <span>Tue</span>
+
+                        </div>
+
+
+                        <div class="bar-item">
+
+                            <div
+                                class="bar"
+                                style="height: 68%;"
+                            ></div>
+
+                            <span>Wed</span>
+
+                        </div>
+
+
+                        <div class="bar-item">
+
+                            <div
+                                class="bar"
+                                style="height: 50%;"
+                            ></div>
+
+                            <span>Thu</span>
+
+                        </div>
+
+
+                        <div class="bar-item">
+
+                            <div
+                                class="bar"
+                                style="height: 57%;"
+                            ></div>
+
+                            <span>Fri</span>
+
+                        </div>
+
+
+                        <div class="bar-item">
+
+                            <div
+                                class="bar"
+                                style="height: 42%;"
+                            ></div>
+
+                            <span>Sat</span>
+
+                        </div>
+
+
+                        <div class="bar-item">
+
+                            <div
+                                class="bar"
+                                style="height: 38%;"
+                            ></div>
+
+                            <span>Sun</span>
+
+                        </div>
+
+                    </div>
+
+                </article>
+
+            </section>
+
+
+            <!-- =================================================
+                 INSIGHTS
+                 ================================================= -->
+
+            <section class="insights-card">
+
+                <div class="card-top">
+
+                    <div>
+
+                        <span class="card-label">
+                            AI-GENERATED INSIGHTS
+                        </span>
+
+                        <h2>
+                            What Your Data Says
+                        </h2>
+
+                    </div>
+
+                    <div class="insight-ai-icon">
+                        🤖
+                    </div>
+
+                </div>
+
+
+                <div class="insights-grid">
+
+
+                    <div class="insight-item">
+
+                        <span class="insight-number">
+                            01
+                        </span>
+
+                        <div>
+
+                            <strong>
+                                Water efficiency improved
+                            </strong>
+
+                            <p>
+                                Your irrigation efficiency has
+                                improved by 12.2% compared with
+                                the previous monitoring period.
+                            </p>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="insight-item">
+
+                        <span class="insight-number">
+                            02
+                        </span>
+
+                        <div>
+
+                            <strong>
+                                Crop productivity is increasing
+                            </strong>
+
+                            <p>
+                                Current crop growth conditions
+                                indicate an upward productivity
+                                trend.
+                            </p>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="insight-item">
+
+                        <span class="insight-number">
+                            03
+                        </span>
+
+                        <div>
+
+                            <strong>
+                                Monitor rainfall conditions
+                            </strong>
+
+                            <p>
+                                Recent weather variation may
+                                affect irrigation requirements
+                                during the next few days.
+                            </p>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </section>
+
+
+            <!-- =================================================
+                 DISCLAIMER
+                 ================================================= -->
+
+            <section class="ai-disclaimer">
+
+                <span>
+                    ⚠️
+                </span>
+
+                <p>
+                    Analytics shown in the prototype are based
+                    on available farm data and simulated values.
+                    Production deployment will use validated
+                    sensor, weather and market datasets.
+                </p>
+
+            </section>
+
+        </div>
+
+    </main>
+
+</div>
+
+
+<div
+    class="sidebar-overlay"
+    id="sidebarOverlay"
+></div>
+
+
+<script src="../js/analytics.js"></script>
+
+</body>
+
+</html>

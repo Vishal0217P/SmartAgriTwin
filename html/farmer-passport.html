@@ -1,0 +1,818 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <meta
+        name="description"
+        content="SmartAgriTwin Farmer Digital Passport"
+    >
+
+    <title>SmartAgriTwin | Farmer Passport</title>
+
+    <link
+        rel="stylesheet"
+        href="../css/dashboard.css"
+    >
+
+    <link
+        rel="stylesheet"
+        href="../css/farmer-passport.css"
+    >
+</head>
+
+<body>
+
+<div class="app-layout">
+
+    <!-- =====================================================
+         SIDEBAR
+         ===================================================== -->
+
+    <aside class="sidebar" id="sidebar">
+
+        <div class="sidebar-brand">
+
+            <div class="brand-logo">
+                🌱
+            </div>
+
+            <div>
+                <h1>SmartAgriTwin</h1>
+                <span>Smart Agriculture</span>
+            </div>
+
+        </div>
+
+
+        <nav class="sidebar-nav">
+
+            <p class="nav-section-title">
+                MAIN
+            </p>
+
+            <a href="dashboard.html" class="nav-item">
+                <span class="nav-icon">📊</span>
+                <span>Dashboard</span>
+            </a>
+
+            <a href="crop-soil.html" class="nav-item">
+                <span class="nav-icon">🌾</span>
+                <span>Crop & Soil</span>
+            </a>
+
+            <a href="irrigation.html" class="nav-item">
+                <span class="nav-icon">💧</span>
+                <span>Irrigation</span>
+            </a>
+
+            <a href="weather.html" class="nav-item">
+                <span class="nav-icon">🌦️</span>
+                <span>Weather</span>
+            </a>
+
+
+            <p class="nav-section-title">
+                AI & ANALYTICS
+            </p>
+
+            <a href="ai-recommendation.html" class="nav-item">
+                <span class="nav-icon">🤖</span>
+                <span>AI Recommendations</span>
+            </a>
+
+            <a href="digital-twin.html" class="nav-item">
+                <span class="nav-icon">🔮</span>
+                <span>Digital Twin</span>
+            </a>
+
+            <a href="analytics.html" class="nav-item">
+                <span class="nav-icon">📈</span>
+                <span>Analytics</span>
+            </a>
+
+
+            <p class="nav-section-title">
+                FARMER
+            </p>
+
+            <a
+                href="farmer-passport.html"
+                class="nav-item active"
+            >
+                <span class="nav-icon">👨‍🌾</span>
+                <span>Farmer Passport</span>
+            </a>
+
+        </nav>
+
+
+        <div class="sidebar-bottom">
+
+            <button
+                type="button"
+                class="logout-button"
+                id="logoutButton"
+            >
+                <span>🚪</span>
+                <span>Logout</span>
+            </button>
+
+        </div>
+
+    </aside>
+
+
+    <!-- =====================================================
+         MAIN CONTENT
+         ===================================================== -->
+
+    <main class="main-content">
+
+        <header class="topbar">
+
+            <div class="topbar-left">
+
+                <button
+                    type="button"
+                    class="menu-button"
+                    id="menuButton"
+                    aria-label="Open menu"
+                >
+                    ☰
+                </button>
+
+                <div>
+
+                    <p class="page-label">
+                        FARMER PROFILE
+                    </p>
+
+                    <h2>
+                        Farmer Passport
+                    </h2>
+
+                </div>
+
+            </div>
+
+
+            <div class="topbar-right">
+
+                <button
+                    type="button"
+                    class="notification-button"
+                    aria-label="Notifications"
+                >
+                    🔔
+                    <span class="notification-dot"></span>
+                </button>
+
+
+                <div class="user-profile">
+
+                    <div class="user-avatar">
+                        👨‍🌾
+                    </div>
+
+                    <div class="user-details">
+
+                        <strong id="userName">
+                            Farmer
+                        </strong>
+
+                        <span>
+                            Farmer Account
+                        </span>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </header>
+
+
+        <!-- =================================================
+             CONTENT
+             ================================================= -->
+
+        <div class="dashboard-content">
+
+
+            <!-- PAGE HEADER -->
+
+            <section class="passport-page-header">
+
+                <div>
+
+                    <p class="welcome-label">
+                        DIGITAL IDENTITY
+                    </p>
+
+                    <h1>
+                        Farmer Digital Passport 👨‍🌾
+                    </h1>
+
+                    <p>
+                        A unified digital record of your farm,
+                        crops, soil and AI-powered farming insights.
+                    </p>
+
+                </div>
+
+
+                <div class="passport-status">
+                    <span class="passport-status-dot"></span>
+                    Profile Active
+                </div>
+
+            </section>
+
+
+            <!-- =================================================
+                 PROFILE CARD
+                 ================================================= -->
+
+            <section class="passport-profile-card">
+
+                <div class="profile-main">
+
+                    <div class="large-avatar">
+                        👨‍🌾
+                    </div>
+
+                    <div class="profile-info">
+
+                        <span class="card-label">
+                            FARMER
+                        </span>
+
+                        <h2 id="passportName">
+                            Farmer Name
+                        </h2>
+
+                        <p id="passportLocation">
+                            📍 Pune, Maharashtra
+                        </p>
+
+                        <span class="farmer-id">
+                            Farmer ID:
+                            <strong id="farmerId">
+                                SAT-FR-00124
+                            </strong>
+                        </span>
+
+                    </div>
+
+                </div>
+
+
+                <div class="profile-actions">
+
+                    <button
+                        type="button"
+                        class="secondary-button"
+                        id="editProfileButton"
+                    >
+                        ✏️ Edit Profile
+                    </button>
+
+                    <button
+                        type="button"
+                        class="primary-button"
+                        id="downloadPassportButton"
+                    >
+                        📄 View Passport
+                    </button>
+
+                </div>
+
+            </section>
+
+
+            <!-- =================================================
+                 FARM OVERVIEW
+                 ================================================= -->
+
+            <section class="passport-grid">
+
+
+                <article class="passport-card">
+
+                    <div class="card-top">
+
+                        <div>
+
+                            <span class="card-label">
+                                FARM DETAILS
+                            </span>
+
+                            <h2>
+                                Farm Overview
+                            </h2>
+
+                        </div>
+
+                        <span class="card-icon">
+                            🌾
+                        </span>
+
+                    </div>
+
+
+                    <div class="details-list">
+
+                        <div>
+                            <span>
+                                Farm Area
+                            </span>
+
+                            <strong>
+                                4.5 Acres
+                            </strong>
+                        </div>
+
+
+                        <div>
+                            <span>
+                                Soil Type
+                            </span>
+
+                            <strong>
+                                Loamy Soil
+                            </strong>
+                        </div>
+
+
+                        <div>
+                            <span>
+                                Irrigation
+                            </span>
+
+                            <strong>
+                                Drip Irrigation
+                            </strong>
+                        </div>
+
+
+                        <div>
+                            <span>
+                                Current Crop
+                            </span>
+
+                            <strong>
+                                Tomato
+                            </strong>
+                        </div>
+
+
+                        <div>
+                            <span>
+                                Growing Season
+                            </span>
+
+                            <strong>
+                                Kharif
+                            </strong>
+                        </div>
+
+                    </div>
+
+                </article>
+
+
+                <!-- =================================================
+                     SOIL PROFILE
+                     ================================================= -->
+
+                <article class="passport-card">
+
+                    <div class="card-top">
+
+                        <div>
+
+                            <span class="card-label">
+                                SOIL PROFILE
+                            </span>
+
+                            <h2>
+                                Current Soil Health
+                            </h2>
+
+                        </div>
+
+                        <span class="card-icon">
+                            🧪
+                        </span>
+
+                    </div>
+
+
+                    <div class="soil-health-score">
+
+                        <div class="soil-score-circle">
+
+                            <strong>
+                                82
+                            </strong>
+
+                            <span>
+                                /100
+                            </span>
+
+                        </div>
+
+                        <div>
+
+                            <strong>
+                                Healthy
+                            </strong>
+
+                            <p>
+                                Soil conditions are suitable
+                                for the current crop.
+                            </p>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="soil-values">
+
+                        <div>
+                            <span>pH</span>
+                            <strong>6.5</strong>
+                        </div>
+
+                        <div>
+                            <span>Moisture</span>
+                            <strong>42%</strong>
+                        </div>
+
+                        <div>
+                            <span>N</span>
+                            <strong>78</strong>
+                        </div>
+
+                        <div>
+                            <span>P</span>
+                            <strong>52</strong>
+                        </div>
+
+                        <div>
+                            <span>K</span>
+                            <strong>64</strong>
+                        </div>
+
+                    </div>
+
+                </article>
+
+            </section>
+
+
+            <!-- =================================================
+                 CROP HISTORY
+                 ================================================= -->
+
+            <section class="passport-card crop-history-card">
+
+                <div class="card-top">
+
+                    <div>
+
+                        <span class="card-label">
+                            FARM HISTORY
+                        </span>
+
+                        <h2>
+                            Crop History
+                        </h2>
+
+                    </div>
+
+                    <span class="history-count">
+                        4 Seasons
+                    </span>
+
+                </div>
+
+
+                <div class="table-wrapper">
+
+                    <table>
+
+                        <thead>
+
+                            <tr>
+
+                                <th>
+                                    Season
+                                </th>
+
+                                <th>
+                                    Crop
+                                </th>
+
+                                <th>
+                                    Area
+                                </th>
+
+                                <th>
+                                    Yield
+                                </th>
+
+                                <th>
+                                    Estimated Profit
+                                </th>
+
+                                <th>
+                                    Status
+                                </th>
+
+                            </tr>
+
+                        </thead>
+
+
+                        <tbody>
+
+                            <tr>
+
+                                <td>
+                                    Kharif 2026
+                                </td>
+
+                                <td>
+                                    🍅 Tomato
+                                </td>
+
+                                <td>
+                                    4.5 Acres
+                                </td>
+
+                                <td>
+                                    4.8 Ton/Ha
+                                </td>
+
+                                <td>
+                                    ₹1.42 L
+                                </td>
+
+                                <td>
+                                    <span class="table-status current">
+                                        Current
+                                    </span>
+                                </td>
+
+                            </tr>
+
+
+                            <tr>
+
+                                <td>
+                                    Rabi 2025
+                                </td>
+
+                                <td>
+                                    🌾 Wheat
+                                </td>
+
+                                <td>
+                                    4.5 Acres
+                                </td>
+
+                                <td>
+                                    4.1 Ton/Ha
+                                </td>
+
+                                <td>
+                                    ₹1.12 L
+                                </td>
+
+                                <td>
+                                    <span class="table-status completed">
+                                        Completed
+                                    </span>
+                                </td>
+
+                            </tr>
+
+
+                            <tr>
+
+                                <td>
+                                    Kharif 2025
+                                </td>
+
+                                <td>
+                                    🌱 Soybean
+                                </td>
+
+                                <td>
+                                    4.5 Acres
+                                </td>
+
+                                <td>
+                                    3.4 Ton/Ha
+                                </td>
+
+                                <td>
+                                    ₹98 K
+                                </td>
+
+                                <td>
+                                    <span class="table-status completed">
+                                        Completed
+                                    </span>
+                                </td>
+
+                            </tr>
+
+
+                            <tr>
+
+                                <td>
+                                    Rabi 2024
+                                </td>
+
+                                <td>
+                                    🌾 Wheat
+                                </td>
+
+                                <td>
+                                    4.2 Acres
+                                </td>
+
+                                <td>
+                                    3.8 Ton/Ha
+                                </td>
+
+                                <td>
+                                    ₹1.03 L
+                                </td>
+
+                                <td>
+                                    <span class="table-status completed">
+                                        Completed
+                                    </span>
+                                </td>
+
+                            </tr>
+
+                        </tbody>
+
+                    </table>
+
+                </div>
+
+            </section>
+
+
+            <!-- =================================================
+                 AI SUMMARY
+                 ================================================= -->
+
+            <section class="ai-passport-card">
+
+                <div class="ai-passport-header">
+
+                    <div class="ai-passport-icon">
+                        🤖
+                    </div>
+
+                    <div>
+
+                        <span class="card-label">
+                            AI FARM SUMMARY
+                        </span>
+
+                        <h2>
+                            Personalized Farming Insights
+                        </h2>
+
+                    </div>
+
+                </div>
+
+
+                <div class="ai-passport-content">
+
+                    <div class="ai-summary-item">
+
+                        <span>
+                            🌱
+                        </span>
+
+                        <div>
+
+                            <strong>
+                                Crop Recommendation
+                            </strong>
+
+                            <p>
+                                Tomato remains suitable under
+                                the current soil and weather
+                                conditions.
+                            </p>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="ai-summary-item">
+
+                        <span>
+                            💧
+                        </span>
+
+                        <div>
+
+                            <strong>
+                                Irrigation Recommendation
+                            </strong>
+
+                            <p>
+                                Current soil moisture indicates
+                                moderate irrigation demand.
+                            </p>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="ai-summary-item">
+
+                        <span>
+                            💰
+                        </span>
+
+                        <div>
+
+                            <strong>
+                                Market Opportunity
+                            </strong>
+
+                            <p>
+                                Current market conditions may
+                                provide a favorable selling window.
+                            </p>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </section>
+
+
+            <!-- =================================================
+                 DISCLAIMER
+                 ================================================= -->
+
+            <section class="ai-disclaimer">
+
+                <span>
+                    ⚠️
+                </span>
+
+                <p>
+                    Farmer Passport data shown in this prototype
+                    is sample data. Production deployment will
+                    connect verified farmer records, sensor data,
+                    crop history and AI predictions through the
+                    backend.
+                </p>
+
+            </section>
+
+        </div>
+
+    </main>
+
+</div>
+
+
+<div
+    class="sidebar-overlay"
+    id="sidebarOverlay"
+></div>
+
+
+<script src="../js/farmer-passport.js"></script>
+
+</body>
+
+</html>

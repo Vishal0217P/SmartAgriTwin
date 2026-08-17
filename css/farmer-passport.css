@@ -1,0 +1,546 @@
+/* =========================================================
+   SmartAgriTwin - Farmer Passport
+   ========================================================= */
+
+
+/* =========================================================
+   PAGE HEADER
+   ========================================================= */
+
+.passport-page-header {
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+    gap: 20px;
+    margin-bottom: 25px;
+}
+
+.passport-page-header h1 {
+    margin-bottom: 6px;
+    font-size: 28px;
+    letter-spacing: -0.6px;
+}
+
+.passport-page-header p:last-child {
+    max-width: 700px;
+    font-size: 13px;
+    line-height: 1.5;
+    color: var(--text-secondary);
+}
+
+
+/* =========================================================
+   STATUS
+   ========================================================= */
+
+.passport-status {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 9px 13px;
+    border: 1px solid #dcebdd;
+    border-radius: 20px;
+    background: #f1f8f2;
+    color: var(--success);
+    font-size: 9px;
+    font-weight: 600;
+    white-space: nowrap;
+}
+
+.passport-status-dot {
+    width: 7px;
+    height: 7px;
+    border-radius: 50%;
+    background: var(--success);
+}
+
+
+/* =========================================================
+   PROFILE CARD
+   ========================================================= */
+
+.passport-profile-card {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 25px;
+    padding: 22px;
+    margin-bottom: 18px;
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    background: white;
+    box-shadow: var(--shadow-sm);
+}
+
+.profile-main {
+    display: flex;
+    align-items: center;
+    gap: 17px;
+}
+
+.large-avatar {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 72px;
+    height: 72px;
+    flex-shrink: 0;
+    border-radius: 18px;
+    background: #ecfdf5;
+    font-size: 34px;
+}
+
+.profile-info h2 {
+    margin: 4px 0 5px;
+    font-size: 20px;
+}
+
+.profile-info p {
+    margin-bottom: 8px;
+    font-size: 10px;
+    color: var(--text-secondary);
+}
+
+.farmer-id {
+    font-size: 8px;
+    color: var(--text-light);
+}
+
+.farmer-id strong {
+    color: var(--text-secondary);
+}
+
+
+/* =========================================================
+   BUTTONS
+   ========================================================= */
+
+.profile-actions {
+    display: flex;
+    gap: 8px;
+}
+
+.primary-button,
+.secondary-button {
+    height: 37px;
+    padding: 0 13px;
+    border-radius: 8px;
+    font-family: inherit;
+    font-size: 9px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: var(--transition);
+}
+
+.primary-button {
+    border: 1px solid var(--primary);
+    background: var(--primary);
+    color: white;
+}
+
+.secondary-button {
+    border: 1px solid var(--border);
+    background: white;
+    color: var(--text-primary);
+}
+
+.primary-button:hover,
+.secondary-button:hover {
+    transform: translateY(-1px);
+}
+
+
+/* =========================================================
+   TWO COLUMN GRID
+   ========================================================= */
+
+.passport-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 18px;
+    margin-bottom: 18px;
+}
+
+
+/* =========================================================
+   COMMON CARD
+   ========================================================= */
+
+.passport-card {
+    padding: 22px;
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    background: white;
+    box-shadow: var(--shadow-sm);
+}
+
+.card-top {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 15px;
+}
+
+.card-top h2 {
+    margin-top: 4px;
+    font-size: 17px;
+}
+
+.card-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 42px;
+    height: 42px;
+    border-radius: 11px;
+    background: #f0f7f1;
+    font-size: 19px;
+}
+
+
+/* =========================================================
+   FARM DETAILS
+   ========================================================= */
+
+.details-list {
+    margin-top: 20px;
+}
+
+.details-list > div {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 11px 0;
+    border-bottom: 1px solid #edf0ed;
+}
+
+.details-list > div:last-child {
+    border-bottom: none;
+}
+
+.details-list span {
+    font-size: 9px;
+    color: var(--text-secondary);
+}
+
+.details-list strong {
+    font-size: 10px;
+}
+
+
+/* =========================================================
+   SOIL HEALTH
+   ========================================================= */
+
+.soil-health-score {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    margin: 20px 0;
+    padding-bottom: 18px;
+    border-bottom: 1px solid var(--border);
+}
+
+.soil-score-circle {
+    display: flex;
+    align-items: baseline;
+    justify-content: center;
+    width: 78px;
+    height: 78px;
+    flex-shrink: 0;
+    border: 7px solid #dcfce7;
+    border-radius: 50%;
+    background: #f8fff9;
+}
+
+.soil-score-circle strong {
+    margin-top: 26px;
+    font-size: 21px;
+    color: var(--success);
+}
+
+.soil-score-circle span {
+    font-size: 8px;
+    color: var(--text-secondary);
+}
+
+.soil-health-score > div:last-child strong {
+    display: block;
+    margin-bottom: 4px;
+    font-size: 12px;
+}
+
+.soil-health-score p {
+    max-width: 200px;
+    font-size: 9px;
+    line-height: 1.5;
+    color: var(--text-secondary);
+}
+
+
+/* =========================================================
+   SOIL VALUES
+   ========================================================= */
+
+.soil-values {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 8px;
+}
+
+.soil-values > div {
+    padding: 10px 5px;
+    text-align: center;
+    border-radius: 8px;
+    background: #f8faf8;
+}
+
+.soil-values span {
+    display: block;
+    margin-bottom: 5px;
+    font-size: 8px;
+    color: var(--text-secondary);
+}
+
+.soil-values strong {
+    font-size: 11px;
+    color: var(--primary);
+}
+
+
+/* =========================================================
+   CROP HISTORY
+   ========================================================= */
+
+.crop-history-card {
+    margin-bottom: 18px;
+}
+
+.history-count {
+    padding: 6px 9px;
+    border-radius: 6px;
+    background: #f0f7f1;
+    color: var(--primary);
+    font-size: 8px;
+    font-weight: 600;
+}
+
+.table-wrapper {
+    width: 100%;
+    margin-top: 20px;
+    overflow-x: auto;
+}
+
+.table-wrapper table {
+    width: 100%;
+    min-width: 650px;
+    border-collapse: collapse;
+}
+
+.table-wrapper th {
+    padding: 10px;
+    text-align: left;
+    background: #f8faf8;
+    color: var(--text-secondary);
+    font-size: 8px;
+    font-weight: 600;
+}
+
+.table-wrapper td {
+    padding: 12px 10px;
+    border-bottom: 1px solid #edf0ed;
+    font-size: 9px;
+}
+
+.table-wrapper tbody tr:last-child td {
+    border-bottom: none;
+}
+
+.table-wrapper tbody tr:hover {
+    background: #fafcfb;
+}
+
+
+/* =========================================================
+   TABLE STATUS
+   ========================================================= */
+
+.table-status {
+    display: inline-block;
+    padding: 5px 7px;
+    border-radius: 5px;
+    font-size: 7px;
+    font-weight: 600;
+}
+
+.table-status.current {
+    background: #ecfdf5;
+    color: var(--success);
+}
+
+.table-status.completed {
+    background: #f3f4f6;
+    color: var(--text-secondary);
+}
+
+
+/* =========================================================
+   AI PASSPORT CARD
+   ========================================================= */
+
+.ai-passport-card {
+    padding: 22px;
+    margin-bottom: 15px;
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    background: white;
+    box-shadow: var(--shadow-sm);
+}
+
+.ai-passport-header {
+    display: flex;
+    align-items: center;
+    gap: 13px;
+}
+
+.ai-passport-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 45px;
+    height: 45px;
+    border-radius: 11px;
+    background: #f3f0ff;
+    font-size: 21px;
+}
+
+.ai-passport-header h2 {
+    margin-top: 4px;
+    font-size: 17px;
+}
+
+.ai-passport-content {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 12px;
+    margin-top: 22px;
+}
+
+.ai-summary-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 11px;
+    padding: 15px;
+    border-radius: 10px;
+    background: #f8faf8;
+}
+
+.ai-summary-item > span {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 30px;
+    height: 30px;
+    flex-shrink: 0;
+    border-radius: 8px;
+    background: white;
+    font-size: 14px;
+}
+
+.ai-summary-item strong {
+    display: block;
+    margin-bottom: 5px;
+    font-size: 10px;
+}
+
+.ai-summary-item p {
+    font-size: 9px;
+    line-height: 1.55;
+    color: var(--text-secondary);
+}
+
+
+/* =========================================================
+   RESPONSIVE
+   ========================================================= */
+
+@media (max-width: 950px) {
+
+    .passport-profile-card {
+        align-items: flex-start;
+        flex-direction: column;
+    }
+
+    .profile-actions {
+        width: 100%;
+    }
+
+    .profile-actions button {
+        flex: 1;
+    }
+
+    .passport-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .ai-passport-content {
+        grid-template-columns: 1fr;
+    }
+}
+
+
+@media (max-width: 700px) {
+
+    .passport-page-header {
+        align-items: flex-start;
+        flex-direction: column;
+    }
+
+    .passport-page-header h1 {
+        font-size: 23px;
+    }
+
+    .passport-status {
+        align-self: flex-start;
+    }
+
+    .passport-profile-card,
+    .passport-card,
+    .ai-passport-card {
+        padding: 17px;
+    }
+
+    .profile-main {
+        align-items: flex-start;
+    }
+
+    .large-avatar {
+        width: 60px;
+        height: 60px;
+        font-size: 28px;
+    }
+
+    .profile-info h2 {
+        font-size: 17px;
+    }
+
+    .soil-values {
+        grid-template-columns: repeat(3, 1fr);
+    }
+}
+
+
+@media (max-width: 480px) {
+
+    .profile-actions {
+        flex-direction: column;
+    }
+
+    .profile-actions button {
+        width: 100%;
+    }
+
+    .soil-values {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
