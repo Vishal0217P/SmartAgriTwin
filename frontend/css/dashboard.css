@@ -1,0 +1,1204 @@
+/* =========================================================
+   SMARTAGRITWIN - COMMON DASHBOARD STYLES
+   ========================================================= */
+
+
+/* =========================================================
+   1. RESET
+   ========================================================= */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: "Segoe UI", Arial, sans-serif;
+    background: #f5f7f5;
+    color: #1f2933;
+    line-height: 1.5;
+}
+
+button,
+input,
+select,
+textarea {
+    font: inherit;
+}
+
+button {
+    cursor: pointer;
+}
+
+a {
+    color: inherit;
+    text-decoration: none;
+}
+
+
+/* =========================================================
+   2. APP LAYOUT
+   ========================================================= */
+
+.app-layout {
+    display: flex;
+    min-height: 100vh;
+    width: 100%;
+}
+
+
+/* =========================================================
+   3. SIDEBAR
+   ========================================================= */
+
+.sidebar {
+    position: fixed;
+    top: 0;
+    left: 0;
+
+    width: 260px;
+    height: 100vh;
+
+    display: flex;
+    flex-direction: column;
+
+    background: #ffffff;
+    border-right: 1px solid #e5e7eb;
+
+    z-index: 1000;
+
+    overflow-y: auto;
+}
+
+
+/* Brand */
+
+.sidebar-brand {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+
+    padding: 24px 20px;
+
+    border-bottom: 1px solid #eef1ee;
+}
+
+.brand-logo {
+    width: 44px;
+    height: 44px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    background: #e9f7ea;
+    border-radius: 12px;
+
+    font-size: 23px;
+}
+
+.sidebar-brand h1 {
+    font-size: 18px;
+    font-weight: 700;
+    color: #256b2a;
+}
+
+.sidebar-brand span {
+    display: block;
+
+    margin-top: 2px;
+
+    font-size: 11px;
+    color: #7b8794;
+}
+
+
+/* Navigation */
+
+.sidebar-nav {
+    flex: 1;
+    padding: 18px 12px;
+}
+
+.nav-section-title {
+    padding: 14px 12px 8px;
+
+    font-size: 10px;
+    font-weight: 700;
+
+    letter-spacing: 1px;
+    color: #98a2ad;
+}
+
+.nav-item {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+
+    width: 100%;
+
+    margin-bottom: 4px;
+    padding: 11px 13px;
+
+    border-radius: 9px;
+
+    font-size: 14px;
+    font-weight: 500;
+
+    color: #59636e;
+
+    transition:
+        background 0.2s ease,
+        color 0.2s ease,
+        transform 0.2s ease;
+}
+
+.nav-item:hover {
+    background: #f1f8f1;
+    color: #28732d;
+}
+
+.nav-item.active {
+    background: #e8f5e9;
+    color: #24752a;
+    font-weight: 600;
+}
+
+.nav-icon {
+    width: 22px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    font-size: 17px;
+}
+
+
+/* Sidebar bottom */
+
+.sidebar-bottom {
+    padding: 16px;
+
+    border-top: 1px solid #eef1ee;
+}
+
+.logout-button {
+    width: 100%;
+
+    display: flex;
+    align-items: center;
+    gap: 10px;
+
+    padding: 11px 13px;
+
+    border: 0;
+    border-radius: 9px;
+
+    background: transparent;
+
+    color: #69737d;
+
+    text-align: left;
+
+    transition: 0.2s ease;
+}
+
+.logout-button:hover {
+    background: #fff1f1;
+    color: #c0392b;
+}
+
+
+/* =========================================================
+   4. MAIN CONTENT
+   ========================================================= */
+
+.main-content {
+    width: calc(100% - 260px);
+    min-height: 100vh;
+
+    margin-left: 260px;
+}
+
+
+/* =========================================================
+   5. TOPBAR
+   ========================================================= */
+
+.topbar {
+    position: sticky;
+    top: 0;
+
+    min-height: 76px;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    padding: 14px 30px;
+
+    background: rgba(255, 255, 255, 0.96);
+    border-bottom: 1px solid #e5e7eb;
+
+    backdrop-filter: blur(8px);
+
+    z-index: 900;
+}
+
+.topbar-left,
+.topbar-right {
+    display: flex;
+    align-items: center;
+}
+
+.topbar-left {
+    gap: 14px;
+}
+
+.topbar-right {
+    gap: 20px;
+}
+
+.page-label {
+    margin-bottom: 2px;
+
+    font-size: 10px;
+    font-weight: 700;
+
+    letter-spacing: 1px;
+    color: #8a959f;
+}
+
+.topbar h2 {
+    font-size: 20px;
+    font-weight: 700;
+    color: #25313b;
+}
+
+
+/* Mobile menu */
+
+.menu-button {
+    display: none;
+
+    width: 40px;
+    height: 40px;
+
+    border: 1px solid #e1e5e8;
+    border-radius: 8px;
+
+    background: #ffffff;
+
+    color: #46515b;
+
+    font-size: 20px;
+}
+
+
+/* Notifications */
+
+.notification-button {
+    position: relative;
+
+    width: 40px;
+    height: 40px;
+
+    border: 1px solid #e4e8ea;
+    border-radius: 10px;
+
+    background: #ffffff;
+
+    font-size: 18px;
+}
+
+.notification-button:hover {
+    background: #f5f8f5;
+}
+
+.notification-dot {
+    position: absolute;
+
+    top: 7px;
+    right: 7px;
+
+    width: 7px;
+    height: 7px;
+
+    background: #e74c3c;
+
+    border: 2px solid #ffffff;
+    border-radius: 50%;
+}
+
+
+/* User */
+
+.user-profile {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.user-avatar {
+    width: 40px;
+    height: 40px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    background: #eaf5eb;
+    border-radius: 50%;
+
+    font-size: 19px;
+}
+
+.user-details strong {
+    display: block;
+
+    font-size: 13px;
+    color: #29343d;
+}
+
+.user-details span {
+    display: block;
+
+    margin-top: 1px;
+
+    font-size: 11px;
+    color: #89939c;
+}
+
+
+/* =========================================================
+   6. DASHBOARD CONTENT
+   ========================================================= */
+
+.dashboard-content {
+    width: 100%;
+    max-width: 1500px;
+
+    margin: 0 auto;
+    padding: 30px;
+}
+
+
+/* =========================================================
+   7. PAGE WELCOME
+   ========================================================= */
+
+.dashboard-welcome {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 25px;
+
+    margin-bottom: 28px;
+}
+
+.welcome-label {
+    margin-bottom: 5px;
+
+    font-size: 10px;
+    font-weight: 700;
+
+    letter-spacing: 1px;
+    color: #6f8d72;
+}
+
+.dashboard-welcome h1 {
+    margin-bottom: 7px;
+
+    font-size: 28px;
+    line-height: 1.2;
+
+    color: #25332a;
+}
+
+.dashboard-welcome p:not(.welcome-label) {
+    max-width: 680px;
+
+    font-size: 14px;
+    color: #77817a;
+}
+
+.dashboard-date {
+    min-width: 145px;
+
+    padding: 12px 16px;
+
+    background: #ffffff;
+    border: 1px solid #e3e8e3;
+
+    border-radius: 10px;
+}
+
+.dashboard-date span {
+    display: block;
+
+    margin-bottom: 3px;
+
+    font-size: 9px;
+    font-weight: 700;
+
+    letter-spacing: 1px;
+    color: #909a93;
+}
+
+.dashboard-date strong {
+    font-size: 14px;
+    color: #2d6d31;
+}
+
+
+/* =========================================================
+   8. SECTION HEADING
+   ========================================================= */
+
+.section-heading {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    margin-bottom: 15px;
+}
+
+.section-heading h2 {
+    margin-top: 3px;
+
+    font-size: 19px;
+    color: #2b3730;
+}
+
+
+/* =========================================================
+   9. COMMON LABELS
+   ========================================================= */
+
+.card-label {
+    display: block;
+
+    font-size: 9px;
+    font-weight: 700;
+
+    letter-spacing: 1px;
+
+    color: #89958d;
+}
+
+
+/* =========================================================
+   10. STAT CARDS
+   ========================================================= */
+
+.stats-grid {
+    display: grid;
+
+    grid-template-columns: repeat(4, 1fr);
+
+    gap: 16px;
+
+    margin-bottom: 25px;
+}
+
+.stat-card {
+    padding: 19px;
+
+    background: #ffffff;
+    border: 1px solid #e3e8e4;
+
+    border-radius: 12px;
+
+    box-shadow: 0 2px 8px rgba(30, 50, 35, 0.03);
+
+    transition:
+        transform 0.2s ease,
+        box-shadow 0.2s ease;
+}
+
+.stat-card:hover {
+    transform: translateY(-2px);
+
+    box-shadow: 0 7px 20px rgba(30, 50, 35, 0.07);
+}
+
+.stat-card-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    margin-bottom: 16px;
+}
+
+.stat-icon {
+    width: 39px;
+    height: 39px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    border-radius: 10px;
+
+    font-size: 18px;
+}
+
+.stat-icon.green {
+    background: #e8f6e9;
+}
+
+.stat-icon.blue {
+    background: #e8f3fb;
+}
+
+.stat-icon.orange {
+    background: #fff2df;
+}
+
+.stat-icon.purple {
+    background: #f1ebfa;
+}
+
+.stat-label {
+    display: block;
+
+    margin-bottom: 5px;
+
+    font-size: 9px;
+    font-weight: 700;
+
+    letter-spacing: 0.9px;
+
+    color: #89938c;
+}
+
+.stat-card h3 {
+    margin-bottom: 4px;
+
+    font-size: 25px;
+    font-weight: 700;
+
+    color: #26352a;
+}
+
+.stat-card p {
+    font-size: 11px;
+    color: #8a938d;
+}
+
+
+/* =========================================================
+   11. STATUS
+   ========================================================= */
+
+.stat-status {
+    display: inline-flex;
+    align-items: center;
+
+    padding: 4px 7px;
+
+    border-radius: 20px;
+
+    font-size: 9px;
+    font-weight: 700;
+}
+
+.stat-status.good {
+    background: #eaf7eb;
+    color: #31803a;
+}
+
+.stat-status.warning {
+    background: #fff4df;
+    color: #b7791f;
+}
+
+.stat-status.danger {
+    background: #fdecec;
+    color: #c0392b;
+}
+
+
+/* =========================================================
+   12. DASHBOARD GRID
+   ========================================================= */
+
+.dashboard-grid {
+    display: grid;
+
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+
+    gap: 18px;
+
+    margin-bottom: 20px;
+}
+
+
+/* =========================================================
+   13. COMMON CARDS
+   ========================================================= */
+
+.dashboard-card {
+    padding: 20px;
+
+    background: #ffffff;
+    border: 1px solid #e3e8e4;
+
+    border-radius: 12px;
+
+    box-shadow: 0 2px 8px rgba(30, 50, 35, 0.03);
+
+    margin-bottom: 20px;
+}
+
+.card-header {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+
+    gap: 15px;
+
+    margin-bottom: 20px;
+}
+
+.card-header h2 {
+    margin-top: 4px;
+
+    font-size: 18px;
+    color: #29362d;
+}
+
+.ai-badge {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+
+    padding: 5px 9px;
+
+    border-radius: 20px;
+
+    background: #edf7ee;
+
+    color: #35743a;
+
+    font-size: 9px;
+    font-weight: 700;
+
+    letter-spacing: 0.5px;
+}
+
+
+/* =========================================================
+   14. BUTTONS
+   ========================================================= */
+
+.primary-button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+
+    min-height: 42px;
+
+    padding: 0 17px;
+
+    border: 0;
+    border-radius: 8px;
+
+    background: #2f7d32;
+
+    color: #ffffff;
+
+    font-size: 13px;
+    font-weight: 600;
+
+    transition: 0.2s ease;
+}
+
+.primary-button:hover {
+    background: #256629;
+
+    transform: translateY(-1px);
+}
+
+.primary-button:active {
+    transform: translateY(0);
+}
+
+
+/* =========================================================
+   15. PROGRESS BAR
+   ========================================================= */
+
+.stat-progress {
+    width: 100%;
+    height: 7px;
+
+    margin-top: 17px;
+
+    overflow: hidden;
+
+    background: #edf1ed;
+
+    border-radius: 20px;
+}
+
+.progress-bar {
+    height: 100%;
+
+    background: #4d934f;
+
+    border-radius: inherit;
+
+    transition: width 0.5s ease;
+}
+
+.progress-caption {
+    margin-top: 7px;
+
+    font-size: 10px;
+    color: #8a938d;
+}
+
+
+/* =========================================================
+   16. ANALYTICS HIGHLIGHT
+   ========================================================= */
+
+.analytics-highlight strong {
+    display: block;
+
+    margin-bottom: 3px;
+
+    font-size: 28px;
+    color: #2c6f31;
+}
+
+.analytics-highlight span {
+    font-size: 12px;
+    color: #7d8780;
+}
+
+
+/* =========================================================
+   17. TABLES
+   ========================================================= */
+
+.crop-performance-table,
+.crop-history-table {
+    width: 100%;
+    overflow-x: auto;
+}
+
+.table-header,
+.table-row,
+.history-header,
+.history-row {
+    display: grid;
+    align-items: center;
+
+    gap: 15px;
+
+    min-width: 620px;
+
+    padding: 13px 8px;
+
+    border-bottom: 1px solid #edf0ed;
+
+    font-size: 12px;
+}
+
+.table-header,
+.history-header {
+    font-size: 9px;
+    font-weight: 700;
+
+    letter-spacing: 0.8px;
+
+    color: #8a948d;
+    text-transform: uppercase;
+}
+
+.table-header,
+.table-row {
+    grid-template-columns: 1.5fr 0.8fr 0.9fr 0.9fr;
+}
+
+.history-header,
+.history-row {
+    grid-template-columns: 1fr 1.2fr 1fr 1fr 1fr;
+}
+
+.table-row:last-child,
+.history-row:last-child {
+    border-bottom: 0;
+}
+
+.table-row strong,
+.history-row strong {
+    color: #344139;
+}
+
+.table-status {
+    width: fit-content;
+
+    padding: 4px 8px;
+
+    border-radius: 20px;
+
+    font-size: 9px;
+    font-weight: 700;
+}
+
+.table-status.good {
+    background: #eaf7eb;
+    color: #31803a;
+}
+
+.table-status.warning {
+    background: #fff3dc;
+    color: #b7791f;
+}
+
+
+/* =========================================================
+   18. INSIGHTS
+   ========================================================= */
+
+.insights-list {
+    display: flex;
+    flex-direction: column;
+
+    gap: 14px;
+}
+
+.insight-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 13px;
+
+    padding: 13px;
+
+    background: #f8faf8;
+
+    border: 1px solid #edf1ed;
+    border-radius: 9px;
+}
+
+.insight-icon {
+    width: 36px;
+    height: 36px;
+
+    flex-shrink: 0;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    background: #eaf5ea;
+
+    border-radius: 9px;
+
+    font-size: 17px;
+}
+
+.insight-item strong {
+    display: block;
+
+    margin-bottom: 3px;
+
+    font-size: 13px;
+    color: #354138;
+}
+
+.insight-item p {
+    font-size: 11px;
+    color: #7d8780;
+}
+
+
+/* =========================================================
+   19. DEVICE LIST
+   ========================================================= */
+
+.device-list {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.device-item {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+
+    padding: 12px;
+
+    background: #f8faf8;
+
+    border: 1px solid #edf1ed;
+
+    border-radius: 9px;
+}
+
+.device-icon {
+    width: 38px;
+    height: 38px;
+
+    flex-shrink: 0;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    background: #eaf5ea;
+
+    border-radius: 9px;
+
+    font-size: 17px;
+}
+
+.device-item div:nth-child(2) {
+    flex: 1;
+}
+
+.device-item strong {
+    display: block;
+
+    font-size: 12px;
+    color: #354139;
+}
+
+.device-item span {
+    display: block;
+
+    margin-top: 2px;
+
+    font-size: 10px;
+    color: #8a938d;
+}
+
+.sensor-online {
+    white-space: nowrap;
+
+    font-size: 10px;
+
+    color: #3b8843;
+}
+
+
+/* =========================================================
+   20. PROTOTYPE NOTICE
+   ========================================================= */
+
+.prototype-notice {
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+
+    margin-top: 5px;
+    padding: 13px 15px;
+
+    background: #f0f7f1;
+
+    border: 1px solid #dcebdd;
+    border-radius: 9px;
+
+    color: #58705b;
+}
+
+.prototype-notice > span {
+    flex-shrink: 0;
+
+    font-size: 15px;
+}
+
+.prototype-notice p {
+    font-size: 11px;
+    line-height: 1.6;
+}
+
+
+/* =========================================================
+   21. SIDEBAR OVERLAY
+   ========================================================= */
+
+.sidebar-overlay {
+    display: none;
+
+    position: fixed;
+    inset: 0;
+
+    background: rgba(0, 0, 0, 0.35);
+
+    z-index: 950;
+}
+
+
+/* =========================================================
+   22. FOCUS ACCESSIBILITY
+   ========================================================= */
+
+button:focus-visible,
+a:focus-visible,
+select:focus-visible,
+input:focus-visible {
+    outline: 3px solid rgba(47, 125, 50, 0.25);
+    outline-offset: 2px;
+}
+
+
+/* =========================================================
+   23. RESPONSIVE - TABLET
+   ========================================================= */
+
+@media (max-width: 1100px) {
+
+    .sidebar {
+        width: 230px;
+    }
+
+    .main-content {
+        width: calc(100% - 230px);
+        margin-left: 230px;
+    }
+
+    .stats-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .dashboard-content {
+        padding: 24px;
+    }
+
+}
+
+
+/* =========================================================
+   24. RESPONSIVE - MOBILE
+   ========================================================= */
+
+@media (max-width: 768px) {
+
+    .sidebar {
+        width: 260px;
+
+        transform: translateX(-100%);
+
+        transition: transform 0.25s ease;
+    }
+
+    .sidebar.open {
+        transform: translateX(0);
+    }
+
+    .sidebar-overlay.active {
+        display: block;
+    }
+
+    .main-content {
+        width: 100%;
+        margin-left: 0;
+    }
+
+    .menu-button {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .topbar {
+        padding: 12px 16px;
+    }
+
+    .topbar-right {
+        gap: 8px;
+    }
+
+    .user-details {
+        display: none;
+    }
+
+    .dashboard-content {
+        padding: 20px 16px;
+    }
+
+    .dashboard-welcome {
+        flex-direction: column;
+    }
+
+    .dashboard-date {
+        width: 100%;
+    }
+
+    .dashboard-welcome h1 {
+        font-size: 24px;
+    }
+
+    .stats-grid {
+        grid-template-columns: 1fr 1fr;
+
+        gap: 12px;
+    }
+
+    .dashboard-grid {
+        grid-template-columns: 1fr;
+    }
+
+}
+
+
+/* =========================================================
+   25. RESPONSIVE - SMALL MOBILE
+   ========================================================= */
+
+@media (max-width: 480px) {
+
+    .topbar h2 {
+        font-size: 17px;
+    }
+
+    .notification-button {
+        width: 36px;
+        height: 36px;
+    }
+
+    .user-avatar {
+        width: 36px;
+        height: 36px;
+    }
+
+    .dashboard-content {
+        padding: 17px 12px;
+    }
+
+    .stats-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .stat-card {
+        padding: 16px;
+    }
+
+    .dashboard-card {
+        padding: 16px;
+    }
+
+    .card-header {
+        margin-bottom: 16px;
+    }
+
+    .dashboard-welcome h1 {
+        font-size: 22px;
+    }
+
+    .primary-button {
+        width: 100%;
+    }
+
+}

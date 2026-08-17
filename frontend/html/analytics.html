@@ -1,0 +1,1029 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <meta
+        name="description"
+        content="SmartAgriTwin farm analytics and performance insights"
+    >
+
+    <meta
+        name="theme-color"
+        content="#2f7d32"
+    >
+
+    <title>SmartAgriTwin | Analytics</title>
+
+    <link
+        rel="stylesheet"
+        href="../css/dashboard.css"
+    >
+
+    <link
+        rel="stylesheet"
+        href="../css/analytics.css"
+    >
+</head>
+
+<body>
+
+    <div class="app-layout">
+
+        <!-- =====================================================
+             SIDEBAR
+             ===================================================== -->
+
+        <aside
+            class="sidebar"
+            id="sidebar"
+        >
+
+            <div class="sidebar-brand">
+
+                <div class="brand-logo">
+                    🌱
+                </div>
+
+                <div>
+                    <h1>SmartAgriTwin</h1>
+
+                    <span>
+                        Smart Agriculture
+                    </span>
+                </div>
+
+            </div>
+
+
+            <nav
+                class="sidebar-nav"
+                aria-label="Main navigation"
+            >
+
+                <p class="nav-section-title">
+                    MAIN
+                </p>
+
+                <a
+                    href="dashboard.html"
+                    class="nav-item"
+                >
+                    <span class="nav-icon">📊</span>
+                    <span>Dashboard</span>
+                </a>
+
+                <a
+                    href="crop-soil.html"
+                    class="nav-item"
+                >
+                    <span class="nav-icon">🌾</span>
+                    <span>Crop &amp; Soil</span>
+                </a>
+
+                <a
+                    href="irrigation.html"
+                    class="nav-item"
+                >
+                    <span class="nav-icon">💧</span>
+                    <span>Irrigation</span>
+                </a>
+
+                <a
+                    href="weather.html"
+                    class="nav-item"
+                >
+                    <span class="nav-icon">🌦️</span>
+                    <span>Weather</span>
+                </a>
+
+
+                <p class="nav-section-title">
+                    AI &amp; ANALYTICS
+                </p>
+
+                <a
+                    href="ai-recommendation.html"
+                    class="nav-item"
+                >
+                    <span class="nav-icon">🤖</span>
+                    <span>AI Recommendations</span>
+                </a>
+
+                <a
+                    href="digital-twin.html"
+                    class="nav-item"
+                >
+                    <span class="nav-icon">🔮</span>
+                    <span>Digital Twin</span>
+                </a>
+
+                <a
+                    href="analytics.html"
+                    class="nav-item active"
+                >
+                    <span class="nav-icon">📈</span>
+                    <span>Analytics</span>
+                </a>
+
+
+                <p class="nav-section-title">
+                    FARMER
+                </p>
+
+                <a
+                    href="farmer-passport.html"
+                    class="nav-item"
+                >
+                    <span class="nav-icon">👨‍🌾</span>
+                    <span>Farmer Passport</span>
+                </a>
+
+            </nav>
+
+
+            <div class="sidebar-bottom">
+
+                <button
+                    type="button"
+                    class="logout-button"
+                    id="logoutButton"
+                >
+                    <span>🚪</span>
+                    <span>Logout</span>
+                </button>
+
+            </div>
+
+        </aside>
+
+
+        <!-- =====================================================
+             MAIN CONTENT
+             ===================================================== -->
+
+        <main class="main-content">
+
+            <!-- TOPBAR -->
+
+            <header class="topbar">
+
+                <div class="topbar-left">
+
+                    <button
+                        type="button"
+                        class="menu-button"
+                        id="menuButton"
+                        aria-label="Open navigation menu"
+                    >
+                        ☰
+                    </button>
+
+                    <div>
+
+                        <p class="page-label">
+                            FARM PERFORMANCE
+                        </p>
+
+                        <h2>
+                            Analytics
+                        </h2>
+
+                    </div>
+
+                </div>
+
+
+                <div class="topbar-right">
+
+                    <button
+                        type="button"
+                        class="notification-button"
+                        id="notificationButton"
+                        aria-label="Notifications"
+                    >
+                        🔔
+
+                        <span
+                            class="notification-dot"
+                            aria-hidden="true"
+                        ></span>
+
+                    </button>
+
+
+                    <div class="user-profile">
+
+                        <div class="user-avatar">
+                            👨‍🌾
+                        </div>
+
+                        <div class="user-details">
+
+                            <strong id="userName">
+                                Farmer
+                            </strong>
+
+                            <span>
+                                Farmer Account
+                            </span>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </header>
+
+
+            <!-- =================================================
+                 PAGE CONTENT
+                 ================================================= -->
+
+            <div class="dashboard-content">
+
+
+                <!-- PAGE HEADER -->
+
+                <section class="dashboard-welcome">
+
+                    <div>
+
+                        <p class="welcome-label">
+                            DATA &amp; INSIGHTS
+                        </p>
+
+                        <h1>
+                            Farm Analytics 📈
+                        </h1>
+
+                        <p>
+                            Understand crop performance, water
+                            usage, soil conditions and farm trends.
+                        </p>
+
+                    </div>
+
+
+                    <div class="dashboard-date">
+
+                        <span>
+                            REPORT PERIOD
+                        </span>
+
+                        <strong id="reportPeriod">
+                            This Month
+                        </strong>
+
+                    </div>
+
+                </section>
+
+
+                <!-- =================================================
+                     FILTERS
+                     ================================================= -->
+
+                <section class="analytics-filters">
+
+                    <div class="filter-group">
+
+                        <label for="timeRange">
+                            Time Range
+                        </label>
+
+                        <select id="timeRange">
+
+                            <option value="7">
+                                Last 7 Days
+                            </option>
+
+                            <option
+                                value="30"
+                                selected
+                            >
+                                Last 30 Days
+                            </option>
+
+                            <option value="90">
+                                Last 90 Days
+                            </option>
+
+                        </select>
+
+                    </div>
+
+
+                    <div class="filter-group">
+
+                        <label for="cropFilter">
+                            Crop
+                        </label>
+
+                        <select id="cropFilter">
+
+                            <option value="wheat">
+                                Wheat
+                            </option>
+
+                            <option value="rice">
+                                Rice
+                            </option>
+
+                            <option value="cotton">
+                                Cotton
+                            </option>
+
+                            <option value="all">
+                                All Crops
+                            </option>
+
+                        </select>
+
+                    </div>
+
+
+                    <button
+                        type="button"
+                        class="primary-button"
+                        id="refreshAnalyticsButton"
+                    >
+                        ↻ Refresh Data
+                    </button>
+
+                </section>
+
+
+                <!-- =================================================
+                     KEY METRICS
+                     ================================================= -->
+
+                <section>
+
+                    <div class="section-heading">
+
+                        <div>
+
+                            <span class="card-label">
+                                KEY PERFORMANCE INDICATORS
+                            </span>
+
+                            <h2>
+                                Farm Performance
+                            </h2>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="stats-grid">
+
+
+                        <!-- Crop Health -->
+
+                        <article class="stat-card">
+
+                            <div class="stat-card-header">
+
+                                <div class="stat-icon green">
+                                    🌱
+                                </div>
+
+                                <span class="stat-status good">
+                                    +4.2%
+                                </span>
+
+                            </div>
+
+                            <span class="stat-label">
+                                CROP HEALTH
+                            </span>
+
+                            <h3 id="analyticsCropHealth">
+                                91%
+                            </h3>
+
+                            <p>
+                                Compared with previous period
+                            </p>
+
+                        </article>
+
+
+                        <!-- Water Efficiency -->
+
+                        <article class="stat-card">
+
+                            <div class="stat-card-header">
+
+                                <div class="stat-icon blue">
+                                    💧
+                                </div>
+
+                                <span class="stat-status good">
+                                    +8.5%
+                                </span>
+
+                            </div>
+
+                            <span class="stat-label">
+                                WATER EFFICIENCY
+                            </span>
+
+                            <h3 id="analyticsWaterEfficiency">
+                                82%
+                            </h3>
+
+                            <p>
+                                Irrigation efficiency
+                            </p>
+
+                        </article>
+
+
+                        <!-- Yield -->
+
+                        <article class="stat-card">
+
+                            <div class="stat-card-header">
+
+                                <div class="stat-icon orange">
+                                    🌾
+                                </div>
+
+                                <span class="stat-status good">
+                                    +6.1%
+                                </span>
+
+                            </div>
+
+                            <span class="stat-label">
+                                PREDICTED YIELD
+                            </span>
+
+                            <h3 id="analyticsYield">
+                                4.2 t/ha
+                            </h3>
+
+                            <p>
+                                AI estimated yield
+                            </p>
+
+                        </article>
+
+
+                        <!-- Soil Health -->
+
+                        <article class="stat-card">
+
+                            <div class="stat-card-header">
+
+                                <div class="stat-icon purple">
+                                    🧪
+                                </div>
+
+                                <span class="stat-status good">
+                                    STABLE
+                                </span>
+
+                            </div>
+
+                            <span class="stat-label">
+                                SOIL HEALTH
+                            </span>
+
+                            <h3 id="analyticsSoilHealth">
+                                86%
+                            </h3>
+
+                            <p>
+                                Overall soil condition
+                            </p>
+
+                        </article>
+
+                    </div>
+
+                </section>
+
+
+                <!-- =================================================
+                     CHARTS
+                     ================================================= -->
+
+                <section class="dashboard-grid">
+
+
+                    <!-- Soil Moisture Trend -->
+
+                    <article class="dashboard-card chart-card">
+
+                        <div class="card-header">
+
+                            <div>
+
+                                <span class="card-label">
+                                    SOIL ANALYTICS
+                                </span>
+
+                                <h2>
+                                    Soil Moisture Trend
+                                </h2>
+
+                            </div>
+
+                            <span class="ai-badge">
+                                30 DAYS
+                            </span>
+
+                        </div>
+
+
+                        <div class="chart-container">
+
+                            <canvas
+                                id="soilMoistureChart"
+                                aria-label="Soil moisture trend chart"
+                            ></canvas>
+
+                        </div>
+
+                    </article>
+
+
+                    <!-- Water Usage -->
+
+                    <article class="dashboard-card chart-card">
+
+                        <div class="card-header">
+
+                            <div>
+
+                                <span class="card-label">
+                                    WATER ANALYTICS
+                                </span>
+
+                                <h2>
+                                    Water Usage
+                                </h2>
+
+                            </div>
+
+                            <span class="ai-badge">
+                                30 DAYS
+                            </span>
+
+                        </div>
+
+
+                        <div class="chart-container">
+
+                            <canvas
+                                id="waterUsageChart"
+                                aria-label="Water usage chart"
+                            ></canvas>
+
+                        </div>
+
+                    </article>
+
+                </section>
+
+
+                <!-- =================================================
+                     CROP PERFORMANCE
+                     ================================================= -->
+
+                <section class="dashboard-card">
+
+                    <div class="card-header">
+
+                        <div>
+
+                            <span class="card-label">
+                                CROP ANALYTICS
+                            </span>
+
+                            <h2>
+                                Crop Performance
+                            </h2>
+
+                        </div>
+
+                        <span class="ai-badge">
+                            AI
+                        </span>
+
+                    </div>
+
+
+                    <div class="crop-performance-table">
+
+                        <div class="table-header">
+
+                            <span>
+                                Parameter
+                            </span>
+
+                            <span>
+                                Current
+                            </span>
+
+                            <span>
+                                Target
+                            </span>
+
+                            <span>
+                                Status
+                            </span>
+
+                        </div>
+
+
+                        <div class="table-row">
+
+                            <span>
+                                Crop Health
+                            </span>
+
+                            <strong>
+                                91%
+                            </strong>
+
+                            <span>
+                                &gt; 85%
+                            </span>
+
+                            <b class="table-status good">
+                                Excellent
+                            </b>
+
+                        </div>
+
+
+                        <div class="table-row">
+
+                            <span>
+                                Soil Moisture
+                            </span>
+
+                            <strong>
+                                42%
+                            </strong>
+
+                            <span>
+                                40–60%
+                            </span>
+
+                            <b class="table-status good">
+                                Optimal
+                            </b>
+
+                        </div>
+
+
+                        <div class="table-row">
+
+                            <span>
+                                Soil pH
+                            </span>
+
+                            <strong>
+                                6.5
+                            </strong>
+
+                            <span>
+                                6.0–7.0
+                            </span>
+
+                            <b class="table-status good">
+                                Optimal
+                            </b>
+
+                        </div>
+
+
+                        <div class="table-row">
+
+                            <span>
+                                Water Efficiency
+                            </span>
+
+                            <strong>
+                                82%
+                            </strong>
+
+                            <span>
+                                &gt; 75%
+                            </span>
+
+                            <b class="table-status good">
+                                Good
+                            </b>
+
+                        </div>
+
+
+                        <div class="table-row">
+
+                            <span>
+                                Nitrogen
+                            </span>
+
+                            <strong>
+                                48
+                            </strong>
+
+                            <span>
+                                50–70
+                            </span>
+
+                            <b class="table-status warning">
+                                Monitor
+                            </b>
+
+                        </div>
+
+                    </div>
+
+                </section>
+
+
+                <!-- =================================================
+                     RESOURCE SAVINGS
+                     ================================================= -->
+
+                <section class="dashboard-grid">
+
+
+                    <!-- Water Savings -->
+
+                    <article class="dashboard-card">
+
+                        <div class="card-header">
+
+                            <div>
+
+                                <span class="card-label">
+                                    RESOURCE SAVINGS
+                                </span>
+
+                                <h2>
+                                    Water Saved
+                                </h2>
+
+                            </div>
+
+                            <span class="stat-status good">
+                                IMPROVING
+                            </span>
+
+                        </div>
+
+
+                        <div class="analytics-highlight">
+
+                            <strong id="totalWaterSaved">
+                                8,450 L
+                            </strong>
+
+                            <span>
+                                Estimated water saved
+                                this month
+                            </span>
+
+                        </div>
+
+
+                        <div class="stat-progress">
+
+                            <div
+                                class="progress-bar"
+                                style="width: 68%;"
+                            ></div>
+
+                        </div>
+
+                        <p class="progress-caption">
+                            68% of monthly conservation target
+                        </p>
+
+                    </article>
+
+
+                    <!-- Energy Savings -->
+
+                    <article class="dashboard-card">
+
+                        <div class="card-header">
+
+                            <div>
+
+                                <span class="card-label">
+                                    RESOURCE SAVINGS
+                                </span>
+
+                                <h2>
+                                    Pump Efficiency
+                                </h2>
+
+                            </div>
+
+                            <span class="stat-status good">
+                                GOOD
+                            </span>
+
+                        </div>
+
+
+                        <div class="analytics-highlight">
+
+                            <strong id="pumpEfficiency">
+                                78%
+                            </strong>
+
+                            <span>
+                                Estimated pump efficiency
+                            </span>
+
+                        </div>
+
+
+                        <div class="stat-progress">
+
+                            <div
+                                class="progress-bar"
+                                style="width: 78%;"
+                            ></div>
+
+                        </div>
+
+                        <p class="progress-caption">
+                            Current irrigation system performance
+                        </p>
+
+                    </article>
+
+                </section>
+
+
+                <!-- =================================================
+                     AI INSIGHTS
+                     ================================================= -->
+
+                <section class="dashboard-card ai-insight-card">
+
+                    <div class="card-header">
+
+                        <div>
+
+                            <span class="card-label">
+                                AI ANALYTICS
+                            </span>
+
+                            <h2>
+                                Performance Insights
+                            </h2>
+
+                        </div>
+
+                        <span class="ai-badge">
+                            🤖 AI
+                        </span>
+
+                    </div>
+
+
+                    <div class="insights-list">
+
+
+                        <div class="insight-item">
+
+                            <div class="insight-icon">
+                                💧
+                            </div>
+
+                            <div>
+
+                                <strong>
+                                    Water efficiency improved
+                                </strong>
+
+                                <p>
+                                    Smart irrigation has reduced
+                                    unnecessary water usage compared
+                                    with conventional scheduling.
+                                </p>
+
+                            </div>
+
+                        </div>
+
+
+                        <div class="insight-item">
+
+                            <div class="insight-icon">
+                                🌱
+                            </div>
+
+                            <div>
+
+                                <strong>
+                                    Crop health remains strong
+                                </strong>
+
+                                <p>
+                                    Current crop conditions are
+                                    stable with healthy growth
+                                    indicators.
+                                </p>
+
+                            </div>
+
+                        </div>
+
+
+                        <div class="insight-item">
+
+                            <div class="insight-icon">
+                                🧪
+                            </div>
+
+                            <div>
+
+                                <strong>
+                                    Nitrogen requires monitoring
+                                </strong>
+
+                                <p>
+                                    Soil nitrogen is slightly below
+                                    the preferred range. Monitor
+                                    before making fertilizer decisions.
+                                </p>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                </section>
+
+
+                <!-- =================================================
+                     DATA NOTE
+                     ================================================= -->
+
+                <section class="prototype-notice">
+
+                    <span>
+                        ℹ️
+                    </span>
+
+                    <p>
+                        Analytics values shown in this prototype
+                        are demonstration data. They will be replaced
+                        by real IoT, database and AI-generated values
+                        when the backend integration is connected.
+                    </p>
+
+                </section>
+
+            </div>
+
+        </main>
+
+    </div>
+
+
+    <!-- MOBILE SIDEBAR OVERLAY -->
+
+    <div
+        class="sidebar-overlay"
+        id="sidebarOverlay"
+        aria-hidden="true"
+    ></div>
+
+
+    <!-- CHART LIBRARY -->
+
+    <script
+        src="https://cdn.jsdelivr.net/npm/chart.js"
+    ></script>
+
+
+    <!-- JAVASCRIPT -->
+
+    <script src="../js/analytics.js"></script>
+
+</body>
+
+</html>

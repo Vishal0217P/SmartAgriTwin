@@ -1,0 +1,672 @@
+/* =========================================================
+   SmartAgriTwin - Irrigation Page
+   ========================================================= */
+
+
+/* =========================================================
+   IRRIGATION STATUS
+   ========================================================= */
+
+.irrigation-status-card {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 20px;
+
+    padding: 20px;
+
+    margin-bottom: 20px;
+
+    background: #ffffff;
+    border: 1px solid #e3e8e4;
+    border-radius: 12px;
+
+    box-shadow: 0 2px 8px rgba(30, 50, 35, 0.03);
+}
+
+.irrigation-status-left {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+}
+
+.irrigation-status-icon {
+    width: 48px;
+    height: 48px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    background: #e8f3fb;
+    border-radius: 12px;
+
+    font-size: 22px;
+}
+
+.irrigation-status-left h2 {
+    margin-bottom: 2px;
+
+    font-size: 18px;
+    color: #29372f;
+}
+
+.irrigation-status-left p {
+    font-size: 11px;
+    color: #7d8780;
+}
+
+.irrigation-status-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+
+    padding: 7px 11px;
+
+    background: #eaf7eb;
+    border-radius: 20px;
+
+    color: #34783b;
+
+    font-size: 10px;
+    font-weight: 700;
+}
+
+.irrigation-status-badge::before {
+    content: "";
+
+    width: 7px;
+    height: 7px;
+
+    background: #4caf50;
+    border-radius: 50%;
+}
+
+
+/* =========================================================
+   IRRIGATION CONTROL GRID
+   ========================================================= */
+
+.irrigation-control-grid {
+    display: grid;
+
+    grid-template-columns: 1.2fr 0.8fr;
+
+    gap: 18px;
+
+    margin-bottom: 20px;
+}
+
+
+/* =========================================================
+   PUMP CONTROL
+   ========================================================= */
+
+.pump-control-card {
+    padding: 22px;
+
+    background: #ffffff;
+    border: 1px solid #e3e8e4;
+    border-radius: 12px;
+
+    box-shadow: 0 2px 8px rgba(30, 50, 35, 0.03);
+}
+
+.pump-control {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    padding: 18px;
+
+    background: #f8faf8;
+
+    border: 1px solid #edf1ed;
+    border-radius: 10px;
+}
+
+.pump-info {
+    display: flex;
+    align-items: center;
+    gap: 13px;
+}
+
+.pump-icon {
+    width: 44px;
+    height: 44px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    background: #e8f3fb;
+    border-radius: 10px;
+
+    font-size: 20px;
+}
+
+.pump-info strong {
+    display: block;
+
+    font-size: 13px;
+    color: #354139;
+}
+
+.pump-info span {
+    display: block;
+
+    margin-top: 2px;
+
+    font-size: 10px;
+    color: #87918a;
+}
+
+
+/* =========================================================
+   TOGGLE SWITCH
+   ========================================================= */
+
+.toggle-switch {
+    position: relative;
+
+    width: 48px;
+    height: 26px;
+}
+
+.toggle-switch input {
+    opacity: 0;
+    width: 0;
+    height: 0;
+}
+
+.toggle-slider {
+    position: absolute;
+    inset: 0;
+
+    background: #d9dfda;
+
+    border-radius: 30px;
+
+    transition: 0.2s ease;
+}
+
+.toggle-slider::before {
+    content: "";
+
+    position: absolute;
+
+    width: 20px;
+    height: 20px;
+
+    left: 3px;
+    top: 3px;
+
+    background: #ffffff;
+
+    border-radius: 50%;
+
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.15);
+
+    transition: 0.2s ease;
+}
+
+.toggle-switch input:checked + .toggle-slider {
+    background: #4d934f;
+}
+
+.toggle-switch input:checked + .toggle-slider::before {
+    transform: translateX(22px);
+}
+
+
+/* =========================================================
+   IRRIGATION SUMMARY
+   ========================================================= */
+
+.irrigation-summary {
+    display: grid;
+
+    grid-template-columns: repeat(3, 1fr);
+
+    gap: 10px;
+
+    margin-top: 18px;
+}
+
+.irrigation-summary-item {
+    padding: 13px;
+
+    background: #f8faf8;
+
+    border: 1px solid #edf1ed;
+    border-radius: 9px;
+}
+
+.irrigation-summary-item span {
+    display: block;
+
+    margin-bottom: 4px;
+
+    font-size: 9px;
+    font-weight: 700;
+
+    letter-spacing: 0.5px;
+
+    color: #8b958e;
+}
+
+.irrigation-summary-item strong {
+    font-size: 16px;
+    color: #344239;
+}
+
+
+/* =========================================================
+   WATER LEVEL
+   ========================================================= */
+
+.water-level-card {
+    padding: 22px;
+
+    background: #ffffff;
+    border: 1px solid #e3e8e4;
+    border-radius: 12px;
+
+    box-shadow: 0 2px 8px rgba(30, 50, 35, 0.03);
+}
+
+.water-level-display {
+    display: flex;
+    align-items: center;
+    gap: 18px;
+
+    margin-top: 8px;
+}
+
+.water-tank {
+    position: relative;
+
+    width: 78px;
+    height: 125px;
+
+    overflow: hidden;
+
+    border: 3px solid #b7c6cc;
+    border-radius: 8px 8px 12px 12px;
+
+    background: #f3f6f7;
+}
+
+.water-fill {
+    position: absolute;
+
+    left: 0;
+    bottom: 0;
+
+    width: 100%;
+    height: 65%;
+
+    background: #72b7d6;
+
+    transition: height 0.5s ease;
+}
+
+.water-level-percent {
+    position: relative;
+    z-index: 2;
+
+    height: 100%;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    font-size: 18px;
+    font-weight: 700;
+
+    color: #344a54;
+}
+
+.water-level-info strong {
+    display: block;
+
+    margin-bottom: 4px;
+
+    font-size: 24px;
+    color: #2e6f8d;
+}
+
+.water-level-info span {
+    display: block;
+
+    font-size: 10px;
+    color: #85908a;
+}
+
+
+/* =========================================================
+   IRRIGATION RECOMMENDATION
+   ========================================================= */
+
+.irrigation-recommendation {
+    display: flex;
+    align-items: flex-start;
+    gap: 13px;
+
+    margin-top: 18px;
+    padding: 14px;
+
+    background: #f0f7f1;
+
+    border: 1px solid #dcebdd;
+    border-radius: 9px;
+}
+
+.irrigation-recommendation-icon {
+    width: 36px;
+    height: 36px;
+
+    flex-shrink: 0;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    background: #e1f0e2;
+    border-radius: 9px;
+
+    font-size: 17px;
+}
+
+.irrigation-recommendation strong {
+    display: block;
+
+    margin-bottom: 3px;
+
+    font-size: 12px;
+    color: #355d39;
+}
+
+.irrigation-recommendation p {
+    font-size: 10px;
+    line-height: 1.6;
+
+    color: #718173;
+}
+
+
+/* =========================================================
+   SCHEDULE
+   ========================================================= */
+
+.irrigation-schedule {
+    padding: 20px;
+
+    background: #ffffff;
+    border: 1px solid #e3e8e4;
+    border-radius: 12px;
+
+    box-shadow: 0 2px 8px rgba(30, 50, 35, 0.03);
+
+    margin-bottom: 20px;
+}
+
+.schedule-list {
+    display: flex;
+    flex-direction: column;
+
+    gap: 10px;
+}
+
+.schedule-item {
+    display: grid;
+
+    grid-template-columns: 90px 1fr 110px 90px;
+
+    align-items: center;
+
+    gap: 14px;
+
+    padding: 13px;
+
+    background: #f8faf8;
+
+    border: 1px solid #edf1ed;
+    border-radius: 9px;
+}
+
+.schedule-time {
+    font-size: 12px;
+    font-weight: 700;
+
+    color: #355d39;
+}
+
+.schedule-info strong {
+    display: block;
+
+    font-size: 12px;
+    color: #354139;
+}
+
+.schedule-info span {
+    display: block;
+
+    margin-top: 2px;
+
+    font-size: 9px;
+    color: #89938d;
+}
+
+.schedule-duration {
+    font-size: 11px;
+    color: #657168;
+}
+
+.schedule-status {
+    width: fit-content;
+
+    padding: 4px 8px;
+
+    border-radius: 20px;
+
+    font-size: 9px;
+    font-weight: 700;
+}
+
+.schedule-status.completed {
+    background: #eaf7eb;
+    color: #347a3c;
+}
+
+.schedule-status.pending {
+    background: #fff3dc;
+    color: #b7791f;
+}
+
+.schedule-status.active {
+    background: #e8f3fb;
+    color: #327394;
+}
+
+
+/* =========================================================
+   WATER USAGE
+   ========================================================= */
+
+.water-usage-card {
+    padding: 20px;
+
+    background: #ffffff;
+    border: 1px solid #e3e8e4;
+    border-radius: 12px;
+
+    box-shadow: 0 2px 8px rgba(30, 50, 35, 0.03);
+}
+
+.water-usage-value {
+    margin-bottom: 4px;
+
+    font-size: 28px;
+    font-weight: 700;
+
+    color: #2e718f;
+}
+
+.water-usage-label {
+    font-size: 10px;
+    color: #87918a;
+}
+
+.water-usage-progress {
+    width: 100%;
+    height: 8px;
+
+    margin-top: 17px;
+
+    overflow: hidden;
+
+    background: #edf1ed;
+
+    border-radius: 20px;
+}
+
+.water-usage-progress span {
+    display: block;
+
+    height: 100%;
+    width: 72%;
+
+    background: #65a9c8;
+
+    border-radius: inherit;
+}
+
+.water-usage-note {
+    margin-top: 7px;
+
+    font-size: 10px;
+    color: #87918a;
+}
+
+
+/* =========================================================
+   MANUAL CONTROL BUTTONS
+   ========================================================= */
+
+.irrigation-actions {
+    display: flex;
+    gap: 10px;
+
+    margin-top: 18px;
+}
+
+.irrigation-action-button {
+    flex: 1;
+
+    min-height: 40px;
+
+    border: 1px solid #dce4dd;
+    border-radius: 8px;
+
+    background: #ffffff;
+
+    color: #3c5740;
+
+    font-size: 11px;
+    font-weight: 600;
+
+    transition: 0.2s ease;
+}
+
+.irrigation-action-button:hover {
+    background: #f1f8f2;
+
+    border-color: #b9d3bb;
+}
+
+.irrigation-action-button.primary {
+    border-color: #2f7d32;
+
+    background: #2f7d32;
+
+    color: #ffffff;
+}
+
+.irrigation-action-button.primary:hover {
+    background: #256629;
+}
+
+
+/* =========================================================
+   RESPONSIVE - TABLET
+   ========================================================= */
+
+@media (max-width: 1100px) {
+
+    .irrigation-control-grid {
+        grid-template-columns: 1fr;
+    }
+
+}
+
+
+/* =========================================================
+   RESPONSIVE - MOBILE
+   ========================================================= */
+
+@media (max-width: 768px) {
+
+    .irrigation-status-card {
+        align-items: flex-start;
+        flex-direction: column;
+    }
+
+    .irrigation-summary {
+        grid-template-columns: 1fr 1fr 1fr;
+    }
+
+    .schedule-item {
+        grid-template-columns: 80px 1fr 80px;
+    }
+
+    .schedule-status {
+        display: none;
+    }
+
+}
+
+
+/* =========================================================
+   RESPONSIVE - SMALL MOBILE
+   ========================================================= */
+
+@media (max-width: 480px) {
+
+    .irrigation-summary {
+        grid-template-columns: 1fr;
+    }
+
+    .pump-control {
+        align-items: flex-start;
+        gap: 12px;
+    }
+
+    .water-level-display {
+        justify-content: center;
+    }
+
+    .schedule-item {
+        grid-template-columns: 1fr;
+        gap: 5px;
+    }
+
+    .schedule-status {
+        display: inline-flex;
+    }
+
+    .irrigation-actions {
+        flex-direction: column;
+    }
+
+}

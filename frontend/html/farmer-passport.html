@@ -1,0 +1,950 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <meta
+        name="description"
+        content="SmartAgriTwin digital farmer passport"
+    >
+
+    <meta
+        name="theme-color"
+        content="#2f7d32"
+    >
+
+    <title>SmartAgriTwin | Farmer Passport</title>
+
+    <link
+        rel="stylesheet"
+        href="../css/dashboard.css"
+    >
+
+    <link
+        rel="stylesheet"
+        href="../css/farmer-passport.css"
+    >
+</head>
+
+<body>
+
+    <div class="app-layout">
+
+        <!-- =====================================================
+             SIDEBAR
+             ===================================================== -->
+
+        <aside
+            class="sidebar"
+            id="sidebar"
+        >
+
+            <div class="sidebar-brand">
+
+                <div class="brand-logo">
+                    🌱
+                </div>
+
+                <div>
+                    <h1>SmartAgriTwin</h1>
+
+                    <span>
+                        Smart Agriculture
+                    </span>
+                </div>
+
+            </div>
+
+
+            <nav
+                class="sidebar-nav"
+                aria-label="Main navigation"
+            >
+
+                <p class="nav-section-title">
+                    MAIN
+                </p>
+
+                <a
+                    href="dashboard.html"
+                    class="nav-item"
+                >
+                    <span class="nav-icon">📊</span>
+                    <span>Dashboard</span>
+                </a>
+
+                <a
+                    href="crop-soil.html"
+                    class="nav-item"
+                >
+                    <span class="nav-icon">🌾</span>
+                    <span>Crop &amp; Soil</span>
+                </a>
+
+                <a
+                    href="irrigation.html"
+                    class="nav-item"
+                >
+                    <span class="nav-icon">💧</span>
+                    <span>Irrigation</span>
+                </a>
+
+                <a
+                    href="weather.html"
+                    class="nav-item"
+                >
+                    <span class="nav-icon">🌦️</span>
+                    <span>Weather</span>
+                </a>
+
+
+                <p class="nav-section-title">
+                    AI &amp; ANALYTICS
+                </p>
+
+                <a
+                    href="ai-recommendation.html"
+                    class="nav-item"
+                >
+                    <span class="nav-icon">🤖</span>
+                    <span>AI Recommendations</span>
+                </a>
+
+                <a
+                    href="digital-twin.html"
+                    class="nav-item"
+                >
+                    <span class="nav-icon">🔮</span>
+                    <span>Digital Twin</span>
+                </a>
+
+                <a
+                    href="analytics.html"
+                    class="nav-item"
+                >
+                    <span class="nav-icon">📈</span>
+                    <span>Analytics</span>
+                </a>
+
+
+                <p class="nav-section-title">
+                    FARMER
+                </p>
+
+                <a
+                    href="farmer-passport.html"
+                    class="nav-item active"
+                >
+                    <span class="nav-icon">👨‍🌾</span>
+                    <span>Farmer Passport</span>
+                </a>
+
+            </nav>
+
+
+            <div class="sidebar-bottom">
+
+                <button
+                    type="button"
+                    class="logout-button"
+                    id="logoutButton"
+                >
+                    <span>🚪</span>
+                    <span>Logout</span>
+                </button>
+
+            </div>
+
+        </aside>
+
+
+        <!-- =====================================================
+             MAIN CONTENT
+             ===================================================== -->
+
+        <main class="main-content">
+
+            <!-- TOPBAR -->
+
+            <header class="topbar">
+
+                <div class="topbar-left">
+
+                    <button
+                        type="button"
+                        class="menu-button"
+                        id="menuButton"
+                        aria-label="Open navigation menu"
+                    >
+                        ☰
+                    </button>
+
+                    <div>
+
+                        <p class="page-label">
+                            FARMER PROFILE
+                        </p>
+
+                        <h2>
+                            Farmer Passport
+                        </h2>
+
+                    </div>
+
+                </div>
+
+
+                <div class="topbar-right">
+
+                    <button
+                        type="button"
+                        class="notification-button"
+                        id="notificationButton"
+                        aria-label="Notifications"
+                    >
+                        🔔
+
+                        <span
+                            class="notification-dot"
+                            aria-hidden="true"
+                        ></span>
+
+                    </button>
+
+
+                    <div class="user-profile">
+
+                        <div class="user-avatar">
+                            👨‍🌾
+                        </div>
+
+                        <div class="user-details">
+
+                            <strong id="userName">
+                                Farmer
+                            </strong>
+
+                            <span>
+                                Farmer Account
+                            </span>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </header>
+
+
+            <!-- =================================================
+                 PAGE CONTENT
+                 ================================================= -->
+
+            <div class="dashboard-content">
+
+
+                <!-- PAGE HEADER -->
+
+                <section class="dashboard-welcome">
+
+                    <div>
+
+                        <p class="welcome-label">
+                            DIGITAL FARMER IDENTITY
+                        </p>
+
+                        <h1>
+                            Farmer Passport 👨‍🌾
+                        </h1>
+
+                        <p>
+                            A digital profile containing farmer,
+                            farm and agricultural information.
+                        </p>
+
+                    </div>
+
+
+                    <div class="dashboard-date">
+
+                        <span>
+                            PROFILE STATUS
+                        </span>
+
+                        <strong>
+                            ● Active
+                        </strong>
+
+                    </div>
+
+                </section>
+
+
+                <!-- =================================================
+                     PROFILE CARD
+                     ================================================= -->
+
+                <section class="passport-profile-card">
+
+                    <div class="passport-profile-main">
+
+                        <div class="passport-avatar">
+                            👨‍🌾
+                        </div>
+
+                        <div>
+
+                            <span class="card-label">
+                                FARMER
+                            </span>
+
+                            <h2 id="farmerName">
+                                Farmer Name
+                            </h2>
+
+                            <p id="farmerLocation">
+                                📍 Maharashtra, India
+                            </p>
+
+                            <span class="passport-id">
+                                Farmer ID:
+                                <strong id="farmerId">
+                                    SAT-FRM-001
+                                </strong>
+                            </span>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="passport-status">
+
+                        <span>
+                            ACCOUNT
+                        </span>
+
+                        <strong>
+                            ✓ Verified
+                        </strong>
+
+                    </div>
+
+                </section>
+
+
+                <!-- =================================================
+                     FARM INFORMATION
+                     ================================================= -->
+
+                <section class="dashboard-card">
+
+                    <div class="card-header">
+
+                        <div>
+
+                            <span class="card-label">
+                                FARM PROFILE
+                            </span>
+
+                            <h2>
+                                Farm Information
+                            </h2>
+
+                        </div>
+
+                        <span class="ai-badge">
+                            PROFILE
+                        </span>
+
+                    </div>
+
+
+                    <div class="passport-info-grid">
+
+
+                        <div class="passport-info-item">
+
+                            <span>
+                                FARM NAME
+                            </span>
+
+                            <strong id="farmName">
+                                Smart Farm
+                            </strong>
+
+                        </div>
+
+
+                        <div class="passport-info-item">
+
+                            <span>
+                                FARM AREA
+                            </span>
+
+                            <strong id="farmArea">
+                                2.5 Acres
+                            </strong>
+
+                        </div>
+
+
+                        <div class="passport-info-item">
+
+                            <span>
+                                PRIMARY CROP
+                            </span>
+
+                            <strong id="primaryCrop">
+                                Wheat
+                            </strong>
+
+                        </div>
+
+
+                        <div class="passport-info-item">
+
+                            <span>
+                                SOIL TYPE
+                            </span>
+
+                            <strong id="soilType">
+                                Loamy Soil
+                            </strong>
+
+                        </div>
+
+
+                        <div class="passport-info-item">
+
+                            <span>
+                                IRRIGATION TYPE
+                            </span>
+
+                            <strong id="irrigationType">
+                                Drip Irrigation
+                            </strong>
+
+                        </div>
+
+
+                        <div class="passport-info-item">
+
+                            <span>
+                                FARM STATUS
+                            </span>
+
+                            <strong class="status-text">
+                                Active
+                            </strong>
+
+                        </div>
+
+                    </div>
+
+                </section>
+
+
+                <!-- =================================================
+                     FARM STATISTICS
+                     ================================================= -->
+
+                <section>
+
+                    <div class="section-heading">
+
+                        <div>
+
+                            <span class="card-label">
+                                FARM OVERVIEW
+                            </span>
+
+                            <h2>
+                                Agricultural Statistics
+                            </h2>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="stats-grid">
+
+
+                        <!-- Crop Health -->
+
+                        <article class="stat-card">
+
+                            <div class="stat-card-header">
+
+                                <div class="stat-icon green">
+                                    🌱
+                                </div>
+
+                                <span class="stat-status good">
+                                    HEALTHY
+                                </span>
+
+                            </div>
+
+                            <span class="stat-label">
+                                CROP HEALTH
+                            </span>
+
+                            <h3>
+                                91%
+                            </h3>
+
+                            <p>
+                                Current estimated health
+                            </p>
+
+                        </article>
+
+
+                        <!-- Soil Health -->
+
+                        <article class="stat-card">
+
+                            <div class="stat-card-header">
+
+                                <div class="stat-icon purple">
+                                    🧪
+                                </div>
+
+                                <span class="stat-status good">
+                                    GOOD
+                                </span>
+
+                            </div>
+
+                            <span class="stat-label">
+                                SOIL HEALTH
+                            </span>
+
+                            <h3>
+                                86%
+                            </h3>
+
+                            <p>
+                                Overall soil condition
+                            </p>
+
+                        </article>
+
+
+                        <!-- Water Efficiency -->
+
+                        <article class="stat-card">
+
+                            <div class="stat-card-header">
+
+                                <div class="stat-icon blue">
+                                    💧
+                                </div>
+
+                                <span class="stat-status good">
+                                    GOOD
+                                </span>
+
+                            </div>
+
+                            <span class="stat-label">
+                                WATER EFFICIENCY
+                            </span>
+
+                            <h3>
+                                82%
+                            </h3>
+
+                            <p>
+                                Irrigation efficiency
+                            </p>
+
+                        </article>
+
+
+                        <!-- Yield -->
+
+                        <article class="stat-card">
+
+                            <div class="stat-card-header">
+
+                                <div class="stat-icon orange">
+                                    🌾
+                                </div>
+
+                                <span class="stat-status good">
+                                    +6.1%
+                                </span>
+
+                            </div>
+
+                            <span class="stat-label">
+                                EXPECTED YIELD
+                            </span>
+
+                            <h3>
+                                4.2 t/ha
+                            </h3>
+
+                            <p>
+                                AI predicted yield
+                            </p>
+
+                        </article>
+
+                    </div>
+
+                </section>
+
+
+                <!-- =================================================
+                     CROP HISTORY
+                     ================================================= -->
+
+                <section class="dashboard-card">
+
+                    <div class="card-header">
+
+                        <div>
+
+                            <span class="card-label">
+                                FARM HISTORY
+                            </span>
+
+                            <h2>
+                                Crop History
+                            </h2>
+
+                        </div>
+
+                        <span class="ai-badge">
+                            RECORD
+                        </span>
+
+                    </div>
+
+
+                    <div class="crop-history-table">
+
+                        <div class="history-header">
+
+                            <span>
+                                Season
+                            </span>
+
+                            <span>
+                                Crop
+                            </span>
+
+                            <span>
+                                Area
+                            </span>
+
+                            <span>
+                                Yield
+                            </span>
+
+                            <span>
+                                Status
+                            </span>
+
+                        </div>
+
+
+                        <div class="history-row">
+
+                            <span>
+                                2025–26
+                            </span>
+
+                            <strong>
+                                Wheat
+                            </strong>
+
+                            <span>
+                                2.5 Acres
+                            </span>
+
+                            <span>
+                                4.0 t/ha
+                            </span>
+
+                            <b class="table-status good">
+                                Completed
+                            </b>
+
+                        </div>
+
+
+                        <div class="history-row">
+
+                            <span>
+                                2024–25
+                            </span>
+
+                            <strong>
+                                Rice
+                            </strong>
+
+                            <span>
+                                2.5 Acres
+                            </span>
+
+                            <span>
+                                3.6 t/ha
+                            </span>
+
+                            <b class="table-status good">
+                                Completed
+                            </b>
+
+                        </div>
+
+
+                        <div class="history-row">
+
+                            <span>
+                                2023–24
+                            </span>
+
+                            <strong>
+                                Wheat
+                            </strong>
+
+                            <span>
+                                2.5 Acres
+                            </span>
+
+                            <span>
+                                3.8 t/ha
+                            </span>
+
+                            <b class="table-status good">
+                                Completed
+                            </b>
+
+                        </div>
+
+                    </div>
+
+                </section>
+
+
+                <!-- =================================================
+                     FARM DEVICES
+                     ================================================= -->
+
+                <section class="dashboard-card">
+
+                    <div class="card-header">
+
+                        <div>
+
+                            <span class="card-label">
+                                CONNECTED FARM
+                            </span>
+
+                            <h2>
+                                Registered IoT Devices
+                            </h2>
+
+                        </div>
+
+                        <span class="ai-badge">
+                            IoT
+                        </span>
+
+                    </div>
+
+
+                    <div class="device-list">
+
+
+                        <div class="device-item">
+
+                            <div class="device-icon">
+                                📡
+                            </div>
+
+                            <div>
+
+                                <strong>
+                                    ESP32 Controller
+                                </strong>
+
+                                <span>
+                                    Main field controller
+                                </span>
+
+                            </div>
+
+                            <b class="sensor-online">
+                                ● Online
+                            </b>
+
+                        </div>
+
+
+                        <div class="device-item">
+
+                            <div class="device-icon">
+                                💧
+                            </div>
+
+                            <div>
+
+                                <strong>
+                                    Soil Moisture Sensors
+                                </strong>
+
+                                <span>
+                                    2 sensors connected
+                                </span>
+
+                            </div>
+
+                            <b class="sensor-online">
+                                ● Online
+                            </b>
+
+                        </div>
+
+
+                        <div class="device-item">
+
+                            <div class="device-icon">
+                                🌡️
+                            </div>
+
+                            <div>
+
+                                <strong>
+                                    DHT22 Sensor
+                                </strong>
+
+                                <span>
+                                    Temperature &amp; humidity
+                                </span>
+
+                            </div>
+
+                            <b class="sensor-online">
+                                ● Online
+                            </b>
+
+                        </div>
+
+
+                        <div class="device-item">
+
+                            <div class="device-icon">
+                                🌧️
+                            </div>
+
+                            <div>
+
+                                <strong>
+                                    Weather Sensors
+                                </strong>
+
+                                <span>
+                                    Rain and light monitoring
+                                </span>
+
+                            </div>
+
+                            <b class="sensor-online">
+                                ● Online
+                            </b>
+
+                        </div>
+
+                    </div>
+
+                </section>
+
+
+                <!-- =================================================
+                     DIGITAL ID NOTE
+                     ================================================= -->
+
+                <section class="passport-note">
+
+                    <div class="passport-note-icon">
+                        🪪
+                    </div>
+
+                    <div>
+
+                        <span class="card-label">
+                            DIGITAL FARMER ID
+                        </span>
+
+                        <h3>
+                            SmartAgriTwin Farmer Passport
+                        </h3>
+
+                        <p>
+                            This digital passport can be extended
+                            with farmer verification, land records,
+                            crop history, government schemes and
+                            agricultural transaction records.
+                        </p>
+
+                    </div>
+
+                </section>
+
+
+                <!-- =================================================
+                     PROTOTYPE NOTICE
+                     ================================================= -->
+
+                <section class="prototype-notice">
+
+                    <span>
+                        ℹ️
+                    </span>
+
+                    <p>
+                        Farmer and farm information shown here is
+                        demonstration data for the prototype.
+                        Real farmer records will be connected
+                        through the backend after authentication
+                        and database integration.
+                    </p>
+
+                </section>
+
+            </div>
+
+        </main>
+
+    </div>
+
+
+    <!-- MOBILE SIDEBAR OVERLAY -->
+
+    <div
+        class="sidebar-overlay"
+        id="sidebarOverlay"
+        aria-hidden="true"
+    ></div>
+
+
+    <!-- JAVASCRIPT -->
+
+    <script src="../js/farmer-passport.js"></script>
+
+</body>
+
+</html>

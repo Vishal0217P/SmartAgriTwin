@@ -1,0 +1,838 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <meta
+        name="description"
+        content="SmartAgriTwin AI-powered farming recommendations"
+    >
+
+    <meta
+        name="theme-color"
+        content="#2f7d32"
+    >
+
+    <title>SmartAgriTwin | AI Recommendations</title>
+
+    <link
+        rel="stylesheet"
+        href="../css/dashboard.css"
+    >
+
+    <link
+        rel="stylesheet"
+        href="../css/ai-recommendation.css"
+    >
+</head>
+
+<body>
+
+    <div class="app-layout">
+
+        <!-- =====================================================
+             SIDEBAR
+             ===================================================== -->
+
+        <aside
+            class="sidebar"
+            id="sidebar"
+        >
+
+            <div class="sidebar-brand">
+
+                <div class="brand-logo">
+                    🌱
+                </div>
+
+                <div>
+                    <h1>SmartAgriTwin</h1>
+
+                    <span>
+                        Smart Agriculture
+                    </span>
+                </div>
+
+            </div>
+
+
+            <nav
+                class="sidebar-nav"
+                aria-label="Main navigation"
+            >
+
+                <p class="nav-section-title">
+                    MAIN
+                </p>
+
+                <a
+                    href="dashboard.html"
+                    class="nav-item"
+                >
+                    <span class="nav-icon">📊</span>
+                    <span>Dashboard</span>
+                </a>
+
+                <a
+                    href="crop-soil.html"
+                    class="nav-item"
+                >
+                    <span class="nav-icon">🌾</span>
+                    <span>Crop &amp; Soil</span>
+                </a>
+
+                <a
+                    href="irrigation.html"
+                    class="nav-item"
+                >
+                    <span class="nav-icon">💧</span>
+                    <span>Irrigation</span>
+                </a>
+
+                <a
+                    href="weather.html"
+                    class="nav-item"
+                >
+                    <span class="nav-icon">🌦️</span>
+                    <span>Weather</span>
+                </a>
+
+
+                <p class="nav-section-title">
+                    AI &amp; ANALYTICS
+                </p>
+
+                <a
+                    href="ai-recommendation.html"
+                    class="nav-item active"
+                >
+                    <span class="nav-icon">🤖</span>
+                    <span>AI Recommendations</span>
+                </a>
+
+                <a
+                    href="digital-twin.html"
+                    class="nav-item"
+                >
+                    <span class="nav-icon">🔮</span>
+                    <span>Digital Twin</span>
+                </a>
+
+                <a
+                    href="analytics.html"
+                    class="nav-item"
+                >
+                    <span class="nav-icon">📈</span>
+                    <span>Analytics</span>
+                </a>
+
+
+                <p class="nav-section-title">
+                    FARMER
+                </p>
+
+                <a
+                    href="farmer-passport.html"
+                    class="nav-item"
+                >
+                    <span class="nav-icon">👨‍🌾</span>
+                    <span>Farmer Passport</span>
+                </a>
+
+            </nav>
+
+
+            <div class="sidebar-bottom">
+
+                <button
+                    type="button"
+                    class="logout-button"
+                    id="logoutButton"
+                >
+                    <span>🚪</span>
+                    <span>Logout</span>
+                </button>
+
+            </div>
+
+        </aside>
+
+
+        <!-- =====================================================
+             MAIN CONTENT
+             ===================================================== -->
+
+        <main class="main-content">
+
+            <!-- TOPBAR -->
+
+            <header class="topbar">
+
+                <div class="topbar-left">
+
+                    <button
+                        type="button"
+                        class="menu-button"
+                        id="menuButton"
+                        aria-label="Open navigation menu"
+                    >
+                        ☰
+                    </button>
+
+                    <div>
+
+                        <p class="page-label">
+                            ARTIFICIAL INTELLIGENCE
+                        </p>
+
+                        <h2>
+                            AI Recommendations
+                        </h2>
+
+                    </div>
+
+                </div>
+
+
+                <div class="topbar-right">
+
+                    <button
+                        type="button"
+                        class="notification-button"
+                        id="notificationButton"
+                        aria-label="Notifications"
+                    >
+                        🔔
+
+                        <span
+                            class="notification-dot"
+                            aria-hidden="true"
+                        ></span>
+
+                    </button>
+
+
+                    <div class="user-profile">
+
+                        <div class="user-avatar">
+                            👨‍🌾
+                        </div>
+
+                        <div class="user-details">
+
+                            <strong id="userName">
+                                Farmer
+                            </strong>
+
+                            <span>
+                                Farmer Account
+                            </span>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </header>
+
+
+            <!-- =================================================
+                 PAGE CONTENT
+                 ================================================= -->
+
+            <div class="dashboard-content">
+
+
+                <!-- PAGE HEADER -->
+
+                <section class="dashboard-welcome">
+
+                    <div>
+
+                        <p class="welcome-label">
+                            AI DECISION SUPPORT
+                        </p>
+
+                        <h1>
+                            Smart Farming Recommendations 🤖
+                        </h1>
+
+                        <p>
+                            AI analyzes farm conditions to provide
+                            actionable recommendations for better
+                            crop and resource management.
+                        </p>
+
+                    </div>
+
+
+                    <div class="dashboard-date">
+
+                        <span>
+                            AI STATUS
+                        </span>
+
+                        <strong id="aiStatus">
+                            Active
+                        </strong>
+
+                    </div>
+
+                </section>
+
+
+                <!-- =================================================
+                     AI SUMMARY
+                     ================================================= -->
+
+                <section class="ai-summary-card">
+
+                    <div class="ai-summary-icon">
+                        🤖
+                    </div>
+
+                    <div class="ai-summary-content">
+
+                        <span class="card-label">
+                            AI FARM ANALYSIS
+                        </span>
+
+                        <h2 id="overallRecommendation">
+                            Farm conditions are generally healthy
+                        </h2>
+
+                        <p id="overallRecommendationText">
+                            Based on current soil, weather and crop
+                            data, your farm is performing well.
+                            Continue monitoring soil moisture and
+                            nutrient levels.
+                        </p>
+
+                    </div>
+
+
+                    <div class="ai-confidence">
+
+                        <span>
+                            AI CONFIDENCE
+                        </span>
+
+                        <strong id="aiConfidence">
+                            92%
+                        </strong>
+
+                    </div>
+
+                </section>
+
+
+                <!-- =================================================
+                     RECOMMENDATION CARDS
+                     ================================================= -->
+
+                <section>
+
+                    <div class="section-heading">
+
+                        <div>
+
+                            <span class="card-label">
+                                ACTIONABLE INSIGHTS
+                            </span>
+
+                            <h2>
+                                Today's Recommendations
+                            </h2>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="recommendations-grid">
+
+
+                        <!-- Irrigation -->
+
+                        <article class="recommendation-card">
+
+                            <div class="recommendation-header">
+
+                                <div class="recommendation-icon">
+                                    💧
+                                </div>
+
+                                <span class="recommendation-priority medium">
+                                    MEDIUM
+                                </span>
+
+                            </div>
+
+                            <span class="card-label">
+                                IRRIGATION
+                            </span>
+
+                            <h3 id="irrigationRecommendation">
+                                No immediate irrigation required
+                            </h3>
+
+                            <p id="irrigationRecommendationText">
+                                Soil moisture is currently within
+                                the recommended range. Monitor the
+                                field before starting another cycle.
+                            </p>
+
+                            <a
+                                href="irrigation.html"
+                                class="card-action"
+                            >
+                                Open Irrigation →
+                            </a>
+
+                        </article>
+
+
+                        <!-- Soil -->
+
+                        <article class="recommendation-card">
+
+                            <div class="recommendation-header">
+
+                                <div class="recommendation-icon">
+                                    🧪
+                                </div>
+
+                                <span class="recommendation-priority medium">
+                                    MONITOR
+                                </span>
+
+                            </div>
+
+                            <span class="card-label">
+                                SOIL
+                            </span>
+
+                            <h3 id="soilRecommendation">
+                                Monitor nitrogen level
+                            </h3>
+
+                            <p id="soilRecommendationText">
+                                Nitrogen is slightly below the
+                                preferred range. Continue monitoring
+                                before applying fertilizer.
+                            </p>
+
+                            <a
+                                href="crop-soil.html"
+                                class="card-action"
+                            >
+                                View Soil Data →
+                            </a>
+
+                        </article>
+
+
+                        <!-- Weather -->
+
+                        <article class="recommendation-card">
+
+                            <div class="recommendation-header">
+
+                                <div class="recommendation-icon">
+                                    🌦️
+                                </div>
+
+                                <span class="recommendation-priority low">
+                                    LOW
+                                </span>
+
+                            </div>
+
+                            <span class="card-label">
+                                WEATHER
+                            </span>
+
+                            <h3 id="weatherRecommendation">
+                                Monitor rainfall
+                            </h3>
+
+                            <p id="weatherRecommendationText">
+                                Rain probability is moderate.
+                                Consider current weather conditions
+                                before irrigation.
+                            </p>
+
+                            <a
+                                href="weather.html"
+                                class="card-action"
+                            >
+                                View Weather →
+                            </a>
+
+                        </article>
+
+
+                        <!-- Crop -->
+
+                        <article class="recommendation-card">
+
+                            <div class="recommendation-header">
+
+                                <div class="recommendation-icon">
+                                    🌾
+                                </div>
+
+                                <span class="recommendation-priority low">
+                                    HEALTHY
+                                </span>
+
+                            </div>
+
+                            <span class="card-label">
+                                CROP
+                            </span>
+
+                            <h3 id="cropRecommendation">
+                                Continue current crop management
+                            </h3>
+
+                            <p id="cropRecommendationText">
+                                Crop health is currently strong.
+                                Maintain monitoring and follow the
+                                recommended management practices.
+                            </p>
+
+                            <a
+                                href="crop-soil.html"
+                                class="card-action"
+                            >
+                                View Crop Health →
+                            </a>
+
+                        </article>
+
+                    </div>
+
+                </section>
+
+
+                <!-- =================================================
+                     AI DECISION EXPLANATION
+                     ================================================= -->
+
+                <section class="dashboard-card">
+
+                    <div class="card-header">
+
+                        <div>
+
+                            <span class="card-label">
+                                AI EXPLANATION
+                            </span>
+
+                            <h2>
+                                Why is AI recommending this?
+                            </h2>
+
+                        </div>
+
+                        <span class="ai-badge">
+                            🤖 AI
+                        </span>
+
+                    </div>
+
+
+                    <div class="decision-factors">
+
+
+                        <div class="decision-factor">
+
+                            <div class="factor-icon">
+                                💧
+                            </div>
+
+                            <div>
+
+                                <strong>
+                                    Soil Moisture
+                                </strong>
+
+                                <span>
+                                    Current value: 42%
+                                </span>
+
+                            </div>
+
+                            <b>
+                                Optimal
+                            </b>
+
+                        </div>
+
+
+                        <div class="decision-factor">
+
+                            <div class="factor-icon">
+                                🌡️
+                            </div>
+
+                            <div>
+
+                                <strong>
+                                    Temperature
+                                </strong>
+
+                                <span>
+                                    Current value: 27°C
+                                </span>
+
+                            </div>
+
+                            <b>
+                                Normal
+                            </b>
+
+                        </div>
+
+
+                        <div class="decision-factor">
+
+                            <div class="factor-icon">
+                                🌧️
+                            </div>
+
+                            <div>
+
+                                <strong>
+                                    Rain Probability
+                                </strong>
+
+                                <span>
+                                    Current probability: 35%
+                                </span>
+
+                            </div>
+
+                            <b>
+                                Moderate
+                            </b>
+
+                        </div>
+
+
+                        <div class="decision-factor">
+
+                            <div class="factor-icon">
+                                🌱
+                            </div>
+
+                            <div>
+
+                                <strong>
+                                    Crop Health
+                                </strong>
+
+                                <span>
+                                    AI estimated health: 91%
+                                </span>
+
+                            </div>
+
+                            <b>
+                                Healthy
+                            </b>
+
+                        </div>
+
+                    </div>
+
+                </section>
+
+
+                <!-- =================================================
+                     PREDICTION
+                     ================================================= -->
+
+                <section class="dashboard-grid">
+
+
+                    <!-- Yield Prediction -->
+
+                    <article class="dashboard-card">
+
+                        <div class="card-header">
+
+                            <div>
+
+                                <span class="card-label">
+                                    AI PREDICTION
+                                </span>
+
+                                <h2>
+                                    Yield Prediction
+                                </h2>
+
+                            </div>
+
+                            <span class="ai-badge">
+                                ML
+                            </span>
+
+                        </div>
+
+
+                        <div class="prediction-content">
+
+                            <div class="prediction-value">
+
+                                <strong id="predictedYield">
+                                    4.2
+                                </strong>
+
+                                <span>
+                                    tonnes / hectare
+                                </span>
+
+                            </div>
+
+
+                            <div class="prediction-details">
+
+                                <div>
+
+                                    <span>
+                                        Expected Range
+                                    </span>
+
+                                    <strong>
+                                        3.9 – 4.5 t/ha
+                                    </strong>
+
+                                </div>
+
+                                <div>
+
+                                    <span>
+                                        Prediction Confidence
+                                    </span>
+
+                                    <strong>
+                                        88%
+                                    </strong>
+
+                                </div>
+
+                            </div>
+
+                        </div>
+
+                    </article>
+
+
+                    <!-- Disease Risk -->
+
+                    <article class="dashboard-card">
+
+                        <div class="card-header">
+
+                            <div>
+
+                                <span class="card-label">
+                                    AI RISK ANALYSIS
+                                </span>
+
+                                <h2>
+                                    Crop Disease Risk
+                                </h2>
+
+                            </div>
+
+                            <span class="stat-status good">
+                                LOW
+                            </span>
+
+                        </div>
+
+
+                        <div class="risk-content">
+
+                            <div class="risk-score">
+
+                                <strong id="diseaseRisk">
+                                    12%
+                                </strong>
+
+                                <span>
+                                    Estimated Risk
+                                </span>
+
+                            </div>
+
+
+                            <div class="risk-description">
+
+                                <p>
+                                    Current environmental conditions
+                                    indicate a relatively low risk of
+                                    crop disease.
+                                </p>
+
+                            </div>
+
+                        </div>
+
+                    </article>
+
+                </section>
+
+
+                <!-- =================================================
+                     AI DISCLAIMER
+                     ================================================= -->
+
+                <section class="prototype-notice">
+
+                    <span>
+                        ℹ️
+                    </span>
+
+                    <p>
+                        AI recommendations shown here are for
+                        prototype and decision-support purposes.
+                        Final agricultural decisions should consider
+                        local conditions and expert guidance.
+                    </p>
+
+                </section>
+
+            </div>
+
+        </main>
+
+    </div>
+
+
+    <!-- MOBILE SIDEBAR OVERLAY -->
+
+    <div
+        class="sidebar-overlay"
+        id="sidebarOverlay"
+        aria-hidden="true"
+    ></div>
+
+
+    <!-- JAVASCRIPT -->
+
+    <script src="../js/ai-recommendation.js"></script>
+
+</body>
+
+</html>

@@ -1,0 +1,925 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <meta
+        name="description"
+        content="SmartAgriTwin smart irrigation monitoring and control"
+    >
+
+    <meta
+        name="theme-color"
+        content="#2f7d32"
+    >
+
+    <title>SmartAgriTwin | Irrigation</title>
+
+    <link
+        rel="stylesheet"
+        href="../css/dashboard.css"
+    >
+
+    <link
+        rel="stylesheet"
+        href="../css/irrigation.css"
+    >
+</head>
+
+<body>
+
+    <div class="app-layout">
+
+        <!-- =====================================================
+             SIDEBAR
+             ===================================================== -->
+
+        <aside
+            class="sidebar"
+            id="sidebar"
+        >
+
+            <div class="sidebar-brand">
+
+                <div class="brand-logo">
+                    🌱
+                </div>
+
+                <div>
+                    <h1>SmartAgriTwin</h1>
+
+                    <span>
+                        Smart Agriculture
+                    </span>
+                </div>
+
+            </div>
+
+
+            <nav
+                class="sidebar-nav"
+                aria-label="Main navigation"
+            >
+
+                <p class="nav-section-title">
+                    MAIN
+                </p>
+
+                <a
+                    href="dashboard.html"
+                    class="nav-item"
+                >
+                    <span class="nav-icon">📊</span>
+                    <span>Dashboard</span>
+                </a>
+
+                <a
+                    href="crop-soil.html"
+                    class="nav-item"
+                >
+                    <span class="nav-icon">🌾</span>
+                    <span>Crop &amp; Soil</span>
+                </a>
+
+                <a
+                    href="irrigation.html"
+                    class="nav-item active"
+                >
+                    <span class="nav-icon">💧</span>
+                    <span>Irrigation</span>
+                </a>
+
+                <a
+                    href="weather.html"
+                    class="nav-item"
+                >
+                    <span class="nav-icon">🌦️</span>
+                    <span>Weather</span>
+                </a>
+
+
+                <p class="nav-section-title">
+                    AI &amp; ANALYTICS
+                </p>
+
+                <a
+                    href="ai-recommendation.html"
+                    class="nav-item"
+                >
+                    <span class="nav-icon">🤖</span>
+                    <span>AI Recommendations</span>
+                </a>
+
+                <a
+                    href="digital-twin.html"
+                    class="nav-item"
+                >
+                    <span class="nav-icon">🔮</span>
+                    <span>Digital Twin</span>
+                </a>
+
+                <a
+                    href="analytics.html"
+                    class="nav-item"
+                >
+                    <span class="nav-icon">📈</span>
+                    <span>Analytics</span>
+                </a>
+
+
+                <p class="nav-section-title">
+                    FARMER
+                </p>
+
+                <a
+                    href="farmer-passport.html"
+                    class="nav-item"
+                >
+                    <span class="nav-icon">👨‍🌾</span>
+                    <span>Farmer Passport</span>
+                </a>
+
+            </nav>
+
+
+            <div class="sidebar-bottom">
+
+                <button
+                    type="button"
+                    class="logout-button"
+                    id="logoutButton"
+                >
+                    <span>🚪</span>
+                    <span>Logout</span>
+                </button>
+
+            </div>
+
+        </aside>
+
+
+        <!-- =====================================================
+             MAIN CONTENT
+             ===================================================== -->
+
+        <main class="main-content">
+
+            <!-- =================================================
+                 TOPBAR
+                 ================================================= -->
+
+            <header class="topbar">
+
+                <div class="topbar-left">
+
+                    <button
+                        type="button"
+                        class="menu-button"
+                        id="menuButton"
+                        aria-label="Open navigation menu"
+                    >
+                        ☰
+                    </button>
+
+                    <div>
+
+                        <p class="page-label">
+                            SMART WATER MANAGEMENT
+                        </p>
+
+                        <h2>
+                            Irrigation
+                        </h2>
+
+                    </div>
+
+                </div>
+
+
+                <div class="topbar-right">
+
+                    <button
+                        type="button"
+                        class="notification-button"
+                        id="notificationButton"
+                        aria-label="Notifications"
+                    >
+                        🔔
+
+                        <span
+                            class="notification-dot"
+                            aria-hidden="true"
+                        ></span>
+
+                    </button>
+
+
+                    <div class="user-profile">
+
+                        <div class="user-avatar">
+                            👨‍🌾
+                        </div>
+
+                        <div class="user-details">
+
+                            <strong id="userName">
+                                Farmer
+                            </strong>
+
+                            <span>
+                                Farmer Account
+                            </span>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </header>
+
+
+            <!-- =================================================
+                 PAGE CONTENT
+                 ================================================= -->
+
+            <div class="dashboard-content">
+
+
+                <!-- PAGE HEADER -->
+
+                <section class="dashboard-welcome">
+
+                    <div>
+
+                        <p class="welcome-label">
+                            INTELLIGENT IRRIGATION
+                        </p>
+
+                        <h1>
+                            Smart Water Management 💧
+                        </h1>
+
+                        <p>
+                            Monitor soil moisture and manage
+                            irrigation based on current farm
+                            conditions.
+                        </p>
+
+                    </div>
+
+
+                    <div class="dashboard-date">
+
+                        <span>
+                            SYSTEM STATUS
+                        </span>
+
+                        <strong id="systemStatus">
+                            System Ready
+                        </strong>
+
+                    </div>
+
+                </section>
+
+
+                <!-- =================================================
+                     IRRIGATION STATUS
+                     ================================================= -->
+
+                <section class="dashboard-grid">
+
+
+                    <!-- Pump Status -->
+
+                    <article class="dashboard-card pump-status-card">
+
+                        <div class="card-header">
+
+                            <div>
+
+                                <span class="card-label">
+                                    WATER PUMP
+                                </span>
+
+                                <h2>
+                                    Pump Status
+                                </h2>
+
+                            </div>
+
+                            <span class="ai-badge">
+                                IoT
+                            </span>
+
+                        </div>
+
+
+                        <div class="pump-status-content">
+
+                            <div
+                                class="pump-circle"
+                                id="pumpCircle"
+                            >
+                                💧
+                            </div>
+
+
+                            <div class="pump-information">
+
+                                <span>
+                                    CURRENT STATUS
+                                </span>
+
+                                <strong
+                                    id="pumpStatus"
+                                    class="pump-off"
+                                >
+                                    OFF
+                                </strong>
+
+                                <p id="pumpDisplayStatus">
+                                    Pump is OFF
+                                </p>
+
+                            </div>
+
+                        </div>
+
+
+                        <div class="pump-controls">
+
+                            <button
+                                type="button"
+                                id="startPumpButton"
+                                class="pump-button start"
+                            >
+                                ▶ Start Pump
+                            </button>
+
+                            <button
+                                type="button"
+                                id="stopPumpButton"
+                                class="pump-button stop"
+                            >
+                                ■ Stop Pump
+                            </button>
+
+                        </div>
+
+                    </article>
+
+
+                    <!-- Soil Moisture -->
+
+                    <article class="dashboard-card">
+
+                        <div class="card-header">
+
+                            <div>
+
+                                <span class="card-label">
+                                    SOIL CONDITION
+                                </span>
+
+                                <h2>
+                                    Soil Moisture
+                                </h2>
+
+                            </div>
+
+                            <span class="stat-status good">
+                                GOOD
+                            </span>
+
+                        </div>
+
+
+                        <div class="moisture-display">
+
+                            <div>
+
+                                <strong id="soilMoisture">
+                                    42%
+                                </strong>
+
+                                <span>
+                                    Current Moisture
+                                </span>
+
+                            </div>
+
+                            <div class="moisture-range">
+
+                                <span>
+                                    Dry
+                                </span>
+
+                                <span>
+                                    Optimal
+                                </span>
+
+                                <span>
+                                    Wet
+                                </span>
+
+                            </div>
+
+                            <div class="stat-progress">
+
+                                <div
+                                    class="progress-bar"
+                                    id="soilMoistureBar"
+                                    style="width: 42%;"
+                                ></div>
+
+                            </div>
+
+                        </div>
+
+                    </article>
+
+                </section>
+
+
+                <!-- =================================================
+                     AI IRRIGATION RECOMMENDATION
+                     ================================================= -->
+
+                <section class="dashboard-card ai-insight-card">
+
+                    <div class="card-header">
+
+                        <div>
+
+                            <span class="card-label">
+                                AI DECISION SUPPORT
+                            </span>
+
+                            <h2>
+                                Irrigation Recommendation
+                            </h2>
+
+                        </div>
+
+                        <span class="ai-badge">
+                            🤖 AI
+                        </span>
+
+                    </div>
+
+
+                    <div class="ai-insight-body">
+
+                        <div class="ai-insight-icon">
+                            💧
+                        </div>
+
+                        <div>
+
+                            <h3 id="irrigationDecision">
+                                No Immediate Irrigation
+                            </h3>
+
+                            <p id="irrigationReason">
+                                Current soil moisture is within
+                                the recommended range. Continue
+                                monitoring before starting another
+                                irrigation cycle.
+                            </p>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="irrigation-advice">
+
+                        <span class="card-label">
+                            WATER ADVICE
+                        </span>
+
+                        <p id="waterAdvice">
+                            Soil moisture is suitable. Continue
+                            monitoring the field conditions.
+                        </p>
+
+                    </div>
+
+                </section>
+
+
+                <!-- =================================================
+                     IRRIGATION METRICS
+                     ================================================= -->
+
+                <section>
+
+                    <div class="section-heading">
+
+                        <div>
+
+                            <span class="card-label">
+                                WATER USAGE
+                            </span>
+
+                            <h2>
+                                Irrigation Overview
+                            </h2>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="stats-grid">
+
+
+                        <!-- Today's Usage -->
+
+                        <article class="stat-card">
+
+                            <div class="stat-card-header">
+
+                                <div class="stat-icon blue">
+                                    💧
+                                </div>
+
+                            </div>
+
+                            <span class="stat-label">
+                                TODAY'S USAGE
+                            </span>
+
+                            <h3 id="todayWaterUsage">
+                                420 L
+                            </h3>
+
+                            <p>
+                                Total water used today
+                            </p>
+
+                        </article>
+
+
+                        <!-- Water Saved -->
+
+                        <article class="stat-card">
+
+                            <div class="stat-card-header">
+
+                                <div class="stat-icon green">
+                                    🌱
+                                </div>
+
+                            </div>
+
+                            <span class="stat-label">
+                                WATER SAVED
+                            </span>
+
+                            <h3 id="waterSaved">
+                                18%
+                            </h3>
+
+                            <p>
+                                Compared with conventional irrigation
+                            </p>
+
+                        </article>
+
+
+                        <!-- Irrigation Cycles -->
+
+                        <article class="stat-card">
+
+                            <div class="stat-card-header">
+
+                                <div class="stat-icon purple">
+                                    🔄
+                                </div>
+
+                            </div>
+
+                            <span class="stat-label">
+                                IRRIGATION CYCLES
+                            </span>
+
+                            <h3 id="irrigationCycles">
+                                3
+                            </h3>
+
+                            <p>
+                                Completed today
+                            </p>
+
+                        </article>
+
+
+                        <!-- Efficiency -->
+
+                        <article class="stat-card">
+
+                            <div class="stat-card-header">
+
+                                <div class="stat-icon orange">
+                                    📊
+                                </div>
+
+                            </div>
+
+                            <span class="stat-label">
+                                WATER EFFICIENCY
+                            </span>
+
+                            <h3 id="waterEfficiency">
+                                82%
+                            </h3>
+
+                            <p>
+                                Current irrigation efficiency
+                            </p>
+
+                        </article>
+
+                    </div>
+
+                </section>
+
+
+                <!-- =================================================
+                     IRRIGATION SCHEDULE
+                     ================================================= -->
+
+                <section class="dashboard-card">
+
+                    <div class="card-header">
+
+                        <div>
+
+                            <span class="card-label">
+                                MANAGEMENT
+                            </span>
+
+                            <h2>
+                                Irrigation Schedule
+                            </h2>
+
+                        </div>
+
+                        <span class="stat-status good">
+                            AUTO MODE
+                        </span>
+
+                    </div>
+
+
+                    <div class="schedule-list">
+
+
+                        <div class="schedule-item">
+
+                            <div class="schedule-time">
+                                06:00 AM
+                            </div>
+
+                            <div class="schedule-info">
+
+                                <strong>
+                                    Morning Irrigation
+                                </strong>
+
+                                <span>
+                                    Based on soil moisture
+                                </span>
+
+                            </div>
+
+                            <span class="schedule-status">
+                                Completed
+                            </span>
+
+                        </div>
+
+
+                        <div class="schedule-item">
+
+                            <div class="schedule-time">
+                                01:00 PM
+                            </div>
+
+                            <div class="schedule-info">
+
+                                <strong>
+                                    Midday Monitoring
+                                </strong>
+
+                                <span>
+                                    AI condition check
+                                </span>
+
+                            </div>
+
+                            <span class="schedule-status pending">
+                                Monitoring
+                            </span>
+
+                        </div>
+
+
+                        <div class="schedule-item">
+
+                            <div class="schedule-time">
+                                06:30 PM
+                            </div>
+
+                            <div class="schedule-info">
+
+                                <strong>
+                                    Evening Irrigation
+                                </strong>
+
+                                <span>
+                                    Triggered if moisture is low
+                                </span>
+
+                            </div>
+
+                            <span class="schedule-status pending">
+                                Upcoming
+                            </span>
+
+                        </div>
+
+                    </div>
+
+                </section>
+
+
+                <!-- =================================================
+                     SENSOR STATUS
+                     ================================================= -->
+
+                <section class="dashboard-card">
+
+                    <div class="card-header">
+
+                        <div>
+
+                            <span class="card-label">
+                                IoT MONITORING
+                            </span>
+
+                            <h2>
+                                Irrigation Sensors
+                            </h2>
+
+                        </div>
+
+                        <span class="ai-badge">
+                            LIVE
+                        </span>
+
+                    </div>
+
+
+                    <div class="sensor-grid">
+
+
+                        <div class="sensor-item">
+
+                            <div class="sensor-icon">
+                                💧
+                            </div>
+
+                            <div>
+
+                                <strong>
+                                    Soil Moisture
+                                </strong>
+
+                                <span>
+                                    Capacitive Sensor
+                                </span>
+
+                            </div>
+
+                            <b class="sensor-online">
+                                ● Online
+                            </b>
+
+                        </div>
+
+
+                        <div class="sensor-item">
+
+                            <div class="sensor-icon">
+                                🌧️
+                            </div>
+
+                            <div>
+
+                                <strong>
+                                    Rain Sensor
+                                </strong>
+
+                                <span>
+                                    Rain Detection
+                                </span>
+
+                            </div>
+
+                            <b class="sensor-online">
+                                ● Online
+                            </b>
+
+                        </div>
+
+
+                        <div class="sensor-item">
+
+                            <div class="sensor-icon">
+                                🛢️
+                            </div>
+
+                            <div>
+
+                                <strong>
+                                    Water Level
+                                </strong>
+
+                                <span>
+                                    Tank Sensor
+                                </span>
+
+                            </div>
+
+                            <b class="sensor-online">
+                                ● Online
+                            </b>
+
+                        </div>
+
+
+                        <div class="sensor-item">
+
+                            <div class="sensor-icon">
+                                ⚡
+                            </div>
+
+                            <div>
+
+                                <strong>
+                                    Pump Relay
+                                </strong>
+
+                                <span>
+                                    Relay Module
+                                </span>
+
+                            </div>
+
+                            <b class="sensor-online">
+                                ● Online
+                            </b>
+
+                        </div>
+
+                    </div>
+
+                </section>
+
+            </div>
+
+        </main>
+
+    </div>
+
+
+    <!-- =========================================================
+         MOBILE SIDEBAR OVERLAY
+         ========================================================= -->
+
+    <div
+        class="sidebar-overlay"
+        id="sidebarOverlay"
+        aria-hidden="true"
+    ></div>
+
+
+    <!-- =========================================================
+         JAVASCRIPT
+         ========================================================= -->
+
+    <script src="../js/irrigation.js"></script>
+
+</body>
+
+</html>

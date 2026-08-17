@@ -1,0 +1,911 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <meta
+        name="description"
+        content="SmartAgriTwin crop and soil monitoring dashboard"
+    >
+
+    <meta
+        name="theme-color"
+        content="#2f7d32"
+    >
+
+    <title>SmartAgriTwin | Crop & Soil</title>
+
+    <link
+        rel="stylesheet"
+        href="../css/dashboard.css"
+    >
+
+    <link
+        rel="stylesheet"
+        href="../css/crop-soil.css"
+    >
+</head>
+
+<body>
+
+    <div class="app-layout">
+
+        <!-- =====================================================
+             SIDEBAR
+             ===================================================== -->
+
+        <aside
+            class="sidebar"
+            id="sidebar"
+        >
+
+            <div class="sidebar-brand">
+
+                <div class="brand-logo">
+                    🌱
+                </div>
+
+                <div>
+                    <h1>SmartAgriTwin</h1>
+
+                    <span>
+                        Smart Agriculture
+                    </span>
+                </div>
+
+            </div>
+
+
+            <nav
+                class="sidebar-nav"
+                aria-label="Main navigation"
+            >
+
+                <p class="nav-section-title">
+                    MAIN
+                </p>
+
+                <a
+                    href="dashboard.html"
+                    class="nav-item"
+                >
+                    <span class="nav-icon">📊</span>
+                    <span>Dashboard</span>
+                </a>
+
+
+                <a
+                    href="crop-soil.html"
+                    class="nav-item active"
+                >
+                    <span class="nav-icon">🌾</span>
+                    <span>Crop &amp; Soil</span>
+                </a>
+
+
+                <a
+                    href="irrigation.html"
+                    class="nav-item"
+                >
+                    <span class="nav-icon">💧</span>
+                    <span>Irrigation</span>
+                </a>
+
+
+                <a
+                    href="weather.html"
+                    class="nav-item"
+                >
+                    <span class="nav-icon">🌦️</span>
+                    <span>Weather</span>
+                </a>
+
+
+                <p class="nav-section-title">
+                    AI &amp; ANALYTICS
+                </p>
+
+
+                <a
+                    href="ai-recommendation.html"
+                    class="nav-item"
+                >
+                    <span class="nav-icon">🤖</span>
+                    <span>AI Recommendations</span>
+                </a>
+
+
+                <a
+                    href="digital-twin.html"
+                    class="nav-item"
+                >
+                    <span class="nav-icon">🔮</span>
+                    <span>Digital Twin</span>
+                </a>
+
+
+                <a
+                    href="analytics.html"
+                    class="nav-item"
+                >
+                    <span class="nav-icon">📈</span>
+                    <span>Analytics</span>
+                </a>
+
+
+                <p class="nav-section-title">
+                    FARMER
+                </p>
+
+
+                <a
+                    href="farmer-passport.html"
+                    class="nav-item"
+                >
+                    <span class="nav-icon">👨‍🌾</span>
+                    <span>Farmer Passport</span>
+                </a>
+
+            </nav>
+
+
+            <div class="sidebar-bottom">
+
+                <button
+                    type="button"
+                    class="logout-button"
+                    id="logoutButton"
+                >
+                    <span>🚪</span>
+                    <span>Logout</span>
+                </button>
+
+            </div>
+
+        </aside>
+
+
+        <!-- =====================================================
+             MAIN CONTENT
+             ===================================================== -->
+
+        <main class="main-content">
+
+            <!-- TOPBAR -->
+
+            <header class="topbar">
+
+                <div class="topbar-left">
+
+                    <button
+                        type="button"
+                        class="menu-button"
+                        id="menuButton"
+                        aria-label="Open navigation menu"
+                    >
+                        ☰
+                    </button>
+
+                    <div>
+
+                        <p class="page-label">
+                            FARM MONITORING
+                        </p>
+
+                        <h2>
+                            Crop &amp; Soil
+                        </h2>
+
+                    </div>
+
+                </div>
+
+
+                <div class="topbar-right">
+
+                    <button
+                        type="button"
+                        class="notification-button"
+                        id="notificationButton"
+                        aria-label="Notifications"
+                    >
+                        🔔
+
+                        <span
+                            class="notification-dot"
+                            aria-hidden="true"
+                        ></span>
+
+                    </button>
+
+
+                    <div class="user-profile">
+
+                        <div class="user-avatar">
+                            👨‍🌾
+                        </div>
+
+                        <div class="user-details">
+
+                            <strong id="userName">
+                                Farmer
+                            </strong>
+
+                            <span>
+                                Farmer Account
+                            </span>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </header>
+
+
+            <!-- =================================================
+                 PAGE CONTENT
+                 ================================================= -->
+
+            <div class="dashboard-content">
+
+                <!-- PAGE HEADER -->
+
+                <section class="dashboard-welcome">
+
+                    <div>
+
+                        <p class="welcome-label">
+                            CROP &amp; SOIL MONITORING
+                        </p>
+
+                        <h1>
+                            Farm Health Overview 🌾
+                        </h1>
+
+                        <p>
+                            Monitor crop conditions, soil health
+                            and important field parameters.
+                        </p>
+
+                    </div>
+
+
+                    <div class="dashboard-date">
+
+                        <span>
+                            LAST UPDATED
+                        </span>
+
+                        <strong id="lastUpdated">
+                            Just now
+                        </strong>
+
+                    </div>
+
+                </section>
+
+
+                <!-- =================================================
+                     CURRENT CROP
+                     ================================================= -->
+
+                <section class="crop-overview-card">
+
+                    <div class="crop-overview-icon">
+                        🌾
+                    </div>
+
+                    <div class="crop-overview-content">
+
+                        <span class="card-label">
+                            CURRENT CROP
+                        </span>
+
+                        <h2 id="cropName">
+                            Wheat
+                        </h2>
+
+                        <p id="cropStage">
+                            Vegetative Stage
+                        </p>
+
+                    </div>
+
+
+                    <div class="crop-health-score">
+
+                        <span>
+                            CROP HEALTH
+                        </span>
+
+                        <strong id="cropHealth">
+                            91%
+                        </strong>
+
+                        <small>
+                            Healthy
+                        </small>
+
+                    </div>
+
+                </section>
+
+
+                <!-- =================================================
+                     SOIL PARAMETERS
+                     ================================================= -->
+
+                <section>
+
+                    <div class="section-heading">
+
+                        <div>
+
+                            <span class="card-label">
+                                SOIL CONDITIONS
+                            </span>
+
+                            <h2>
+                                Soil Parameters
+                            </h2>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="stats-grid">
+
+
+                        <!-- Soil Moisture -->
+
+                        <article class="stat-card">
+
+                            <div class="stat-card-header">
+
+                                <div class="stat-icon blue">
+                                    💧
+                                </div>
+
+                                <span class="stat-status good">
+                                    GOOD
+                                </span>
+
+                            </div>
+
+                            <span class="stat-label">
+                                SOIL MOISTURE
+                            </span>
+
+                            <h3 id="soilMoisture">
+                                42%
+                            </h3>
+
+                            <div class="stat-progress">
+
+                                <div
+                                    class="progress-bar"
+                                    id="soilMoistureBar"
+                                    style="width: 42%;"
+                                ></div>
+
+                            </div>
+
+                            <p>
+                                Optimal range
+                            </p>
+
+                        </article>
+
+
+                        <!-- Soil pH -->
+
+                        <article class="stat-card">
+
+                            <div class="stat-card-header">
+
+                                <div class="stat-icon green">
+                                    🧪
+                                </div>
+
+                                <span class="stat-status good">
+                                    OPTIMAL
+                                </span>
+
+                            </div>
+
+                            <span class="stat-label">
+                                SOIL pH
+                            </span>
+
+                            <h3 id="soilPH">
+                                6.5
+                            </h3>
+
+                            <p>
+                                Suitable for current crop
+                            </p>
+
+                        </article>
+
+
+                        <!-- Nitrogen -->
+
+                        <article class="stat-card">
+
+                            <div class="stat-card-header">
+
+                                <div class="stat-icon purple">
+                                    🌱
+                                </div>
+
+                                <span class="stat-status warning">
+                                    MONITOR
+                                </span>
+
+                            </div>
+
+                            <span class="stat-label">
+                                NITROGEN
+                            </span>
+
+                            <h3 id="nitrogen">
+                                48
+                            </h3>
+
+                            <p>
+                                Available nitrogen level
+                            </p>
+
+                        </article>
+
+
+                        <!-- Soil Temperature -->
+
+                        <article class="stat-card">
+
+                            <div class="stat-card-header">
+
+                                <div class="stat-icon orange">
+                                    🌡️
+                                </div>
+
+                                <span class="stat-status good">
+                                    NORMAL
+                                </span>
+
+                            </div>
+
+                            <span class="stat-label">
+                                SOIL TEMPERATURE
+                            </span>
+
+                            <h3 id="soilTemperature">
+                                25°C
+                            </h3>
+
+                            <p>
+                                Current soil temperature
+                            </p>
+
+                        </article>
+
+                    </div>
+
+                </section>
+
+
+                <!-- =================================================
+                     CROP MONITORING
+                     ================================================= -->
+
+                <section class="dashboard-grid">
+
+
+                    <!-- Crop Growth -->
+
+                    <article class="dashboard-card">
+
+                        <div class="card-header">
+
+                            <div>
+
+                                <span class="card-label">
+                                    CROP DEVELOPMENT
+                                </span>
+
+                                <h2>
+                                    Growth Progress
+                                </h2>
+
+                            </div>
+
+                            <span class="ai-badge">
+                                🤖 AI
+                            </span>
+
+                        </div>
+
+
+                        <div class="growth-content">
+
+                            <div class="growth-circle">
+
+                                <strong id="growthPercentage">
+                                    68%
+                                </strong>
+
+                                <span>
+                                    Progress
+                                </span>
+
+                            </div>
+
+
+                            <div class="growth-details">
+
+                                <div>
+
+                                    <span>
+                                        Current Stage
+                                    </span>
+
+                                    <strong id="growthStage">
+                                        Vegetative
+                                    </strong>
+
+                                </div>
+
+
+                                <div>
+
+                                    <span>
+                                        Expected Harvest
+                                    </span>
+
+                                    <strong id="harvestDate">
+                                        82 days
+                                    </strong>
+
+                                </div>
+
+
+                                <div>
+
+                                    <span>
+                                        Health Status
+                                    </span>
+
+                                    <strong>
+                                        Healthy
+                                    </strong>
+
+                                </div>
+
+                            </div>
+
+                        </div>
+
+                    </article>
+
+
+                    <!-- Soil Health -->
+
+                    <article class="dashboard-card">
+
+                        <div class="card-header">
+
+                            <div>
+
+                                <span class="card-label">
+                                    SOIL HEALTH
+                                </span>
+
+                                <h2>
+                                    Soil Condition
+                                </h2>
+
+                            </div>
+
+                            <span class="soil-health-badge">
+                                GOOD
+                            </span>
+
+                        </div>
+
+
+                        <div class="soil-health-content">
+
+                            <div class="soil-health-score">
+
+                                <strong id="soilHealthScore">
+                                    86%
+                                </strong>
+
+                                <span>
+                                    Overall Soil Health
+                                </span>
+
+                            </div>
+
+
+                            <div class="soil-factors">
+
+                                <div class="soil-factor">
+
+                                    <span>
+                                        Moisture
+                                    </span>
+
+                                    <strong>
+                                        Good
+                                    </strong>
+
+                                </div>
+
+
+                                <div class="soil-factor">
+
+                                    <span>
+                                        pH
+                                    </span>
+
+                                    <strong>
+                                        Optimal
+                                    </strong>
+
+                                </div>
+
+
+                                <div class="soil-factor">
+
+                                    <span>
+                                        Nutrients
+                                    </span>
+
+                                    <strong>
+                                        Moderate
+                                    </strong>
+
+                                </div>
+
+                            </div>
+
+                        </div>
+
+                    </article>
+
+                </section>
+
+
+                <!-- =================================================
+                     SENSOR STATUS
+                     ================================================= -->
+
+                <section class="dashboard-card">
+
+                    <div class="card-header">
+
+                        <div>
+
+                            <span class="card-label">
+                                IoT MONITORING
+                            </span>
+
+                            <h2>
+                                Sensor Status
+                            </h2>
+
+                        </div>
+
+                        <span class="ai-badge">
+                            LIVE
+                        </span>
+
+                    </div>
+
+
+                    <div class="sensor-grid">
+
+                        <div class="sensor-item">
+
+                            <div class="sensor-icon">
+                                💧
+                            </div>
+
+                            <div>
+
+                                <strong>
+                                    Soil Moisture
+                                </strong>
+
+                                <span>
+                                    Sensor 01
+                                </span>
+
+                            </div>
+
+                            <b class="sensor-online">
+                                ● Online
+                            </b>
+
+                        </div>
+
+
+                        <div class="sensor-item">
+
+                            <div class="sensor-icon">
+                                🌡️
+                            </div>
+
+                            <div>
+
+                                <strong>
+                                    Temperature
+                                </strong>
+
+                                <span>
+                                    DHT22
+                                </span>
+
+                            </div>
+
+                            <b class="sensor-online">
+                                ● Online
+                            </b>
+
+                        </div>
+
+
+                        <div class="sensor-item">
+
+                            <div class="sensor-icon">
+                                🧪
+                            </div>
+
+                            <div>
+
+                                <strong>
+                                    Soil pH
+                                </strong>
+
+                                <span>
+                                    pH Sensor
+                                </span>
+
+                            </div>
+
+                            <b class="sensor-online">
+                                ● Online
+                            </b>
+
+                        </div>
+
+
+                        <div class="sensor-item">
+
+                            <div class="sensor-icon">
+                                🌧️
+                            </div>
+
+                            <div>
+
+                                <strong>
+                                    Rain Sensor
+                                </strong>
+
+                                <span>
+                                    Sensor 01
+                                </span>
+
+                            </div>
+
+                            <b class="sensor-online">
+                                ● Online
+                            </b>
+
+                        </div>
+
+                    </div>
+
+                </section>
+
+
+                <!-- =================================================
+                     AI INSIGHT
+                     ================================================= -->
+
+                <section class="dashboard-card ai-insight-card">
+
+                    <div class="card-header">
+
+                        <div>
+
+                            <span class="card-label">
+                                AI ANALYSIS
+                            </span>
+
+                            <h2>
+                                Crop &amp; Soil Recommendation
+                            </h2>
+
+                        </div>
+
+                        <span class="ai-badge">
+                            🤖 AI
+                        </span>
+
+                    </div>
+
+
+                    <div class="ai-insight-body">
+
+                        <div class="ai-insight-icon">
+                            🌱
+                        </div>
+
+                        <div>
+
+                            <h3 id="soilRecommendation">
+                                Monitor nitrogen level
+                            </h3>
+
+                            <p id="soilRecommendationReason">
+                                Current soil conditions are generally
+                                healthy. Nitrogen is slightly below
+                                the preferred range, so continue
+                                monitoring before the next fertilizer
+                                application.
+                            </p>
+
+                        </div>
+
+                    </div>
+
+
+                    <a
+                        href="ai-recommendation.html"
+                        class="card-action"
+                    >
+                        View Full AI Analysis →
+                    </a>
+
+                </section>
+
+            </div>
+
+        </main>
+
+    </div>
+
+
+    <!-- =========================================================
+         MOBILE SIDEBAR OVERLAY
+         ========================================================= -->
+
+    <div
+        class="sidebar-overlay"
+        id="sidebarOverlay"
+        aria-hidden="true"
+    ></div>
+
+
+    <!-- =========================================================
+         JAVASCRIPT
+         ========================================================= -->
+
+    <script src="../js/dashboard.js"></script>
+
+    <script src="../js/crop-soil.js"></script>
+
+</body>
+
+</html>

@@ -1,0 +1,413 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <meta
+        name="description"
+        content="Create your SmartAgriTwin farmer account"
+    >
+
+    <meta
+        name="theme-color"
+        content="#2f7d32"
+    >
+
+    <title>SmartAgriTwin | Create Account</title>
+
+    <link
+        rel="stylesheet"
+        href="../css/auth.css"
+    >
+</head>
+
+<body>
+
+    <main class="auth-page">
+
+        <!-- =====================================================
+             BRAND SECTION
+             ===================================================== -->
+
+        <section class="auth-brand-section">
+
+            <div class="brand-content">
+
+                <div class="brand-logo">
+                    🌱
+                </div>
+
+                <h1>
+                    SmartAgriTwin
+                </h1>
+
+                <p class="brand-tagline">
+                    AI-Powered Digital Agriculture Platform
+                </p>
+
+                <p class="brand-description">
+                    Create your farmer account and start
+                    managing your farm with intelligent,
+                    data-driven insights.
+                </p>
+
+
+                <div class="brand-features">
+
+                    <div class="brand-feature">
+
+                        <span>🌾</span>
+
+                        <div>
+                            <strong>
+                                Smart Farm Management
+                            </strong>
+
+                            <small>
+                                Manage crops and farm information
+                            </small>
+                        </div>
+
+                    </div>
+
+
+                    <div class="brand-feature">
+
+                        <span>🤖</span>
+
+                        <div>
+                            <strong>
+                                AI-Powered Insights
+                            </strong>
+
+                            <small>
+                                Get intelligent farming recommendations
+                            </small>
+                        </div>
+
+                    </div>
+
+
+                    <div class="brand-feature">
+
+                        <span>💧</span>
+
+                        <div>
+                            <strong>
+                                Water Optimization
+                            </strong>
+
+                            <small>
+                                Make irrigation more efficient
+                            </small>
+                        </div>
+
+                    </div>
+
+
+                    <div class="brand-feature">
+
+                        <span>📊</span>
+
+                        <div>
+                            <strong>
+                                Farm Analytics
+                            </strong>
+
+                            <small>
+                                Understand your farm performance
+                            </small>
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- =====================================================
+             REGISTER SECTION
+             ===================================================== -->
+
+        <section class="auth-form-section">
+
+            <div class="auth-card">
+
+                <div class="auth-header">
+
+                    <span class="auth-label">
+                        GET STARTED
+                    </span>
+
+                    <h2>
+                        Create your account
+                    </h2>
+
+                    <p>
+                        Enter your details to create a farmer account.
+                    </p>
+
+                </div>
+
+
+                <!-- =================================================
+                     REGISTRATION FORM
+                     ================================================= -->
+
+                <form
+                    id="registerForm"
+                    novalidate
+                >
+
+                    <!-- Full Name -->
+
+                    <div class="form-group">
+
+                        <label for="name">
+                            Full Name
+                        </label>
+
+                        <input
+                            type="text"
+                            id="name"
+                            name="name"
+                            placeholder="Enter your full name"
+                            autocomplete="name"
+                            required
+                        >
+
+                        <small
+                            class="form-error"
+                            id="nameError"
+                        ></small>
+
+                    </div>
+
+
+                    <!-- Email -->
+
+                    <div class="form-group">
+
+                        <label for="email">
+                            Email Address
+                        </label>
+
+                        <input
+                            type="email"
+                            id="email"
+                            name="email"
+                            placeholder="Enter your email"
+                            autocomplete="email"
+                            required
+                        >
+
+                        <small
+                            class="form-error"
+                            id="emailError"
+                        ></small>
+
+                    </div>
+
+
+                    <!-- Password -->
+
+                    <div class="form-group">
+
+                        <label for="password">
+                            Password
+                        </label>
+
+                        <div class="password-input-wrapper">
+
+                            <input
+                                type="password"
+                                id="password"
+                                name="password"
+                                placeholder="Create a password"
+                                autocomplete="new-password"
+                                required
+                            >
+
+                            <button
+                                type="button"
+                                id="togglePassword"
+                                class="password-toggle"
+                                aria-label="Show password"
+                            >
+                                👁️
+                            </button>
+
+                        </div>
+
+                        <small
+                            class="form-hint"
+                        >
+                            Use at least 6 characters.
+                        </small>
+
+                        <small
+                            class="form-error"
+                            id="passwordError"
+                        ></small>
+
+                    </div>
+
+
+                    <!-- Confirm Password -->
+
+                    <div class="form-group">
+
+                        <label for="confirmPassword">
+                            Confirm Password
+                        </label>
+
+                        <div class="password-input-wrapper">
+
+                            <input
+                                type="password"
+                                id="confirmPassword"
+                                name="confirmPassword"
+                                placeholder="Confirm your password"
+                                autocomplete="new-password"
+                                required
+                            >
+
+                            <button
+                                type="button"
+                                id="toggleConfirmPassword"
+                                class="password-toggle"
+                                aria-label="Show confirm password"
+                            >
+                                👁️
+                            </button>
+
+                        </div>
+
+                        <small
+                            class="form-error"
+                            id="confirmPasswordError"
+                        ></small>
+
+                    </div>
+
+
+                    <!-- Terms -->
+
+                    <div class="form-options">
+
+                        <label class="remember-option">
+
+                            <input
+                                type="checkbox"
+                                id="terms"
+                                name="terms"
+                                required
+                            >
+
+                            <span>
+                                I agree to the
+                                <a href="#" id="termsLink">
+                                    terms and conditions
+                                </a>
+                            </span>
+
+                        </label>
+
+                        <small
+                            class="form-error"
+                            id="termsError"
+                        ></small>
+
+                    </div>
+
+
+                    <!-- General Message -->
+
+                    <div
+                        id="registerMessage"
+                        class="form-message"
+                        role="alert"
+                        aria-live="polite"
+                    ></div>
+
+
+                    <!-- Submit -->
+
+                    <button
+                        type="submit"
+                        id="registerButton"
+                        class="auth-submit-button"
+                    >
+
+                        <span id="registerButtonText">
+                            Create Account
+                        </span>
+
+                        <span
+                            id="registerLoader"
+                            class="button-loader"
+                            hidden
+                        >
+                            Creating account...
+                        </span>
+
+                    </button>
+
+                </form>
+
+
+                <!-- =================================================
+                     LOGIN LINK
+                     ================================================= -->
+
+                <div class="auth-footer">
+
+                    <p>
+                        Already have an account?
+
+                        <a href="index.html">
+                            Sign in
+                        </a>
+                    </p>
+
+                </div>
+
+
+                <!-- Prototype Notice -->
+
+                <div class="prototype-notice">
+
+                    <span>ℹ️</span>
+
+                    <p>
+                        This is a prototype registration flow.
+                        Account data may currently be stored
+                        locally until backend authentication
+                        is connected.
+                    </p>
+
+                </div>
+
+            </div>
+
+        </section>
+
+    </main>
+
+
+    <!-- Authentication JavaScript -->
+
+    <script src="../js/auth.js"></script>
+
+</body>
+
+</html>
