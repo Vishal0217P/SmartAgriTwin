@@ -4,11 +4,29 @@
 
 
 /* =========================================================
-   HELPER
+   HELPERS
    ========================================================= */
 
 function getElement(id) {
     return document.getElementById(id);
+}
+
+
+/* =========================================================
+   AUTHENTICATION
+   ========================================================= */
+
+function checkAuthentication() {
+
+    const isLoggedIn =
+        localStorage.getItem("smartAgriLoggedIn");
+
+    if (isLoggedIn !== "true") {
+        window.location.href = "index.html";
+        return false;
+    }
+
+    return true;
 }
 
 
@@ -42,6 +60,7 @@ function loadUserProfile() {
                 "Unable to load user profile:",
                 error
             );
+
         }
     }
 
@@ -54,14 +73,12 @@ function loadUserProfile() {
 
 
     if (userName) {
-
         userName.textContent =
             user.name;
     }
 
 
     if (weatherLocation) {
-
         weatherLocation.textContent =
             user.location;
     }
@@ -86,7 +103,6 @@ const weatherData = {
     },
 
     forecast: [
-
         {
             day: "Today",
             icon: "🌤️",
@@ -95,7 +111,6 @@ const weatherData = {
             condition: "Partly Cloudy",
             rain: 35
         },
-
         {
             day: "Tue",
             icon: "🌦️",
@@ -104,7 +119,6 @@ const weatherData = {
             condition: "Light Rain",
             rain: 62
         },
-
         {
             day: "Wed",
             icon: "🌧️",
@@ -113,7 +127,6 @@ const weatherData = {
             condition: "Rain",
             rain: 78
         },
-
         {
             day: "Thu",
             icon: "🌤️",
@@ -122,7 +135,6 @@ const weatherData = {
             condition: "Cloudy",
             rain: 40
         },
-
         {
             day: "Fri",
             icon: "☀️",
@@ -131,7 +143,6 @@ const weatherData = {
             condition: "Sunny",
             rain: 18
         },
-
         {
             day: "Sat",
             icon: "☀️",
@@ -140,7 +151,6 @@ const weatherData = {
             condition: "Sunny",
             rain: 15
         },
-
         {
             day: "Sun",
             icon: "🌤️",
@@ -183,42 +193,31 @@ function loadCurrentWeather() {
 
 
     if (temperature) {
-
         temperature.textContent =
             current.temperature;
     }
 
-
     if (condition) {
-
         condition.textContent =
             current.condition;
     }
 
-
     if (humidity) {
-
         humidity.textContent =
             `${current.humidity}%`;
     }
 
-
     if (wind) {
-
         wind.textContent =
             `${current.wind} km/h`;
     }
 
-
     if (rainChance) {
-
         rainChance.textContent =
             `${current.rainChance}%`;
     }
 
-
     if (uv) {
-
         uv.textContent =
             current.uv;
     }
@@ -255,10 +254,7 @@ function loadForecast() {
 
 
             if (index === 0) {
-
-                article.classList.add(
-                    "today"
-                );
+                article.classList.add("today");
             }
 
 
@@ -289,6 +285,7 @@ function loadForecast() {
             forecastGrid.appendChild(
                 article
             );
+
         }
     );
 }
@@ -339,7 +336,7 @@ function generateWeatherRecommendation() {
 
 
 /* =========================================================
-   UPDATE WEATHER TIME
+   UPDATE TIME
    ========================================================= */
 
 function updateWeatherTime() {
@@ -397,21 +394,6 @@ function setupMobileSidebar() {
     }
 
 
-    function openSidebar() {
-
-        sidebar.classList.add(
-            "open"
-        );
-
-        overlay.classList.add(
-            "active"
-        );
-
-        document.body.style.overflow =
-            "hidden";
-    }
-
-
     function closeSidebar() {
 
         sidebar.classList.remove(
@@ -429,7 +411,20 @@ function setupMobileSidebar() {
 
     menuButton.addEventListener(
         "click",
-        openSidebar
+        () => {
+
+            sidebar.classList.add(
+                "open"
+            );
+
+            overlay.classList.add(
+                "active"
+            );
+
+            document.body.style.overflow =
+                "hidden";
+
+        }
     );
 
 
@@ -441,13 +436,16 @@ function setupMobileSidebar() {
 
     sidebar
         .querySelectorAll("a")
-        .forEach((link) => {
+        .forEach(
+            (link) => {
 
-            link.addEventListener(
-                "click",
-                closeSidebar
-            );
-        });
+                link.addEventListener(
+                    "click",
+                    closeSidebar
+                );
+
+            }
+        );
 }
 
 
@@ -474,25 +472,30 @@ function setupLogout() {
                 "smartAgriLoggedIn"
             );
 
+            localStorage.removeItem(
+                "smartAgriUser"
+            );
+
             window.location.href =
                 "index.html";
+
         }
     );
 }
 
 
 /* =========================================================
-   INITIALIZE WEATHER PAGE
+   INITIALIZE
    ========================================================= */
 
 document.addEventListener(
     "DOMContentLoaded",
     () => {
 
-        /*
-         * Authentication is intentionally
-         * disabled during frontend development.
-         */
+        if (!checkAuthentication()) {
+            return;
+        }
+
 
         loadUserProfile();
 
@@ -507,5 +510,6 @@ document.addEventListener(
         setupMobileSidebar();
 
         setupLogout();
+
     }
 );

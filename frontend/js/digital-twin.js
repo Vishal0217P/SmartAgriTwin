@@ -1,6 +1,5 @@
 /* =========================================================
    SmartAgriTwin - Digital Twin JavaScript
-   Frontend Prototype
    ========================================================= */
 
 
@@ -22,15 +21,8 @@ function checkAuthentication() {
     const isLoggedIn =
         localStorage.getItem("smartAgriLoggedIn");
 
-    /*
-     * For prototype:
-     * If user is not logged in, redirect to login page.
-     */
-
     if (isLoggedIn !== "true") {
-
         window.location.href = "index.html";
-
         return false;
     }
 
@@ -39,51 +31,37 @@ function checkAuthentication() {
 
 
 /* =========================================================
-   USER PROFILE
+   LOAD USER
    ========================================================= */
 
-function loadUserProfile() {
-
-    const storedUser =
-        localStorage.getItem("smartAgriUser");
-
-    let user = {
-        name: "Farmer",
-        location: "Pune, Maharashtra"
-    };
-
-
-    if (storedUser) {
-
-        try {
-
-            const parsedUser =
-                JSON.parse(storedUser);
-
-            user = {
-                ...user,
-                ...parsedUser
-            };
-
-        } catch (error) {
-
-            console.error(
-                "Unable to load user profile:",
-                error
-            );
-
-        }
-    }
-
+function loadUser() {
 
     const userName =
         getElement("userName");
 
+    const storedUser =
+        localStorage.getItem("smartAgriUser");
 
-    if (userName) {
+    if (!userName || !storedUser) {
+        return;
+    }
 
-        userName.textContent =
-            user.name;
+    try {
+
+        const user =
+            JSON.parse(storedUser);
+
+        if (user.name) {
+            userName.textContent =
+                user.name;
+        }
+
+    } catch (error) {
+
+        console.error(
+            "Unable to load user:",
+            error
+        );
     }
 }
 
@@ -92,271 +70,155 @@ function loadUserProfile() {
    FARM DATA
    ========================================================= */
 
-const farmData = {
+function getFarmData() {
 
-    soilMoisture: 42,
+    const storedData =
+        localStorage.getItem(
+            "smartAgriFarmData"
+        );
 
-    temperature: 27,
-
-    humidity: 67,
-
-    rainProbability: 35,
-
-    cropHealth: 91,
-
-    ph: 6.5,
-
-    waterLevel: 72,
-
-    light: 68
-};
-
-
-/* =========================================================
-   LOAD FARM DATA
-   ========================================================= */
-
-function loadFarmData() {
-
-    const moisture =
-        getElement("twinMoisture");
-
-    const temperature =
-        getElement("twinTemperature");
-
-    const humidity =
-        getElement("twinHumidity");
-
-    const cropHealth =
-        getElement("twinCropHealth");
-
-
-    if (moisture) {
-
-        moisture.textContent =
-            farmData.soilMoisture + "%";
+    if (!storedData) {
+        return null;
     }
 
+    try {
 
-    if (temperature) {
+        return JSON.parse(storedData);
 
-        temperature.textContent =
-            farmData.temperature + "°C";
-    }
+    } catch (error) {
 
+        console.error(
+            "Unable to load farm data:",
+            error
+        );
 
-    if (humidity) {
-
-        humidity.textContent =
-            farmData.humidity + "%";
-    }
-
-
-    if (cropHealth) {
-
-        cropHealth.textContent =
-            farmData.cropHealth + "%";
+        return null;
     }
 }
 
 
 /* =========================================================
-   TWIN METRICS
-   ========================================================= */
-
-function loadTwinMetrics() {
-
-    const moisture =
-        getElement("soilMoistureValue");
-
-    const temperature =
-        getElement("temperatureValue");
-
-    const humidity =
-        getElement("humidityValue");
-
-    const cropHealth =
-        getElement("cropHealthValue");
-
-
-    if (moisture) {
-
-        moisture.textContent =
-            farmData.soilMoisture + "%";
-    }
-
-
-    if (temperature) {
-
-        temperature.textContent =
-            farmData.temperature + "°C";
-    }
-
-
-    if (humidity) {
-
-        humidity.textContent =
-            farmData.humidity + "%";
-    }
-
-
-    if (cropHealth) {
-
-        cropHealth.textContent =
-            farmData.cropHealth + "%";
-    }
-}
-
-
-/* =========================================================
-   HEALTH STATUS
-   ========================================================= */
-
-function updateHealthStatus() {
-
-    const healthScore =
-        getElement("healthScore");
-
-    const healthStatus =
-        getElement("healthStatus");
-
-
-    if (healthScore) {
-
-        healthScore.textContent =
-            farmData.cropHealth + "%";
-    }
-
-
-    if (healthStatus) {
-
-        if (farmData.cropHealth >= 80) {
-
-            healthStatus.textContent =
-                "Farm is healthy";
-
-        } else if (farmData.cropHealth >= 60) {
-
-            healthStatus.textContent =
-                "Farm needs monitoring";
-
-        } else {
-
-            healthStatus.textContent =
-                "Farm requires attention";
-        }
-    }
-}
-
-
-/* =========================================================
-   HEALTH LIST
-   ========================================================= */
-
-function updateHealthList() {
-
-    const soilStatus =
-        getElement("soilStatus");
-
-    const weatherStatus =
-        getElement("weatherStatus");
-
-    const waterStatus =
-        getElement("waterStatus");
-
-    const cropStatus =
-        getElement("cropStatus");
-
-
-    if (soilStatus) {
-
-        soilStatus.textContent =
-            farmData.soilMoisture >= 35 &&
-            farmData.soilMoisture <= 60
-                ? "Optimal"
-                : "Monitor";
-    }
-
-
-    if (weatherStatus) {
-
-        if (farmData.rainProbability >= 70) {
-
-            weatherStatus.textContent =
-                "Rain Expected";
-
-        } else if (farmData.rainProbability >= 40) {
-
-            weatherStatus.textContent =
-                "Moderate";
-
-        } else {
-
-            weatherStatus.textContent =
-                "Stable";
-        }
-    }
-
-
-    if (waterStatus) {
-
-        waterStatus.textContent =
-            farmData.waterLevel >= 40
-                ? "Available"
-                : "Low";
-    }
-
-
-    if (cropStatus) {
-
-        cropStatus.textContent =
-            farmData.cropHealth >= 80
-                ? "Healthy"
-                : "Monitor";
-    }
-}
-
-
-/* =========================================================
-   RANGE INPUTS
+   UPDATE RANGE VALUES
    ========================================================= */
 
 function setupRangeInputs() {
 
-    const ranges =
-        document.querySelectorAll(
-            'input[type="range"]'
-        );
+    const irrigationRange =
+        getElement("irrigationRange");
+
+    const rainfallRange =
+        getElement("rainfallRange");
+
+    const temperatureRange =
+        getElement("temperatureRange");
+
+    const irrigationValue =
+        getElement("irrigationValue");
+
+    const rainfallValue =
+        getElement("rainfallValue");
+
+    const temperatureValue =
+        getElement("temperatureValue");
 
 
-    ranges.forEach(function (range) {
+    if (irrigationRange) {
 
-        const valueElement =
-            getElement(range.dataset.output);
-
-
-        if (!valueElement) {
-            return;
-        }
-
-
-        function updateRangeValue() {
-
-            valueElement.textContent =
-                range.value + "%";
-        }
-
-
-        range.addEventListener(
+        irrigationRange.addEventListener(
             "input",
-            updateRangeValue
+            () => {
+
+                irrigationValue.textContent =
+                    `${formatSignedValue(
+                        irrigationRange.value
+                    )}%`;
+
+            }
         );
+    }
 
 
-        updateRangeValue();
+    if (rainfallRange) {
 
-    });
+        rainfallRange.addEventListener(
+            "input",
+            () => {
+
+                rainfallValue.textContent =
+                    `${formatSignedValue(
+                        rainfallRange.value
+                    )}%`;
+
+            }
+        );
+    }
+
+
+    if (temperatureRange) {
+
+        temperatureRange.addEventListener(
+            "input",
+            () => {
+
+                temperatureValue.textContent =
+                    `${formatSignedValue(
+                        temperatureRange.value
+                    )}°C`;
+
+            }
+        );
+    }
 }
+
+
+/* =========================================================
+   FORMAT SIGNED VALUE
+   ========================================================= */
+
+function formatSignedValue(value) {
+
+    const number =
+        Number(value);
+
+    if (number > 0) {
+        return `+${number}`;
+    }
+
+    return number;
+}
+
+
+/* =========================================================
+   BASELINE VALUES
+   ========================================================= */
+
+const BASELINE = {
+
+    tomato: {
+        yield: 4.8,
+        water: 18000,
+        profit: 142000
+    },
+
+    rice: {
+        yield: 5.2,
+        water: 24000,
+        profit: 128000
+    },
+
+    wheat: {
+        yield: 4.1,
+        water: 16000,
+        profit: 112000
+    },
+
+    soybean: {
+        yield: 3.4,
+        water: 13000,
+        profit: 98000
+    }
+
+};
 
 
 /* =========================================================
@@ -368,221 +230,702 @@ function runSimulation() {
     const cropSelect =
         getElement("cropSelect");
 
-    const moistureRange =
-        getElement("moistureRange");
+    const irrigationRange =
+        getElement("irrigationRange");
+
+    const rainfallRange =
+        getElement("rainfallRange");
 
     const temperatureRange =
         getElement("temperatureRange");
 
-    const rainRange =
-        getElement("rainRange");
+    const simulationButton =
+        getElement("simulateButton");
+
+
+    if (
+        !cropSelect ||
+        !irrigationRange ||
+        !rainfallRange ||
+        !temperatureRange ||
+        !simulationButton
+    ) {
+        return;
+    }
 
 
     const crop =
-        cropSelect
-            ? cropSelect.value
-            : "Wheat";
+        cropSelect.value;
 
+    const irrigation =
+        Number(
+            irrigationRange.value
+        );
 
-    const moisture =
-        moistureRange
-            ? Number(moistureRange.value)
-            : farmData.soilMoisture;
-
+    const rainfall =
+        Number(
+            rainfallRange.value
+        );
 
     const temperature =
-        temperatureRange
-            ? Number(temperatureRange.value)
-            : farmData.temperature;
+        Number(
+            temperatureRange.value
+        );
 
 
-    const rain =
-        rainRange
-            ? Number(rainRange.value)
-            : farmData.rainProbability;
+    setSimulationLoading(
+        simulationButton
+    );
 
 
     /*
-     * Simple prototype simulation model.
+     * Prototype simulation.
+     *
+     * This is NOT the final ML model.
+     *
+     * Final SIH version:
+     *
+     * Frontend
+     *     ↓
+     * Spring Boot API
+     *     ↓
+     * ML model
+     *     ↓
+     * Prediction
      */
 
-    let yieldPrediction = 4.2;
 
-    let waterRequirement = "Medium";
+    setTimeout(() => {
 
-    let cropRisk = "Low";
+        const baseline =
+            BASELINE[crop];
 
 
-    /* Moisture effect */
+        if (!baseline) {
 
-    if (moisture < 30) {
+            resetSimulationButton(
+                simulationButton
+            );
 
-        yieldPrediction -= 0.6;
+            return;
+        }
 
-        waterRequirement = "High";
 
-    } else if (moisture > 70) {
+        /*
+         * -----------------------------------------------------
+         * YIELD IMPACT
+         * -----------------------------------------------------
+         */
 
-        yieldPrediction -= 0.4;
 
-        waterRequirement = "Low";
+        let yieldImpact = 0;
 
+
+        /*
+         * Irrigation effect
+         */
+
+        yieldImpact +=
+            irrigation * 0.10;
+
+
+        /*
+         * Rainfall effect
+         */
+
+        yieldImpact +=
+            rainfall * 0.06;
+
+
+        /*
+         * Temperature penalty
+         */
+
+        const temperaturePenalty =
+            Math.abs(temperature) * 0.8;
+
+        yieldImpact -=
+            temperaturePenalty;
+
+
+        /*
+         * Limit unrealistic result
+         */
+
+        yieldImpact =
+            Math.max(
+                -35,
+                Math.min(
+                    25,
+                    yieldImpact
+                )
+            );
+
+
+        /*
+         * -----------------------------------------------------
+         * WATER IMPACT
+         * -----------------------------------------------------
+         */
+
+        let waterImpact =
+            irrigation;
+
+
+        /*
+         * Rainfall can reduce irrigation need.
+         */
+
+        waterImpact -=
+            rainfall * 0.35;
+
+
+        waterImpact =
+            Math.max(
+                -45,
+                Math.min(
+                    50,
+                    waterImpact
+                )
+            );
+
+
+        /*
+         * -----------------------------------------------------
+         * PROFIT IMPACT
+         * -----------------------------------------------------
+         */
+
+        let profitImpact =
+            yieldImpact * 0.75;
+
+        /*
+         * Excess irrigation has additional cost.
+         */
+
+        if (irrigation > 0) {
+
+            profitImpact -=
+                irrigation * 0.10;
+        }
+
+
+        /*
+         * Heavy rainfall can reduce profit.
+         */
+
+        if (rainfall < -20) {
+
+            profitImpact -=
+                5;
+        }
+
+
+        /*
+         * Temperature stress
+         */
+
+        profitImpact -=
+            temperaturePenalty * 0.35;
+
+
+        profitImpact =
+            Math.max(
+                -40,
+                Math.min(
+                    30,
+                    profitImpact
+                )
+            );
+
+
+        /*
+         * -----------------------------------------------------
+         * FINAL VALUES
+         * -----------------------------------------------------
+         */
+
+        const predictedYield =
+            baseline.yield *
+            (1 + yieldImpact / 100);
+
+
+        const predictedWater =
+            baseline.water *
+            (1 + waterImpact / 100);
+
+
+        const predictedProfit =
+            baseline.profit *
+            (1 + profitImpact / 100);
+
+
+        /*
+         * -----------------------------------------------------
+         * UPDATE UI
+         * -----------------------------------------------------
+         */
+
+        updateResult(
+            "yieldResult",
+            `${predictedYield.toFixed(1)} Ton`
+        );
+
+        updateChange(
+            "yieldChange",
+            yieldImpact
+        );
+
+
+        updateResult(
+            "waterResult",
+            formatNumber(
+                Math.round(
+                    predictedWater
+                )
+            ) + " L"
+        );
+
+        updateChange(
+            "waterChange",
+            waterImpact,
+            true
+        );
+
+
+        updateResult(
+            "profitResult",
+            formatIndianCurrency(
+                predictedProfit
+            )
+        );
+
+        updateChange(
+            "profitChange",
+            profitImpact
+        );
+
+
+        /*
+         * -----------------------------------------------------
+         * AI RECOMMENDATION
+         * -----------------------------------------------------
+         */
+
+        generateRecommendation(
+            yieldImpact,
+            waterImpact,
+            profitImpact,
+            irrigation,
+            rainfall,
+            temperature
+        );
+
+
+        resetSimulationButton(
+            simulationButton
+        );
+
+    }, 900);
+}
+
+
+/* =========================================================
+   UPDATE RESULT
+   ========================================================= */
+
+function updateResult(
+    elementId,
+    value
+) {
+
+    const element =
+        getElement(elementId);
+
+    if (!element) {
+        return;
+    }
+
+    element.textContent =
+        value;
+}
+
+
+/* =========================================================
+   UPDATE CHANGE
+   ========================================================= */
+
+function updateChange(
+    elementId,
+    value,
+    lowerIsBetter = false
+) {
+
+    const element =
+        getElement(elementId);
+
+    if (!element) {
+        return;
     }
 
 
-    /* Temperature effect */
+    element.classList.remove(
+        "positive",
+        "negative"
+    );
 
-    if (temperature > 35) {
 
-        yieldPrediction -= 0.5;
+    const rounded =
+        Number(value).toFixed(1);
 
-        cropRisk = "Medium";
 
+    if (value === 0) {
+
+        element.textContent =
+            "Baseline";
+
+        return;
     }
 
 
-    if (temperature < 15) {
-
-        yieldPrediction -= 0.3;
-
-        cropRisk = "Medium";
-    }
+    const sign =
+        value > 0 ? "+" : "";
 
 
-    /* Rain effect */
+    /*
+     * For water:
+     *
+     * Lower consumption = positive
+     */
 
-    if (rain >= 70) {
-
-        waterRequirement = "Low";
-
-        cropRisk = "Medium";
-    }
-
-
-    if (yieldPrediction < 1) {
-
-        yieldPrediction = 1;
-    }
+    const isPositive =
+        lowerIsBetter
+            ? value < 0
+            : value > 0;
 
 
-    const predictedYield =
-        getElement("predictedYield");
+    element.classList.add(
+        isPositive
+            ? "positive"
+            : "negative"
+    );
 
-    const waterRequirementElement =
-        getElement("waterRequirement");
 
-    const cropRiskElement =
-        getElement("cropRisk");
+    element.textContent =
+        `${sign}${rounded}% vs baseline`;
+}
 
-    const simulationRecommendation =
+
+/* =========================================================
+   AI RECOMMENDATION
+   ========================================================= */
+
+function generateRecommendation(
+    yieldImpact,
+    waterImpact,
+    profitImpact,
+    irrigation,
+    rainfall,
+    temperature
+) {
+
+    const recommendation =
         getElement(
             "simulationRecommendation"
         );
 
 
-    if (predictedYield) {
-
-        predictedYield.textContent =
-            yieldPrediction.toFixed(1) +
-            " t/ha";
-    }
-
-
-    if (waterRequirementElement) {
-
-        waterRequirementElement.textContent =
-            waterRequirement;
-    }
-
-
-    if (cropRiskElement) {
-
-        cropRiskElement.textContent =
-            cropRisk;
-    }
-
-
-    if (simulationRecommendation) {
-
-        let message = "";
-
-
-        if (moisture < 30) {
-
-            message =
-                "Soil moisture is low. Increase irrigation carefully and monitor soil moisture.";
-
-        } else if (moisture > 70) {
-
-            message =
-                "Soil moisture is high. Avoid unnecessary irrigation to reduce waterlogging risk.";
-
-        } else if (rain >= 70) {
-
-            message =
-                "High rainfall probability detected. Reduce irrigation and monitor field drainage.";
-
-        } else if (temperature > 35) {
-
-            message =
-                "High temperature may increase crop stress. Monitor irrigation and crop condition.";
-
-        } else {
-
-            message =
-                crop +
-                " conditions are currently suitable. Continue regular monitoring of soil, weather and crop health.";
-        }
-
-
-        simulationRecommendation.textContent =
-            message;
-    }
-}
-
-
-/* =========================================================
-   SIMULATION BUTTON
-   ========================================================= */
-
-function setupSimulationButton() {
-
-    const button =
-        getElement("simulateButton");
-
-
-    if (!button) {
+    if (!recommendation) {
         return;
     }
 
 
-    button.addEventListener(
-        "click",
-        function () {
-
-            button.disabled = true;
-
-            button.textContent =
-                "Simulating...";
+    let message = "";
 
 
-            setTimeout(
-                function () {
+    /*
+     * BEST CASE
+     */
 
-                    runSimulation();
+    if (
+        profitImpact > 5 &&
+        waterImpact <= 0
+    ) {
 
-                    button.disabled =
-                        false;
+        message =
+            "This scenario appears favorable. " +
+            "The model predicts improved profitability " +
+            "while maintaining or reducing water consumption.";
 
-                    button.textContent =
-                        "Run Simulation";
+    }
 
-                },
-                700
-            );
 
-        }
+    /*
+     * WATER SAVING
+     */
+
+    else if (
+        waterImpact < -10 &&
+        profitImpact >= 0
+    ) {
+
+        message =
+            "The scenario can reduce water consumption " +
+            "without significantly affecting expected profit. " +
+            "This may be a suitable water-saving strategy.";
+
+    }
+
+
+    /*
+     * TOO MUCH IRRIGATION
+     */
+
+    else if (
+        irrigation > 25 &&
+        yieldImpact < 5
+    ) {
+
+        message =
+            "Increasing irrigation beyond this level " +
+            "may provide limited yield improvement. " +
+            "Consider a more efficient irrigation strategy.";
+
+    }
+
+
+    /*
+     * HEAVY RAIN
+     */
+
+    else if (
+        rainfall > 25 &&
+        waterImpact < -10
+    ) {
+
+        message =
+            "Higher rainfall may reduce irrigation demand. " +
+            "Avoid unnecessary watering and monitor soil moisture.";
+
+    }
+
+
+    /*
+     * TEMPERATURE STRESS
+     */
+
+    else if (
+        Math.abs(temperature) >= 5
+    ) {
+
+        message =
+            "The temperature change creates additional crop stress. " +
+            "Consider selecting a more suitable crop or adjusting " +
+            "irrigation and protection strategies.";
+
+    }
+
+
+    /*
+     * NEGATIVE PROFIT
+     */
+
+    else if (
+        profitImpact < -5
+    ) {
+
+        message =
+            "This scenario may reduce farm profitability. " +
+            "The model suggests comparing another combination " +
+            "of irrigation, rainfall and temperature conditions.";
+
+    }
+
+
+    /*
+     * DEFAULT
+     */
+
+    else {
+
+        message =
+            "The simulated conditions are relatively balanced. " +
+            "Compare multiple scenarios before making a farming decision.";
+    }
+
+
+    recommendation.textContent =
+        message;
+}
+
+
+/* =========================================================
+   FORMAT NUMBER
+   ========================================================= */
+
+function formatNumber(number) {
+
+    return Number(number)
+        .toLocaleString("en-IN");
+}
+
+
+/* =========================================================
+   FORMAT INDIAN CURRENCY
+   ========================================================= */
+
+function formatIndianCurrency(number) {
+
+    const value =
+        Number(number);
+
+
+    if (value >= 100000) {
+
+        return (
+            "₹" +
+            (value / 100000)
+                .toFixed(2) +
+            " L"
+        );
+    }
+
+
+    if (value >= 1000) {
+
+        return (
+            "₹" +
+            (value / 1000)
+                .toFixed(1) +
+            " K"
+        );
+    }
+
+
+    return (
+        "₹" +
+        Math.round(value)
+            .toLocaleString("en-IN")
     );
+}
+
+
+/* =========================================================
+   LOADING STATE
+   ========================================================= */
+
+function setSimulationLoading(
+    button
+) {
+
+    button.disabled =
+        true;
+
+    button.dataset.originalText =
+        button.textContent;
+
+    button.textContent =
+        "Running Simulation...";
+
+    button.classList.add(
+        "simulation-loading"
+    );
+}
+
+
+/* =========================================================
+   RESET BUTTON
+   ========================================================= */
+
+function resetSimulationButton(
+    button
+) {
+
+    button.disabled =
+        false;
+
+    button.textContent =
+        "Run AI Simulation →";
+
+    button.classList.remove(
+        "simulation-loading"
+    );
+}
+
+
+/* =========================================================
+   UPDATE FARM DATA
+   ========================================================= */
+
+function updateFarmMetrics() {
+
+    const farmData =
+        getFarmData();
+
+
+    if (!farmData) {
+        return;
+    }
+
+
+    /*
+     * These values will later come
+     * directly from IoT sensors.
+     */
+
+    const temperature =
+        farmData.temperature || 28;
+
+    const humidity =
+        farmData.humidity || 67;
+
+    const moisture =
+        farmData.soilMoisture || 42;
+
+    const ph =
+        farmData.ph || 6.5;
+
+
+    const temperatureElement =
+        getElement(
+            "twinTemperature"
+        );
+
+    const humidityElement =
+        getElement(
+            "twinHumidity"
+        );
+
+    const moistureElement =
+        getElement(
+            "twinMoisture"
+        );
+
+    const phElement =
+        getElement(
+            "twinPH"
+        );
+
+
+    if (temperatureElement) {
+        temperatureElement.textContent =
+            `${temperature}°C`;
+    }
+
+    if (humidityElement) {
+        humidityElement.textContent =
+            `${humidity}%`;
+    }
+
+    if (moistureElement) {
+        moistureElement.textContent =
+            `${moisture}%`;
+    }
+
+    if (phElement) {
+        phElement.textContent =
+            ph;
+    }
 }
 
 
@@ -607,7 +950,6 @@ function setupMobileSidebar() {
         !sidebar ||
         !overlay
     ) {
-
         return;
     }
 
@@ -629,7 +971,7 @@ function setupMobileSidebar() {
 
     menuButton.addEventListener(
         "click",
-        function () {
+        () => {
 
             sidebar.classList.add(
                 "open"
@@ -651,18 +993,16 @@ function setupMobileSidebar() {
     );
 
 
-    const links =
-        sidebar.querySelectorAll("a");
+    sidebar
+        .querySelectorAll("a")
+        .forEach((link) => {
 
+            link.addEventListener(
+                "click",
+                closeSidebar
+            );
 
-    links.forEach(function (link) {
-
-        link.addEventListener(
-            "click",
-            closeSidebar
-        );
-
-    });
+        });
 }
 
 
@@ -673,7 +1013,9 @@ function setupMobileSidebar() {
 function setupLogout() {
 
     const logoutButton =
-        getElement("logoutButton");
+        getElement(
+            "logoutButton"
+        );
 
 
     if (!logoutButton) {
@@ -683,16 +1025,11 @@ function setupLogout() {
 
     logoutButton.addEventListener(
         "click",
-        function () {
+        () => {
 
             localStorage.removeItem(
                 "smartAgriLoggedIn"
             );
-
-            localStorage.removeItem(
-                "smartAgriUser"
-            );
-
 
             window.location.href =
                 "index.html";
@@ -702,47 +1039,25 @@ function setupLogout() {
 
 
 /* =========================================================
-   LIVE TWIN UPDATE
+   SIMULATION EVENTS
    ========================================================= */
 
-function startLiveUpdate() {
+function setupSimulation() {
 
-    setInterval(
-        function () {
-
-            /*
-             * Small prototype variation.
-             * This simulates live IoT sensor updates.
-             */
-
-            farmData.soilMoisture =
-                Math.max(
-                    20,
-                    Math.min(
-                        80,
-                        farmData.soilMoisture +
-                        (Math.random() * 2 - 1)
-                    )
-                );
+    const button =
+        getElement(
+            "simulateButton"
+        );
 
 
-            farmData.temperature =
-                Math.max(
-                    20,
-                    Math.min(
-                        35,
-                        farmData.temperature +
-                        (Math.random() * 0.4 - 0.2)
-                    )
-                );
+    if (!button) {
+        return;
+    }
 
 
-            loadFarmData();
-
-            loadTwinMetrics();
-
-        },
-        5000
+    button.addEventListener(
+        "click",
+        runSimulation
     );
 }
 
@@ -753,42 +1068,24 @@ function startLiveUpdate() {
 
 document.addEventListener(
     "DOMContentLoaded",
-    function () {
-
-        /*
-         * IMPORTANT:
-         * Correct condition is:
-         * if (!checkAuthentication())
-         *
-         * NOT:
-         * if (checkAuthentication())
-         */
+    () => {
 
         if (!checkAuthentication()) {
-
             return;
         }
 
 
-        loadUserProfile();
+        loadUser();
 
-        loadFarmData();
-
-        loadTwinMetrics();
-
-        updateHealthStatus();
-
-        updateHealthList();
+        updateFarmMetrics();
 
         setupRangeInputs();
 
-        setupSimulationButton();
+        setupSimulation();
 
         setupMobileSidebar();
 
         setupLogout();
-
-        startLiveUpdate();
 
     }
 );

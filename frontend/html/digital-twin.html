@@ -11,12 +11,7 @@
 
     <meta
         name="description"
-        content="SmartAgriTwin digital twin for real-time farm monitoring and simulation"
-    >
-
-    <meta
-        name="theme-color"
-        content="#2f7d32"
+        content="SmartAgriTwin Digital Twin and What-If Simulation"
     >
 
     <title>SmartAgriTwin | Digital Twin</title>
@@ -34,310 +29,251 @@
 
 <body>
 
-    <div class="app-layout">
+<div class="app-layout">
 
-        <!-- =====================================================
-             SIDEBAR
-             ===================================================== -->
+    <!-- =====================================================
+         SIDEBAR
+         ===================================================== -->
 
-        <aside
-            class="sidebar"
-            id="sidebar"
-        >
+    <aside class="sidebar" id="sidebar">
 
-            <div class="sidebar-brand">
+        <div class="sidebar-brand">
 
-                <div class="brand-logo">
-                    🌱
-                </div>
-
-                <div>
-                    <h1>SmartAgriTwin</h1>
-
-                    <span>
-                        Smart Agriculture
-                    </span>
-                </div>
-
+            <div class="brand-logo">
+                🌱
             </div>
 
+            <div>
+                <h1>SmartAgriTwin</h1>
+                <span>Smart Agriculture</span>
+            </div>
 
-            <nav
-                class="sidebar-nav"
-                aria-label="Main navigation"
+        </div>
+
+
+        <nav class="sidebar-nav">
+
+            <p class="nav-section-title">
+                MAIN
+            </p>
+
+            <a href="dashboard.html" class="nav-item">
+                <span class="nav-icon">📊</span>
+                <span>Dashboard</span>
+            </a>
+
+            <a href="crop-soil.html" class="nav-item">
+                <span class="nav-icon">🌾</span>
+                <span>Crop & Soil</span>
+            </a>
+
+            <a href="irrigation.html" class="nav-item">
+                <span class="nav-icon">💧</span>
+                <span>Irrigation</span>
+            </a>
+
+            <a href="weather.html" class="nav-item">
+                <span class="nav-icon">🌦️</span>
+                <span>Weather</span>
+            </a>
+
+
+            <p class="nav-section-title">
+                AI & ANALYTICS
+            </p>
+
+            <a href="ai-recommendation.html" class="nav-item">
+                <span class="nav-icon">🤖</span>
+                <span>AI Recommendations</span>
+            </a>
+
+            <a
+                href="digital-twin.html"
+                class="nav-item active"
             >
+                <span class="nav-icon">🔮</span>
+                <span>Digital Twin</span>
+            </a>
 
-                <p class="nav-section-title">
-                    MAIN
-                </p>
-
-                <a
-                    href="dashboard.html"
-                    class="nav-item"
-                >
-                    <span class="nav-icon">📊</span>
-                    <span>Dashboard</span>
-                </a>
-
-                <a
-                    href="crop-soil.html"
-                    class="nav-item"
-                >
-                    <span class="nav-icon">🌾</span>
-                    <span>Crop &amp; Soil</span>
-                </a>
-
-                <a
-                    href="irrigation.html"
-                    class="nav-item"
-                >
-                    <span class="nav-icon">💧</span>
-                    <span>Irrigation</span>
-                </a>
-
-                <a
-                    href="weather.html"
-                    class="nav-item"
-                >
-                    <span class="nav-icon">🌦️</span>
-                    <span>Weather</span>
-                </a>
+            <a href="analytics.html" class="nav-item">
+                <span class="nav-icon">📈</span>
+                <span>Analytics</span>
+            </a>
 
 
-                <p class="nav-section-title">
-                    AI &amp; ANALYTICS
-                </p>
+            <p class="nav-section-title">
+                FARMER
+            </p>
 
-                <a
-                    href="ai-recommendation.html"
-                    class="nav-item"
-                >
-                    <span class="nav-icon">🤖</span>
-                    <span>AI Recommendations</span>
-                </a>
+            <a href="farmer-passport.html" class="nav-item">
+                <span class="nav-icon">👨‍🌾</span>
+                <span>Farmer Passport</span>
+            </a>
 
-                <a
-                    href="digital-twin.html"
-                    class="nav-item active"
-                >
-                    <span class="nav-icon">🔮</span>
-                    <span>Digital Twin</span>
-                </a>
-
-                <a
-                    href="analytics.html"
-                    class="nav-item"
-                >
-                    <span class="nav-icon">📈</span>
-                    <span>Analytics</span>
-                </a>
+        </nav>
 
 
-                <p class="nav-section-title">
-                    FARMER
-                </p>
+        <div class="sidebar-bottom">
 
-                <a
-                    href="farmer-passport.html"
-                    class="nav-item"
-                >
-                    <span class="nav-icon">👨‍🌾</span>
-                    <span>Farmer Passport</span>
-                </a>
+            <button
+                type="button"
+                class="logout-button"
+                id="logoutButton"
+            >
+                <span>🚪</span>
+                <span>Logout</span>
+            </button>
 
-            </nav>
+        </div>
+
+    </aside>
 
 
-            <div class="sidebar-bottom">
+    <!-- =====================================================
+         MAIN CONTENT
+         ===================================================== -->
+
+    <main class="main-content">
+
+        <header class="topbar">
+
+            <div class="topbar-left">
 
                 <button
                     type="button"
-                    class="logout-button"
-                    id="logoutButton"
+                    class="menu-button"
+                    id="menuButton"
+                    aria-label="Open menu"
                 >
-                    <span>🚪</span>
-                    <span>Logout</span>
+                    ☰
                 </button>
+
+                <div>
+
+                    <p class="page-label">
+                        DIGITAL TWIN
+                    </p>
+
+                    <h2>
+                        Farm Digital Twin
+                    </h2>
+
+                </div>
 
             </div>
 
-        </aside>
+
+            <div class="topbar-right">
+
+                <button
+                    type="button"
+                    class="notification-button"
+                    aria-label="Notifications"
+                >
+                    🔔
+                    <span class="notification-dot"></span>
+                </button>
 
 
-        <!-- =====================================================
-             MAIN CONTENT
-             ===================================================== -->
+                <div class="user-profile">
 
-        <main class="main-content">
+                    <div class="user-avatar">
+                        👨‍🌾
+                    </div>
 
-            <!-- TOPBAR -->
+                    <div class="user-details">
 
-            <header class="topbar">
+                        <strong id="userName">
+                            Farmer
+                        </strong>
 
-                <div class="topbar-left">
-
-                    <button
-                        type="button"
-                        class="menu-button"
-                        id="menuButton"
-                        aria-label="Open navigation menu"
-                    >
-                        ☰
-                    </button>
-
-                    <div>
-
-                        <p class="page-label">
-                            DIGITAL FARM MODEL
-                        </p>
-
-                        <h2>
-                            Digital Twin
-                        </h2>
+                        <span>
+                            Farmer Account
+                        </span>
 
                     </div>
 
                 </div>
 
+            </div>
 
-                <div class="topbar-right">
-
-                    <button
-                        type="button"
-                        class="notification-button"
-                        id="notificationButton"
-                        aria-label="Notifications"
-                    >
-                        🔔
-
-                        <span
-                            class="notification-dot"
-                            aria-hidden="true"
-                        ></span>
-
-                    </button>
+        </header>
 
 
-                    <div class="user-profile">
+        <!-- =================================================
+             CONTENT
+             ================================================= -->
 
-                        <div class="user-avatar">
-                            👨‍🌾
-                        </div>
+        <div class="dashboard-content">
 
-                        <div class="user-details">
 
-                            <strong id="userName">
-                                Farmer
-                            </strong>
+            <!-- PAGE HEADER -->
 
-                            <span>
-                                Farmer Account
-                            </span>
+            <section class="twin-page-header">
 
-                        </div>
+                <div>
 
-                    </div>
+                    <p class="welcome-label">
+                        VIRTUAL FARM MODEL
+                    </p>
+
+                    <h1>
+                        Your Farm's Digital Twin 🔮
+                    </h1>
+
+                    <p>
+                        A virtual representation of your farm
+                        that combines real-time conditions,
+                        historical data and AI predictions.
+                    </p>
 
                 </div>
 
-            </header>
+
+                <div class="twin-status">
+
+                    <span class="twin-status-dot"></span>
+
+                    Twin Synchronized
+
+                </div>
+
+            </section>
 
 
             <!-- =================================================
-                 PAGE CONTENT
+                 FARM DIGITAL MODEL
                  ================================================= -->
 
-            <div class="dashboard-content">
+            <section class="twin-overview-grid">
 
 
-                <!-- PAGE HEADER -->
+                <!-- FARM VISUAL -->
 
-                <section class="dashboard-welcome">
+                <article class="twin-visual-card">
 
-                    <div>
-
-                        <p class="welcome-label">
-                            VIRTUAL FARM MODEL
-                        </p>
-
-                        <h1>
-                            Digital Twin of Your Farm 🔮
-                        </h1>
-
-                        <p>
-                            A virtual representation of your farm
-                            that combines real-time IoT data, crop
-                            conditions and AI insights.
-                        </p>
-
-                    </div>
-
-
-                    <div class="dashboard-date">
-
-                        <span>
-                            TWIN STATUS
-                        </span>
-
-                        <strong id="twinStatus">
-                            ● Live
-                        </strong>
-
-                    </div>
-
-                </section>
-
-
-                <!-- =================================================
-                     DIGITAL TWIN OVERVIEW
-                     ================================================= -->
-
-                <section class="digital-twin-overview">
-
-                    <div class="twin-header">
+                    <div class="card-top">
 
                         <div>
 
                             <span class="card-label">
-                                FARM DIGITAL TWIN
+                                LIVE FARM MODEL
                             </span>
 
                             <h2>
-                                Field Simulation Model
+                                Farm Environment
                             </h2>
 
                         </div>
 
-
-                        <div class="twin-controls">
-
-                            <button
-                                type="button"
-                                class="twin-control active"
-                                id="liveModeButton"
-                            >
-                                Live Data
-                            </button>
-
-                            <button
-                                type="button"
-                                class="twin-control"
-                                id="simulationModeButton"
-                            >
-                                Simulation
-                            </button>
-
-                        </div>
+                        <span class="live-badge">
+                            ● LIVE
+                        </span>
 
                     </div>
 
 
-                    <!-- FARM VISUALIZATION -->
-
-                    <div
-                        class="farm-visualization"
-                        id="farmVisualization"
-                    >
+                    <div class="farm-model">
 
                         <div class="farm-sky">
 
@@ -356,684 +292,580 @@
                         </div>
 
 
-                        <div class="farm-ground">
+                        <div class="farm-land">
 
-                            <div class="farm-field">
-
-                                <div class="crop-row">
-                                    🌱 🌱 🌱 🌱 🌱 🌱 🌱
-                                </div>
-
-                                <div class="crop-row">
-                                    🌱 🌱 🌱 🌱 🌱 🌱 🌱
-                                </div>
-
-                                <div class="crop-row">
-                                    🌱 🌱 🌱 🌱 🌱 🌱 🌱
-                                </div>
-
-                                <div class="crop-row">
-                                    🌱 🌱 🌱 🌱 🌱 🌱 🌱
-                                </div>
-
+                            <div class="farm-row row-one">
+                                🌱 🌱 🌱 🌱 🌱
                             </div>
 
-
-                            <div class="water-tank">
-                                🛢️
-                                <span>
-                                    Water Tank
-                                </span>
+                            <div class="farm-row row-two">
+                                🌱 🌱 🌱 🌱 🌱
                             </div>
 
-
-                            <div class="farm-pump">
-                                💧
-                                <span>
-                                    Pump
-                                </span>
+                            <div class="farm-row row-three">
+                                🌱 🌱 🌱 🌱 🌱
                             </div>
 
+                        </div>
 
-                            <div class="farm-sensor sensor-one">
-                                📡
-                            </div>
 
-                            <div class="farm-sensor sensor-two">
-                                📡
-                            </div>
-
+                        <div class="farm-water">
+                            💧
                         </div>
 
                     </div>
 
 
-                    <!-- TWIN STATUS -->
+                    <div class="twin-metrics">
 
-                    <div class="twin-status-bar">
-
-                        <div>
+                        <div class="twin-metric">
 
                             <span>
-                                FARM
-                            </span>
-
-                            <strong>
-                                Field A
-                            </strong>
-
-                        </div>
-
-
-                        <div>
-
-                            <span>
-                                CROP
-                            </span>
-
-                            <strong>
-                                Wheat
-                            </strong>
-
-                        </div>
-
-
-                        <div>
-
-                            <span>
-                                AREA
-                            </span>
-
-                            <strong>
-                                2.5 Acres
-                            </strong>
-
-                        </div>
-
-
-                        <div>
-
-                            <span>
-                                DATA STATUS
-                            </span>
-
-                            <strong id="dataStatus">
-                                ● Synchronized
-                            </strong>
-
-                        </div>
-
-                    </div>
-
-                </section>
-
-
-                <!-- =================================================
-                     LIVE PARAMETERS
-                     ================================================= -->
-
-                <section>
-
-                    <div class="section-heading">
-
-                        <div>
-
-                            <span class="card-label">
-                                REAL-TIME DATA
-                            </span>
-
-                            <h2>
-                                Twin Parameters
-                            </h2>
-
-                        </div>
-
-                    </div>
-
-
-                    <div class="stats-grid">
-
-
-                        <!-- Soil Moisture -->
-
-                        <article class="stat-card">
-
-                            <div class="stat-card-header">
-
-                                <div class="stat-icon blue">
-                                    💧
-                                </div>
-
-                                <span class="stat-status good">
-                                    LIVE
-                                </span>
-
-                            </div>
-
-                            <span class="stat-label">
-                                SOIL MOISTURE
-                            </span>
-
-                            <h3 id="twinSoilMoisture">
-                                42%
-                            </h3>
-
-                            <p>
-                                Current field moisture
-                            </p>
-
-                        </article>
-
-
-                        <!-- Temperature -->
-
-                        <article class="stat-card">
-
-                            <div class="stat-card-header">
-
-                                <div class="stat-icon orange">
-                                    🌡️
-                                </div>
-
-                                <span class="stat-status good">
-                                    LIVE
-                                </span>
-
-                            </div>
-
-                            <span class="stat-label">
-                                TEMPERATURE
-                            </span>
-
-                            <h3 id="twinTemperature">
-                                27°C
-                            </h3>
-
-                            <p>
-                                Current field temperature
-                            </p>
-
-                        </article>
-
-
-                        <!-- Humidity -->
-
-                        <article class="stat-card">
-
-                            <div class="stat-card-header">
-
-                                <div class="stat-icon cyan">
-                                    💦
-                                </div>
-
-                                <span class="stat-status good">
-                                    LIVE
-                                </span>
-
-                            </div>
-
-                            <span class="stat-label">
-                                HUMIDITY
-                            </span>
-
-                            <h3 id="twinHumidity">
-                                68%
-                            </h3>
-
-                            <p>
-                                Current air humidity
-                            </p>
-
-                        </article>
-
-
-                        <!-- Crop Health -->
-
-                        <article class="stat-card">
-
-                            <div class="stat-card-header">
-
-                                <div class="stat-icon green">
-                                    🌱
-                                </div>
-
-                                <span class="stat-status good">
-                                    HEALTHY
-                                </span>
-
-                            </div>
-
-                            <span class="stat-label">
-                                CROP HEALTH
-                            </span>
-
-                            <h3 id="twinCropHealth">
-                                91%
-                            </h3>
-
-                            <p>
-                                AI estimated crop health
-                            </p>
-
-                        </article>
-
-                    </div>
-
-                </section>
-
-
-                <!-- =================================================
-                     SIMULATION CONTROLS
-                     ================================================= -->
-
-                <section class="dashboard-card">
-
-                    <div class="card-header">
-
-                        <div>
-
-                            <span class="card-label">
-                                WHAT-IF SIMULATION
-                            </span>
-
-                            <h2>
-                                Test Farm Scenarios
-                            </h2>
-
-                        </div>
-
-                        <span class="ai-badge">
-                            AI
-                        </span>
-
-                    </div>
-
-
-                    <p class="simulation-description">
-                        Change a farm condition to understand how
-                        the digital twin may respond. This is a
-                        prototype simulation for demonstration.
-                    </p>
-
-
-                    <div class="simulation-controls">
-
-
-                        <div class="simulation-control">
-
-                            <label for="simulationMoisture">
-                                Soil Moisture
-                            </label>
-
-                            <div class="range-value">
-
-                                <input
-                                    type="range"
-                                    id="simulationMoisture"
-                                    min="0"
-                                    max="100"
-                                    value="42"
-                                >
-
-                                <strong id="simulationMoistureValue">
-                                    42%
-                                </strong>
-
-                            </div>
-
-                        </div>
-
-
-                        <div class="simulation-control">
-
-                            <label for="simulationTemperature">
                                 Temperature
-                            </label>
+                            </span>
 
-                            <div class="range-value">
-
-                                <input
-                                    type="range"
-                                    id="simulationTemperature"
-                                    min="10"
-                                    max="45"
-                                    value="27"
-                                >
-
-                                <strong id="simulationTemperatureValue">
-                                    27°C
-                                </strong>
-
-                            </div>
+                            <strong id="twinTemperature">
+                                28°C
+                            </strong>
 
                         </div>
 
+                        <div class="twin-metric">
 
-                        <div class="simulation-control">
+                            <span>
+                                Humidity
+                            </span>
 
-                            <label for="simulationRain">
-                                Rain Probability
-                            </label>
+                            <strong id="twinHumidity">
+                                67%
+                            </strong>
 
-                            <div class="range-value">
+                        </div>
 
-                                <input
-                                    type="range"
-                                    id="simulationRain"
-                                    min="0"
-                                    max="100"
-                                    value="35"
-                                >
+                        <div class="twin-metric">
 
-                                <strong id="simulationRainValue">
-                                    35%
-                                </strong>
+                            <span>
+                                Soil Moisture
+                            </span>
 
-                            </div>
+                            <strong id="twinMoisture">
+                                42%
+                            </strong>
+
+                        </div>
+
+                        <div class="twin-metric">
+
+                            <span>
+                                Soil pH
+                            </span>
+
+                            <strong id="twinPH">
+                                6.5
+                            </strong>
 
                         </div>
 
                     </div>
 
-
-                    <div class="simulation-actions">
-
-                        <button
-                            type="button"
-                            class="primary-button"
-                            id="runSimulationButton"
-                        >
-                            ▶ Run Simulation
-                        </button>
-
-                        <button
-                            type="button"
-                            class="secondary-button"
-                            id="resetSimulationButton"
-                        >
-                            ↺ Reset
-                        </button>
-
-                    </div>
-
-                </section>
+                </article>
 
 
-                <!-- =================================================
-                     SIMULATION RESULT
-                     ================================================= -->
+                <!-- FARM STATUS -->
 
-                <section
-                    class="dashboard-card simulation-result-card"
-                    id="simulationResult"
-                >
+                <article class="twin-status-card">
 
-                    <div class="card-header">
+                    <div class="card-top">
 
                         <div>
 
                             <span class="card-label">
-                                SIMULATION RESULT
+                                FARM HEALTH
                             </span>
 
                             <h2>
-                                Predicted Farm Response
+                                Current Status
                             </h2>
 
                         </div>
 
-                        <span class="ai-badge">
-                            PREDICTED
-                        </span>
-
                     </div>
 
 
-                    <div class="simulation-result-grid">
+                    <div class="health-score">
 
-                        <div class="result-item">
+                        <div class="health-circle">
+
+                            <strong>
+                                86
+                            </strong>
 
                             <span>
-                                Irrigation Need
+                                /100
                             </span>
-
-                            <strong id="simulationIrrigation">
-                                Normal
-                            </strong>
 
                         </div>
 
+                        <div>
 
-                        <div class="result-item">
-
-                            <span>
-                                Crop Stress
-                            </span>
-
-                            <strong id="simulationStress">
-                                Low
-                            </strong>
-
-                        </div>
-
-
-                        <div class="result-item">
-
-                            <span>
-                                Disease Risk
-                            </span>
-
-                            <strong id="simulationDisease">
-                                Low
-                            </strong>
-
-                        </div>
-
-
-                        <div class="result-item">
-
-                            <span>
-                                Overall Condition
-                            </span>
-
-                            <strong id="simulationOverall">
+                            <strong>
                                 Healthy
                             </strong>
 
+                            <p>
+                                Your farm is currently
+                                operating under favorable
+                                conditions.
+                            </p>
+
                         </div>
 
                     </div>
 
 
-                    <div class="simulation-message">
+                    <div class="health-list">
 
-                        <span>
-                            💡
+                        <div>
+                            <span>🌱 Crop Health</span>
+                            <strong class="status-good">
+                                Good
+                            </strong>
+                        </div>
+
+                        <div>
+                            <span>💧 Water Status</span>
+                            <strong class="status-good">
+                                Optimal
+                            </strong>
+                        </div>
+
+                        <div>
+                            <span>🌦️ Weather Risk</span>
+                            <strong class="status-medium">
+                                Moderate
+                            </strong>
+                        </div>
+
+                        <div>
+                            <span>🦠 Disease Risk</span>
+                            <strong class="status-good">
+                                Low
+                            </strong>
+                        </div>
+
+                    </div>
+
+                </article>
+
+            </section>
+
+
+            <!-- =================================================
+                 WHAT IF SIMULATION
+                 ================================================= -->
+
+            <section class="simulation-card">
+
+                <div class="simulation-header">
+
+                    <div>
+
+                        <span class="card-label">
+                            AI WHAT-IF SIMULATION
                         </span>
 
-                        <p id="simulationMessage">
-                            Run a simulation to see how changing
-                            farm conditions may affect the crop.
+                        <h2>
+                            Test Different Farming Decisions
+                        </h2>
+
+                        <p>
+                            Change future conditions and see
+                            how they may affect yield, water
+                            consumption and profit.
                         </p>
 
                     </div>
 
-                </section>
+                    <div class="simulation-icon">
+                        🧠
+                    </div>
+
+                </div>
 
 
-                <!-- =================================================
-                     DATA FLOW
-                     ================================================= -->
+                <div class="simulation-body">
 
-                <section class="dashboard-card">
 
-                    <div class="card-header">
+                    <!-- INPUTS -->
 
-                        <div>
+                    <div class="simulation-inputs">
 
-                            <span class="card-label">
-                                SYSTEM ARCHITECTURE
+                        <div class="simulation-field">
+
+                            <label for="cropSelect">
+                                Crop
+                            </label>
+
+                            <select id="cropSelect">
+
+                                <option value="tomato">
+                                    Tomato
+                                </option>
+
+                                <option value="rice">
+                                    Rice
+                                </option>
+
+                                <option value="wheat">
+                                    Wheat
+                                </option>
+
+                                <option value="soybean">
+                                    Soybean
+                                </option>
+
+                            </select>
+
+                        </div>
+
+
+                        <div class="simulation-field">
+
+                            <label for="irrigationRange">
+                                Irrigation Change
+                            </label>
+
+                            <div class="range-row">
+
+                                <input
+                                    type="range"
+                                    id="irrigationRange"
+                                    min="-50"
+                                    max="50"
+                                    value="0"
+                                >
+
+                                <strong id="irrigationValue">
+                                    0%
+                                </strong>
+
+                            </div>
+
+                        </div>
+
+
+                        <div class="simulation-field">
+
+                            <label for="rainfallRange">
+                                Rainfall Change
+                            </label>
+
+                            <div class="range-row">
+
+                                <input
+                                    type="range"
+                                    id="rainfallRange"
+                                    min="-50"
+                                    max="50"
+                                    value="0"
+                                >
+
+                                <strong id="rainfallValue">
+                                    0%
+                                </strong>
+
+                            </div>
+
+                        </div>
+
+
+                        <div class="simulation-field">
+
+                            <label for="temperatureRange">
+                                Temperature Change
+                            </label>
+
+                            <div class="range-row">
+
+                                <input
+                                    type="range"
+                                    id="temperatureRange"
+                                    min="-10"
+                                    max="10"
+                                    value="0"
+                                >
+
+                                <strong id="temperatureValue">
+                                    0°C
+                                </strong>
+
+                            </div>
+
+                        </div>
+
+
+                        <button
+                            type="button"
+                            class="simulate-button"
+                            id="simulateButton"
+                        >
+                            Run AI Simulation →
+                        </button>
+
+                    </div>
+
+
+                    <!-- RESULTS -->
+
+                    <div class="simulation-results">
+
+                        <div class="results-title">
+                            Predicted Impact
+                        </div>
+
+
+                        <div class="result-grid">
+
+
+                            <div class="result-card">
+
+                                <span>
+                                    Expected Yield
+                                </span>
+
+                                <strong id="yieldResult">
+                                    4.8 Ton
+                                </strong>
+
+                                <small id="yieldChange">
+                                    Baseline
+                                </small>
+
+                            </div>
+
+
+                            <div class="result-card">
+
+                                <span>
+                                    Water Consumption
+                                </span>
+
+                                <strong id="waterResult">
+                                    18,000 L
+                                </strong>
+
+                                <small id="waterChange">
+                                    Baseline
+                                </small>
+
+                            </div>
+
+
+                            <div class="result-card">
+
+                                <span>
+                                    Expected Profit
+                                </span>
+
+                                <strong id="profitResult">
+                                    ₹1.42 L
+                                </strong>
+
+                                <small id="profitChange">
+                                    Baseline
+                                </small>
+
+                            </div>
+
+                        </div>
+
+
+                        <div class="simulation-recommendation">
+
+                            <span>
+                                🤖 AI Recommendation
                             </span>
 
-                            <h2>
-                                Digital Twin Data Flow
-                            </h2>
+                            <p id="simulationRecommendation">
+                                Current farming conditions
+                                appear balanced. Run a simulation
+                                to compare alternative strategies.
+                            </p>
 
                         </div>
 
                     </div>
 
+                </div>
 
-                    <div class="data-flow">
-
-                        <div class="flow-step">
-
-                            <div class="flow-icon">
-                                📡
-                            </div>
-
-                            <strong>
-                                IoT Sensors
-                            </strong>
-
-                            <span>
-                                Field Data
-                            </span>
-
-                        </div>
+            </section>
 
 
-                        <div class="flow-arrow">
-                            →
-                        </div>
+            <!-- =================================================
+                 DIGITAL TWIN PIPELINE
+                 ================================================= -->
 
+            <section class="pipeline-card">
 
-                        <div class="flow-step">
+                <div class="card-top">
 
-                            <div class="flow-icon">
-                                ☁️
-                            </div>
+                    <div>
 
-                            <strong>
-                                Data Platform
-                            </strong>
+                        <span class="card-label">
+                            DIGITAL TWIN DATA FLOW
+                        </span>
 
-                            <span>
-                                Data Processing
-                            </span>
-
-                        </div>
-
-
-                        <div class="flow-arrow">
-                            →
-                        </div>
-
-
-                        <div class="flow-step">
-
-                            <div class="flow-icon">
-                                🤖
-                            </div>
-
-                            <strong>
-                                AI / ML
-                            </strong>
-
-                            <span>
-                                Prediction
-                            </span>
-
-                        </div>
-
-
-                        <div class="flow-arrow">
-                            →
-                        </div>
-
-
-                        <div class="flow-step">
-
-                            <div class="flow-icon">
-                                🔮
-                            </div>
-
-                            <strong>
-                                Digital Twin
-                            </strong>
-
-                            <span>
-                                Simulation
-                            </span>
-
-                        </div>
-
-
-                        <div class="flow-arrow">
-                            →
-                        </div>
-
-
-                        <div class="flow-step">
-
-                            <div class="flow-icon">
-                                👨‍🌾
-                            </div>
-
-                            <strong>
-                                Farmer
-                            </strong>
-
-                            <span>
-                                Decision
-                            </span>
-
-                        </div>
+                        <h2>
+                            How Your Farm Model Works
+                        </h2>
 
                     </div>
 
-                </section>
+                </div>
 
 
-                <!-- =================================================
-                     PROTOTYPE NOTICE
-                     ================================================= -->
+                <div class="pipeline">
 
-                <section class="prototype-notice">
+                    <div class="pipeline-step">
 
-                    <span>
-                        ℹ️
-                    </span>
+                        <div class="pipeline-icon">
+                            📡
+                        </div>
 
-                    <p>
-                        The digital twin shown here is a prototype
-                        interface. Live sensor synchronization,
-                        predictive models and simulation results
-                        will be connected to the backend and IoT
-                        hardware in the next development stage.
-                    </p>
+                        <strong>
+                            Farm Data
+                        </strong>
 
-                </section>
+                        <span>
+                            Sensors & Inputs
+                        </span>
 
-            </div>
-
-        </main>
-
-    </div>
+                    </div>
 
 
-    <!-- MOBILE SIDEBAR OVERLAY -->
-
-    <div
-        class="sidebar-overlay"
-        id="sidebarOverlay"
-        aria-hidden="true"
-    ></div>
+                    <div class="pipeline-arrow">
+                        →
+                    </div>
 
 
-    <!-- JAVASCRIPT -->
+                    <div class="pipeline-step">
 
-    <script src="../js/digital-twin.js"></script>
+                        <div class="pipeline-icon">
+                            ☁️
+                        </div>
+
+                        <strong>
+                            Data Platform
+                        </strong>
+
+                        <span>
+                            Store & Process
+                        </span>
+
+                    </div>
+
+
+                    <div class="pipeline-arrow">
+                        →
+                    </div>
+
+
+                    <div class="pipeline-step">
+
+                        <div class="pipeline-icon">
+                            🤖
+                        </div>
+
+                        <strong>
+                            AI Models
+                        </strong>
+
+                        <span>
+                            Predict & Analyze
+                        </span>
+
+                    </div>
+
+
+                    <div class="pipeline-arrow">
+                        →
+                    </div>
+
+
+                    <div class="pipeline-step">
+
+                        <div class="pipeline-icon">
+                            🔮
+                        </div>
+
+                        <strong>
+                            Digital Twin
+                        </strong>
+
+                        <span>
+                            Simulate Future
+                        </span>
+
+                    </div>
+
+
+                    <div class="pipeline-arrow">
+                        →
+                    </div>
+
+
+                    <div class="pipeline-step">
+
+                        <div class="pipeline-icon">
+                            👨‍🌾
+                        </div>
+
+                        <strong>
+                            Decision
+                        </strong>
+
+                        <span>
+                            Farmer Action
+                        </span>
+
+                    </div>
+
+                </div>
+
+            </section>
+
+
+            <!-- DISCLAIMER -->
+
+            <section class="ai-disclaimer">
+
+                <span>
+                    ⚠️
+                </span>
+
+                <p>
+                    Digital Twin predictions are decision-support
+                    estimates based on available data and model
+                    assumptions. They should not be treated as
+                    guaranteed outcomes.
+                </p>
+
+            </section>
+
+        </div>
+
+    </main>
+
+</div>
+
+
+<div
+    class="sidebar-overlay"
+    id="sidebarOverlay"
+></div>
+
+
+<script src="../js/digital-twin.js"></script>
 
 </body>
 

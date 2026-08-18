@@ -1,100 +1,177 @@
 /* =========================================================
-   SmartAgriTwin - Irrigation Page
+   SMART AGRI TWIN - IRRIGATION
    ========================================================= */
+
+.irrigation-page-header {
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+    gap: 20px;
+    margin-bottom: 22px;
+}
+
+.irrigation-page-header h1 {
+    margin-bottom: 6px;
+    font-size: 28px;
+    letter-spacing: -0.6px;
+}
+
+.irrigation-page-header p:last-child {
+    max-width: 700px;
+    color: var(--text-secondary);
+    font-size: 13px;
+    line-height: 1.5;
+}
+
+.irrigation-status {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 9px 12px;
+    border: 1px solid var(--border);
+    border-radius: 9px;
+    background: #fff;
+    font-size: 9px;
+    font-weight: 600;
+}
+
+.status-dot {
+    width: 7px;
+    height: 7px;
+    border-radius: 50%;
+    background: var(--success);
+}
 
 
 /* =========================================================
-   IRRIGATION STATUS
+   CURRENT STATUS
    ========================================================= */
 
 .irrigation-status-card {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    gap: 20px;
-
-    padding: 20px;
-
-    margin-bottom: 20px;
-
-    background: #ffffff;
-    border: 1px solid #e3e8e4;
-    border-radius: 12px;
-
-    box-shadow: 0 2px 8px rgba(30, 50, 35, 0.03);
+    gap: 25px;
+    padding: 24px;
+    margin-bottom: 18px;
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    background: linear-gradient(135deg, #fff, #f4faf5);
+    box-shadow: var(--shadow-sm);
 }
 
-.irrigation-status-left {
+.moisture-display {
     display: flex;
     align-items: center;
-    gap: 14px;
+    gap: 17px;
 }
 
-.irrigation-status-icon {
-    width: 48px;
-    height: 48px;
-
+.water-icon {
     display: flex;
     align-items: center;
     justify-content: center;
-
-    background: #e8f3fb;
-    border-radius: 12px;
-
-    font-size: 22px;
+    width: 68px;
+    height: 68px;
+    border-radius: 18px;
+    background: #eef8ff;
+    font-size: 31px;
 }
 
-.irrigation-status-left h2 {
-    margin-bottom: 2px;
-
-    font-size: 18px;
-    color: #29372f;
+.moisture-value {
+    display: flex;
+    align-items: flex-start;
+    margin: 4px 0;
 }
 
-.irrigation-status-left p {
-    font-size: 11px;
-    color: #7d8780;
+.moisture-value strong {
+    font-size: 40px;
+    line-height: 1;
+    letter-spacing: -1.5px;
 }
 
-.irrigation-status-badge {
-    display: inline-flex;
-    align-items: center;
-    gap: 6px;
-
-    padding: 7px 11px;
-
-    background: #eaf7eb;
-    border-radius: 20px;
-
-    color: #34783b;
-
-    font-size: 10px;
-    font-weight: 700;
+.moisture-value span {
+    margin-top: 3px;
+    font-size: 15px;
+    font-weight: 600;
 }
 
-.irrigation-status-badge::before {
-    content: "";
+.moisture-display p {
+    font-size: 9px;
+    color: var(--text-secondary);
+}
 
-    width: 7px;
-    height: 7px;
+.irrigation-summary {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    min-width: 430px;
+}
 
-    background: #4caf50;
-    border-radius: 50%;
+.irrigation-summary div {
+    padding: 8px 17px;
+    border-left: 1px solid var(--border);
+}
+
+.irrigation-summary span {
+    display: block;
+    margin-bottom: 5px;
+    font-size: 8px;
+    color: var(--text-secondary);
+}
+
+.irrigation-summary strong {
+    font-size: 13px;
+}
+
+.pump-off {
+    color: var(--text-secondary);
 }
 
 
 /* =========================================================
-   IRRIGATION CONTROL GRID
+   MAIN GRID
    ========================================================= */
 
-.irrigation-control-grid {
+.irrigation-grid {
     display: grid;
-
-    grid-template-columns: 1.2fr 0.8fr;
-
+    grid-template-columns: 1fr 1fr;
     gap: 18px;
+    margin-bottom: 18px;
+}
 
-    margin-bottom: 20px;
+.pump-control-card,
+.irrigation-ai-card,
+.water-usage-card,
+.irrigation-history-card {
+    padding: 22px;
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    background: #fff;
+    box-shadow: var(--shadow-sm);
+}
+
+.section-heading {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 15px;
+    margin-bottom: 18px;
+}
+
+.section-heading h2 {
+    margin-top: 4px;
+    font-size: 17px;
+}
+
+.control-mode,
+.ai-badge,
+.usage-period,
+.history-count {
+    padding: 6px 9px;
+    border-radius: 6px;
+    background: #f0f7f1;
+    color: var(--primary);
+    font-size: 8px;
+    font-weight: 600;
 }
 
 
@@ -102,391 +179,162 @@
    PUMP CONTROL
    ========================================================= */
 
-.pump-control-card {
-    padding: 22px;
-
-    background: #ffffff;
-    border: 1px solid #e3e8e4;
-    border-radius: 12px;
-
-    box-shadow: 0 2px 8px rgba(30, 50, 35, 0.03);
-}
-
-.pump-control {
+.pump-visual {
     display: flex;
     align-items: center;
-    justify-content: space-between;
-
-    padding: 18px;
-
-    background: #f8faf8;
-
-    border: 1px solid #edf1ed;
-    border-radius: 10px;
+    flex-direction: column;
+    padding: 15px 0 20px;
+    text-align: center;
 }
 
-.pump-info {
-    display: flex;
-    align-items: center;
-    gap: 13px;
-}
-
-.pump-icon {
-    width: 44px;
-    height: 44px;
-
+.pump-circle {
     display: flex;
     align-items: center;
     justify-content: center;
-
-    background: #e8f3fb;
-    border-radius: 10px;
-
-    font-size: 20px;
-}
-
-.pump-info strong {
-    display: block;
-
-    font-size: 13px;
-    color: #354139;
-}
-
-.pump-info span {
-    display: block;
-
-    margin-top: 2px;
-
-    font-size: 10px;
-    color: #87918a;
-}
-
-
-/* =========================================================
-   TOGGLE SWITCH
-   ========================================================= */
-
-.toggle-switch {
-    position: relative;
-
-    width: 48px;
-    height: 26px;
-}
-
-.toggle-switch input {
-    opacity: 0;
-    width: 0;
-    height: 0;
-}
-
-.toggle-slider {
-    position: absolute;
-    inset: 0;
-
-    background: #d9dfda;
-
-    border-radius: 30px;
-
-    transition: 0.2s ease;
-}
-
-.toggle-slider::before {
-    content: "";
-
-    position: absolute;
-
-    width: 20px;
-    height: 20px;
-
-    left: 3px;
-    top: 3px;
-
-    background: #ffffff;
-
+    width: 90px;
+    height: 90px;
+    margin-bottom: 12px;
+    border: 6px solid #eef1ee;
     border-radius: 50%;
-
-    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.15);
-
-    transition: 0.2s ease;
-}
-
-.toggle-switch input:checked + .toggle-slider {
-    background: #4d934f;
-}
-
-.toggle-switch input:checked + .toggle-slider::before {
-    transform: translateX(22px);
-}
-
-
-/* =========================================================
-   IRRIGATION SUMMARY
-   ========================================================= */
-
-.irrigation-summary {
-    display: grid;
-
-    grid-template-columns: repeat(3, 1fr);
-
-    gap: 10px;
-
-    margin-top: 18px;
-}
-
-.irrigation-summary-item {
-    padding: 13px;
-
     background: #f8faf8;
-
-    border: 1px solid #edf1ed;
-    border-radius: 9px;
+    font-size: 36px;
+    transition: var(--transition);
 }
 
-.irrigation-summary-item span {
-    display: block;
+.pump-circle.active {
+    border-color: #b9e4c0;
+    background: #eefaf0;
+    box-shadow: 0 0 0 8px #f5fbf6;
+}
 
+.pump-visual > strong {
     margin-bottom: 4px;
+    font-size: 13px;
+}
 
+.pump-visual > span {
+    font-size: 8px;
+    color: var(--text-secondary);
+}
+
+.pump-controls {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 9px;
+}
+
+.pump-button {
+    padding: 11px 13px;
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    cursor: pointer;
+    font-family: inherit;
     font-size: 9px;
-    font-weight: 700;
-
-    letter-spacing: 0.5px;
-
-    color: #8b958e;
+    font-weight: 600;
+    transition: var(--transition);
 }
 
-.irrigation-summary-item strong {
-    font-size: 16px;
-    color: #344239;
+.pump-button:hover {
+    transform: translateY(-1px);
 }
 
-
-/* =========================================================
-   WATER LEVEL
-   ========================================================= */
-
-.water-level-card {
-    padding: 22px;
-
-    background: #ffffff;
-    border: 1px solid #e3e8e4;
-    border-radius: 12px;
-
-    box-shadow: 0 2px 8px rgba(30, 50, 35, 0.03);
+.pump-button.primary {
+    border-color: var(--primary);
+    background: var(--primary);
+    color: white;
 }
 
-.water-level-display {
-    display: flex;
-    align-items: center;
-    gap: 18px;
-
-    margin-top: 8px;
+.pump-button.secondary {
+    background: white;
+    color: var(--text-primary);
 }
 
-.water-tank {
-    position: relative;
-
-    width: 78px;
-    height: 125px;
-
-    overflow: hidden;
-
-    border: 3px solid #b7c6cc;
-    border-radius: 8px 8px 12px 12px;
-
-    background: #f3f6f7;
-}
-
-.water-fill {
-    position: absolute;
-
-    left: 0;
-    bottom: 0;
-
-    width: 100%;
-    height: 65%;
-
-    background: #72b7d6;
-
-    transition: height 0.5s ease;
-}
-
-.water-level-percent {
-    position: relative;
-    z-index: 2;
-
-    height: 100%;
-
-    display: flex;
-    align-items: center;
-    justify-content: center;
-
-    font-size: 18px;
-    font-weight: 700;
-
-    color: #344a54;
-}
-
-.water-level-info strong {
-    display: block;
-
-    margin-bottom: 4px;
-
-    font-size: 24px;
-    color: #2e6f8d;
-}
-
-.water-level-info span {
-    display: block;
-
-    font-size: 10px;
-    color: #85908a;
-}
-
-
-/* =========================================================
-   IRRIGATION RECOMMENDATION
-   ========================================================= */
-
-.irrigation-recommendation {
+.control-note {
     display: flex;
     align-items: flex-start;
-    gap: 13px;
-
-    margin-top: 18px;
-    padding: 14px;
-
-    background: #f0f7f1;
-
-    border: 1px solid #dcebdd;
-    border-radius: 9px;
+    gap: 8px;
+    margin-top: 15px;
+    padding: 10px;
+    border-radius: 7px;
+    background: #f8faf8;
 }
 
-.irrigation-recommendation-icon {
-    width: 36px;
-    height: 36px;
-
-    flex-shrink: 0;
-
-    display: flex;
-    align-items: center;
-    justify-content: center;
-
-    background: #e1f0e2;
-    border-radius: 9px;
-
-    font-size: 17px;
-}
-
-.irrigation-recommendation strong {
-    display: block;
-
-    margin-bottom: 3px;
-
+.control-note span {
     font-size: 12px;
-    color: #355d39;
 }
 
-.irrigation-recommendation p {
-    font-size: 10px;
-    line-height: 1.6;
-
-    color: #718173;
+.control-note p {
+    font-size: 7px;
+    line-height: 1.5;
+    color: var(--text-secondary);
 }
 
 
 /* =========================================================
-   SCHEDULE
+   AI RECOMMENDATION
    ========================================================= */
 
-.irrigation-schedule {
-    padding: 20px;
-
-    background: #ffffff;
-    border: 1px solid #e3e8e4;
-    border-radius: 12px;
-
-    box-shadow: 0 2px 8px rgba(30, 50, 35, 0.03);
-
-    margin-bottom: 20px;
+.irrigation-ai-card {
+    border-color: #e7e1f7;
+    background: linear-gradient(135deg, #fff, #faf8ff);
 }
 
-.schedule-list {
+.recommendation-result {
     display: flex;
-    flex-direction: column;
-
-    gap: 10px;
-}
-
-.schedule-item {
-    display: grid;
-
-    grid-template-columns: 90px 1fr 110px 90px;
-
-    align-items: center;
-
-    gap: 14px;
-
-    padding: 13px;
-
-    background: #f8faf8;
-
-    border: 1px solid #edf1ed;
+    align-items: flex-start;
+    gap: 12px;
+    padding: 14px;
+    margin-bottom: 15px;
     border-radius: 9px;
+    background: #f7f4ff;
 }
 
-.schedule-time {
-    font-size: 12px;
-    font-weight: 700;
-
-    color: #355d39;
+.recommendation-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 38px;
+    height: 38px;
+    flex-shrink: 0;
+    border-radius: 9px;
+    background: white;
+    font-size: 18px;
 }
 
-.schedule-info strong {
+.recommendation-result strong {
     display: block;
-
-    font-size: 12px;
-    color: #354139;
-}
-
-.schedule-info span {
-    display: block;
-
-    margin-top: 2px;
-
-    font-size: 9px;
-    color: #89938d;
-}
-
-.schedule-duration {
+    margin: 3px 0 5px;
     font-size: 11px;
-    color: #657168;
 }
 
-.schedule-status {
-    width: fit-content;
-
-    padding: 4px 8px;
-
-    border-radius: 20px;
-
-    font-size: 9px;
-    font-weight: 700;
+.recommendation-result p {
+    font-size: 8px;
+    line-height: 1.55;
+    color: var(--text-secondary);
 }
 
-.schedule-status.completed {
-    background: #eaf7eb;
-    color: #347a3c;
+.recommendation-metrics {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 8px;
 }
 
-.schedule-status.pending {
-    background: #fff3dc;
-    color: #b7791f;
+.recommendation-metrics div {
+    padding: 11px;
+    border: 1px solid #eeeaf7;
+    border-radius: 8px;
+    background: white;
 }
 
-.schedule-status.active {
-    background: #e8f3fb;
-    color: #327394;
+.recommendation-metrics span {
+    display: block;
+    margin-bottom: 5px;
+    font-size: 7px;
+    color: var(--text-secondary);
+}
+
+.recommendation-metrics strong {
+    font-size: 11px;
 }
 
 
@@ -495,127 +343,210 @@
    ========================================================= */
 
 .water-usage-card {
-    padding: 20px;
-
-    background: #ffffff;
-    border: 1px solid #e3e8e4;
-    border-radius: 12px;
-
-    box-shadow: 0 2px 8px rgba(30, 50, 35, 0.03);
+    margin-bottom: 18px;
 }
 
-.water-usage-value {
-    margin-bottom: 4px;
-
-    font-size: 28px;
-    font-weight: 700;
-
-    color: #2e718f;
-}
-
-.water-usage-label {
-    font-size: 10px;
-    color: #87918a;
-}
-
-.water-usage-progress {
-    width: 100%;
-    height: 8px;
-
-    margin-top: 17px;
-
-    overflow: hidden;
-
-    background: #edf1ed;
-
-    border-radius: 20px;
-}
-
-.water-usage-progress span {
-    display: block;
-
-    height: 100%;
-    width: 72%;
-
-    background: #65a9c8;
-
-    border-radius: inherit;
-}
-
-.water-usage-note {
-    margin-top: 7px;
-
-    font-size: 10px;
-    color: #87918a;
-}
-
-
-/* =========================================================
-   MANUAL CONTROL BUTTONS
-   ========================================================= */
-
-.irrigation-actions {
+.usage-overview {
     display: flex;
-    gap: 10px;
-
-    margin-top: 18px;
+    align-items: center;
+    gap: 40px;
 }
 
-.irrigation-action-button {
+.usage-total {
+    min-width: 150px;
+}
+
+.usage-total strong {
+    font-size: 31px;
+    letter-spacing: -1px;
+}
+
+.usage-total span {
+    margin-left: 4px;
+    font-size: 10px;
+    color: var(--text-secondary);
+}
+
+.usage-total small {
+    display: block;
+    margin-top: 4px;
+    font-size: 7px;
+    color: var(--text-secondary);
+}
+
+.usage-progress-area {
     flex: 1;
+}
 
-    min-height: 40px;
+.usage-progress-header {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 7px;
+}
 
-    border: 1px solid #dce4dd;
-    border-radius: 8px;
+.usage-progress-header span,
+.usage-progress-header strong {
+    font-size: 8px;
+}
 
-    background: #ffffff;
+.usage-progress {
+    height: 8px;
+    overflow: hidden;
+    border-radius: 20px;
+    background: #edf1ed;
+}
 
-    color: #3c5740;
+.usage-progress span {
+    display: block;
+    height: 100%;
+    border-radius: inherit;
+    background: var(--primary);
+}
 
-    font-size: 11px;
+.usage-progress-area > small {
+    display: block;
+    margin-top: 6px;
+    font-size: 7px;
+    color: var(--text-secondary);
+}
+
+
+/* =========================================================
+   HISTORY TABLE
+   ========================================================= */
+
+.irrigation-history-card {
+    margin-bottom: 18px;
+}
+
+.table-wrapper {
+    overflow-x: auto;
+}
+
+.irrigation-history-card table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.irrigation-history-card th,
+.irrigation-history-card td {
+    padding: 11px 9px;
+    border-bottom: 1px solid #edf0ed;
+    text-align: left;
+    white-space: nowrap;
+}
+
+.irrigation-history-card th {
+    font-size: 7px;
     font-weight: 600;
-
-    transition: 0.2s ease;
+    color: var(--text-secondary);
+    text-transform: uppercase;
 }
 
-.irrigation-action-button:hover {
-    background: #f1f8f2;
-
-    border-color: #b9d3bb;
+.irrigation-history-card td {
+    font-size: 8px;
 }
 
-.irrigation-action-button.primary {
-    border-color: #2f7d32;
-
-    background: #2f7d32;
-
-    color: #ffffff;
+.history-status {
+    padding: 5px 7px;
+    border-radius: 5px;
+    font-size: 7px;
+    font-weight: 600;
 }
 
-.irrigation-action-button.primary:hover {
-    background: #256629;
-}
-
-
-/* =========================================================
-   RESPONSIVE - TABLET
-   ========================================================= */
-
-@media (max-width: 1100px) {
-
-    .irrigation-control-grid {
-        grid-template-columns: 1fr;
-    }
-
+.history-status.success {
+    background: #ecfdf5;
+    color: var(--success);
 }
 
 
 /* =========================================================
-   RESPONSIVE - MOBILE
+   AI ADVISORY
    ========================================================= */
 
-@media (max-width: 768px) {
+.irrigation-advisory {
+    display: flex;
+    align-items: flex-start;
+    gap: 14px;
+    padding: 21px;
+    margin-bottom: 15px;
+    border: 1px solid #e5ddff;
+    border-radius: var(--radius);
+    background: linear-gradient(135deg, #fff, #faf8ff);
+    box-shadow: var(--shadow-sm);
+}
+
+.advisory-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 46px;
+    height: 46px;
+    flex-shrink: 0;
+    border-radius: 11px;
+    background: #f0ebff;
+    font-size: 20px;
+}
+
+.irrigation-advisory h2 {
+    margin: 4px 0 7px;
+    font-size: 17px;
+}
+
+.irrigation-advisory p {
+    max-width: 850px;
+    font-size: 9px;
+    line-height: 1.6;
+    color: var(--text-secondary);
+}
+
+.advisory-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 7px;
+    margin-top: 12px;
+}
+
+.advisory-tags span {
+    padding: 6px 8px;
+    border-radius: 6px;
+    background: white;
+    font-size: 7px;
+    font-weight: 600;
+    color: var(--text-secondary);
+}
+
+
+/* =========================================================
+   DISCLAIMER
+   ========================================================= */
+
+.irrigation-disclaimer {
+    display: flex;
+    align-items: flex-start;
+    gap: 8px;
+    padding: 11px 13px;
+    border: 1px solid #f0ead8;
+    border-radius: 8px;
+    background: #fffcf2;
+}
+
+.irrigation-disclaimer span {
+    font-size: 12px;
+}
+
+.irrigation-disclaimer p {
+    font-size: 8px;
+    line-height: 1.5;
+    color: var(--text-secondary);
+}
+
+
+/* =========================================================
+   RESPONSIVE
+   ========================================================= */
+
+@media (max-width: 1050px) {
 
     .irrigation-status-card {
         align-items: flex-start;
@@ -623,50 +554,77 @@
     }
 
     .irrigation-summary {
-        grid-template-columns: 1fr 1fr 1fr;
+        width: 100%;
+        min-width: 0;
     }
-
-    .schedule-item {
-        grid-template-columns: 80px 1fr 80px;
-    }
-
-    .schedule-status {
-        display: none;
-    }
-
 }
 
 
-/* =========================================================
-   RESPONSIVE - SMALL MOBILE
-   ========================================================= */
+@media (max-width: 850px) {
 
-@media (max-width: 480px) {
+    .irrigation-page-header {
+        align-items: flex-start;
+        flex-direction: column;
+    }
+
+    .irrigation-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .usage-overview {
+        align-items: flex-start;
+        flex-direction: column;
+        gap: 20px;
+    }
+
+    .usage-progress-area {
+        width: 100%;
+    }
+}
+
+
+@media (max-width: 600px) {
+
+    .irrigation-page-header h1 {
+        font-size: 23px;
+    }
+
+    .irrigation-status-card,
+    .pump-control-card,
+    .irrigation-ai-card,
+    .water-usage-card,
+    .irrigation-history-card,
+    .irrigation-advisory {
+        padding: 17px;
+    }
 
     .irrigation-summary {
         grid-template-columns: 1fr;
     }
 
-    .pump-control {
-        align-items: flex-start;
-        gap: 12px;
+    .irrigation-summary div {
+        padding: 9px 0;
+        border-left: 0;
+        border-bottom: 1px solid var(--border);
     }
 
-    .water-level-display {
-        justify-content: center;
+    .irrigation-summary div:last-child {
+        border-bottom: 0;
     }
 
-    .schedule-item {
+    .pump-controls {
         grid-template-columns: 1fr;
-        gap: 5px;
     }
 
-    .schedule-status {
-        display: inline-flex;
+    .recommendation-metrics {
+        grid-template-columns: 1fr;
     }
 
-    .irrigation-actions {
+    .irrigation-advisory {
         flex-direction: column;
     }
 
+    .advisory-tags {
+        flex-direction: column;
+    }
 }

@@ -13,46 +13,47 @@ function getElement(id) {
 
 
 /* =========================================================
+   AUTHENTICATION
+   ========================================================= */
+
+function checkAuthentication() {
+
+    const isLoggedIn =
+        localStorage.getItem("smartAgriLoggedIn");
+
+    if (isLoggedIn !== "true") {
+
+        window.location.href = "index.html";
+
+        return false;
+    }
+
+    return true;
+}
+
+
+/* =========================================================
    LOAD USER
    ========================================================= */
 
 function loadUser() {
 
-    const storedUser =
-        localStorage.getItem("smartAgriUser");
-
-    let user = {
-        name: "Farmer"
-    };
-
-
-    if (storedUser) {
-
-        try {
-
-            user = {
-                ...user,
-                ...JSON.parse(storedUser)
-            };
-
-        } catch (error) {
-
-            console.error(
-                "Unable to load user profile:",
-                error
-            );
-        }
-    }
-
+    const userData =
+        JSON.parse(
+            localStorage.getItem("smartAgriUser")
+        );
 
     const userName =
         getElement("userName");
 
-
-    if (userName) {
+    if (
+        userName &&
+        userData &&
+        userData.name
+    ) {
 
         userName.textContent =
-            user.name;
+            userData.name;
     }
 }
 
@@ -64,21 +65,15 @@ function loadUser() {
 function getFarmData() {
 
     const savedData =
-        localStorage.getItem(
-            "smartAgriFarmData"
-        );
-
+        localStorage.getItem("smartAgriFarmData");
 
     if (!savedData) {
         return null;
     }
 
-
     try {
 
-        return JSON.parse(
-            savedData
-        );
+        return JSON.parse(savedData);
 
     } catch (error) {
 
@@ -101,7 +96,6 @@ function loadFarmData() {
     const farmData =
         getFarmData();
 
-
     if (!farmData) {
         return;
     }
@@ -121,28 +115,21 @@ function loadFarmData() {
 
 
     if (farmName) {
-
         farmName.value =
             farmData.farmName || "";
     }
 
-
     if (farmArea) {
-
         farmArea.value =
             farmData.farmArea || "";
     }
 
-
     if (soilType) {
-
         soilType.value =
             farmData.soilType || "";
     }
 
-
     if (irrigationType) {
-
         irrigationType.value =
             farmData.irrigationType || "";
     }
@@ -150,7 +137,7 @@ function loadFarmData() {
 
 
 /* =========================================================
-   CLEAR VALIDATION ERRORS
+   CLEAR ERRORS
    ========================================================= */
 
 function clearErrors() {
@@ -160,24 +147,10 @@ function clearErrors() {
             ".field-error"
         );
 
-
     errors.forEach((error) => {
 
         error.textContent = "";
-    });
 
-
-    const invalidInputs =
-        document.querySelectorAll(
-            ".input-error"
-        );
-
-
-    invalidInputs.forEach((input) => {
-
-        input.classList.remove(
-            "input-error"
-        );
     });
 }
 
@@ -209,13 +182,8 @@ function validateFarmData() {
     const farmAreaError =
         getElement("farmAreaError");
 
-    const soilTypeError =
-        getElement("soilTypeError");
 
-
-    /* -----------------------------------------------------
-       FARM NAME
-       ----------------------------------------------------- */
+    /* ---------- Farm Name ---------- */
 
     if (
         !farmName ||
@@ -228,20 +196,11 @@ function validateFarmData() {
                 "Please enter your farm name.";
         }
 
-        if (farmName) {
-
-            farmName.classList.add(
-                "input-error"
-            );
-        }
-
         isValid = false;
     }
 
 
-    /* -----------------------------------------------------
-       FARM AREA
-       ----------------------------------------------------- */
+    /* ---------- Farm Area ---------- */
 
     if (
         !farmArea ||
@@ -252,13 +211,6 @@ function validateFarmData() {
 
             farmAreaError.textContent =
                 "Please enter the farm area.";
-        }
-
-        if (farmArea) {
-
-            farmArea.classList.add(
-                "input-error"
-            );
         }
 
         isValid = false;
@@ -273,37 +225,30 @@ function validateFarmData() {
                 "Farm area must be greater than 0.";
         }
 
-        farmArea.classList.add(
-            "input-error"
-        );
-
         isValid = false;
     }
 
 
-    /* -----------------------------------------------------
-       SOIL TYPE
-       ----------------------------------------------------- */
+    /* ---------- Soil Type ---------- */
 
     if (
         !soilType ||
         soilType.value === ""
     ) {
 
-        if (soilTypeError) {
-
-            soilTypeError.textContent =
-                "Please select the soil type.";
-        }
-
-        if (soilType) {
-
-            soilType.classList.add(
-                "input-error"
-            );
-        }
-
         isValid = false;
+
+        /*
+         * Soil type does not currently have
+         * a dedicated error element.
+         *
+         * We highlight the field instead.
+         */
+
+        soilType?.classList.add(
+            "input-error"
+        );
+
     }
 
 
@@ -331,23 +276,18 @@ function saveFarmData() {
     const farmData = {
 
         farmName:
-            getElement("farmName")
-                .value
-                .trim(),
+            getElement("farmName").value.trim(),
 
         farmArea:
             Number(
-                getElement("farmArea")
-                    .value
+                getElement("farmArea").value
             ),
 
         soilType:
-            getElement("soilType")
-                .value,
+            getElement("soilType").value,
 
         irrigationType:
-            getElement("irrigationType")
-                .value,
+            getElement("irrigationType").value,
 
         updatedAt:
             new Date().toISOString()
@@ -377,32 +317,29 @@ function showMessage(message, type) {
         getElement("saveMessage");
 
 
+    /*
+     * Create message element if it
+     * doesn't already exist.
+     */
+
     if (!messageBox) {
 
         messageBox =
             document.createElement("div");
 
-
         messageBox.id =
             "saveMessage";
-
 
         messageBox.style.marginTop =
             "12px";
 
-
         messageBox.style.fontSize =
             "11px";
-
 
         const button =
             getElement("saveFarmButton");
 
-
-        if (
-            button &&
-            button.parentElement
-        ) {
+        if (button) {
 
             button.parentElement.appendChild(
                 messageBox
@@ -419,19 +356,21 @@ function showMessage(message, type) {
     messageBox.textContent =
         message;
 
-
     messageBox.style.color =
         type === "success"
             ? "#15803d"
             : "#dc2626";
 
 
+    /*
+     * Automatically remove message
+     * after 3 seconds.
+     */
+
     setTimeout(() => {
 
         if (messageBox) {
-
-            messageBox.textContent =
-                "";
+            messageBox.textContent = "";
         }
 
     }, 3000);
@@ -439,7 +378,7 @@ function showMessage(message, type) {
 
 
 /* =========================================================
-   INPUT LISTENERS
+   REMOVE INPUT ERROR
    ========================================================= */
 
 function setupInputListeners() {
@@ -452,37 +391,29 @@ function setupInputListeners() {
 
     inputs.forEach((input) => {
 
-        const removeError = () => {
-
-            input.classList.remove(
-                "input-error"
-            );
-
-
-            const errorElement =
-                getElement(
-                    `${input.id}Error`
-                );
-
-
-            if (errorElement) {
-
-                errorElement.textContent =
-                    "";
-            }
-        };
-
-
         input.addEventListener(
             "input",
-            removeError
+            () => {
+
+                input.classList.remove(
+                    "input-error"
+                );
+
+            }
         );
 
 
         input.addEventListener(
             "change",
-            removeError
+            () => {
+
+                input.classList.remove(
+                    "input-error"
+                );
+
+            }
         );
+
     });
 }
 
@@ -496,7 +427,6 @@ function setupLogout() {
     const logoutButton =
         getElement("logoutButton");
 
-
     if (!logoutButton) {
         return;
     }
@@ -509,7 +439,6 @@ function setupLogout() {
             localStorage.removeItem(
                 "smartAgriLoggedIn"
             );
-
 
             window.location.href =
                 "index.html";
@@ -543,39 +472,21 @@ function setupMobileSidebar() {
     }
 
 
-    function openSidebar() {
-
-        sidebar.classList.add(
-            "open"
-        );
-
-        overlay.classList.add(
-            "active"
-        );
-
-        document.body.style.overflow =
-            "hidden";
-    }
-
-
-    function closeSidebar() {
-
-        sidebar.classList.remove(
-            "open"
-        );
-
-        overlay.classList.remove(
-            "active"
-        );
-
-        document.body.style.overflow =
-            "";
-    }
-
-
     menuButton.addEventListener(
         "click",
-        openSidebar
+        () => {
+
+            sidebar.classList.add(
+                "open"
+            );
+
+            overlay.classList.add(
+                "active"
+            );
+
+            document.body.style.overflow =
+                "hidden";
+        }
     );
 
 
@@ -597,7 +508,23 @@ function setupMobileSidebar() {
             "click",
             closeSidebar
         );
+
     });
+
+
+    function closeSidebar() {
+
+        sidebar.classList.remove(
+            "open"
+        );
+
+        overlay.classList.remove(
+            "active"
+        );
+
+        document.body.style.overflow =
+            "";
+    }
 }
 
 
@@ -609,7 +536,6 @@ function setupSaveButton() {
 
     const saveButton =
         getElement("saveFarmButton");
-
 
     if (!saveButton) {
         return;
@@ -624,17 +550,16 @@ function setupSaveButton() {
 
 
 /* =========================================================
-   INITIALIZE CROP & SOIL PAGE
+   INITIALIZE
    ========================================================= */
 
 document.addEventListener(
     "DOMContentLoaded",
     () => {
 
-        /*
-         * Authentication is intentionally
-         * disabled during frontend development.
-         */
+        if (!checkAuthentication()) {
+            return;
+        }
 
         loadUser();
 
@@ -647,5 +572,6 @@ document.addEventListener(
         setupLogout();
 
         setupMobileSidebar();
+
     }
 );

@@ -13,6 +13,24 @@ function getElement(id) {
 
 
 /* =========================================================
+   AUTHENTICATION
+   ========================================================= */
+
+function checkAuthentication() {
+
+    const isLoggedIn =
+        localStorage.getItem("smartAgriLoggedIn");
+
+    if (isLoggedIn !== "true") {
+        window.location.href = "index.html";
+        return false;
+    }
+
+    return true;
+}
+
+
+/* =========================================================
    USER PROFILE
    ========================================================= */
 
@@ -25,18 +43,14 @@ function loadUserProfile() {
         name: "Farmer"
     };
 
-
     if (storedUser) {
 
         try {
-
             user = {
                 ...user,
                 ...JSON.parse(storedUser)
             };
-
         } catch (error) {
-
             console.error(
                 "Unable to load user profile:",
                 error
@@ -44,14 +58,11 @@ function loadUserProfile() {
         }
     }
 
-
     const userName =
         getElement("userName");
 
-
     if (userName) {
-        userName.textContent =
-            user.name;
+        userName.textContent = user.name;
     }
 }
 
@@ -60,12 +71,9 @@ function loadUserProfile() {
    IRRIGATION STATE
    ========================================================= */
 
-const irrigationState = {
-
+let irrigationState = {
     soilMoisture: 42,
-
     pumpRunning: false,
-
     controlMode: "AUTO"
 };
 
@@ -92,33 +100,20 @@ function updatePumpUI() {
     if (irrigationState.pumpRunning) {
 
         if (pumpStatus) {
-
-            pumpStatus.textContent =
-                "ON";
-
-            pumpStatus.classList.remove(
-                "pump-off"
-            );
+            pumpStatus.textContent = "ON";
+            pumpStatus.classList.remove("pump-off");
         }
 
-
         if (displayStatus) {
-
             displayStatus.textContent =
                 "Pump is ON";
         }
 
-
         if (pumpCircle) {
-
-            pumpCircle.classList.add(
-                "active"
-            );
+            pumpCircle.classList.add("active");
         }
 
-
         if (systemStatus) {
-
             systemStatus.textContent =
                 "Irrigation Running";
         }
@@ -126,33 +121,20 @@ function updatePumpUI() {
     } else {
 
         if (pumpStatus) {
-
-            pumpStatus.textContent =
-                "OFF";
-
-            pumpStatus.classList.add(
-                "pump-off"
-            );
+            pumpStatus.textContent = "OFF";
+            pumpStatus.classList.add("pump-off");
         }
 
-
         if (displayStatus) {
-
             displayStatus.textContent =
                 "Pump is OFF";
         }
 
-
         if (pumpCircle) {
-
-            pumpCircle.classList.remove(
-                "active"
-            );
+            pumpCircle.classList.remove("active");
         }
 
-
         if (systemStatus) {
-
             systemStatus.textContent =
                 "System Ready";
         }
@@ -166,8 +148,7 @@ function updatePumpUI() {
 
 function startPump() {
 
-    irrigationState.pumpRunning =
-        true;
+    irrigationState.pumpRunning = true;
 
     updatePumpUI();
 
@@ -183,8 +164,7 @@ function startPump() {
 
 function stopPump() {
 
-    irrigationState.pumpRunning =
-        false;
+    irrigationState.pumpRunning = false;
 
     updatePumpUI();
 
@@ -195,7 +175,7 @@ function stopPump() {
 
 
 /* =========================================================
-   AI IRRIGATION RECOMMENDATION
+   AI IRRIGATION DECISION
    ========================================================= */
 
 function generateIrrigationRecommendation() {
@@ -217,7 +197,10 @@ function generateIrrigationRecommendation() {
         getElement("waterAdvice");
 
 
-    if (!decision || !reason) {
+    if (
+        !decision ||
+        !reason
+    ) {
         return;
     }
 
@@ -230,16 +213,12 @@ function generateIrrigationRecommendation() {
         reason.textContent =
             `Soil moisture is critically low at ${moisture}%. Irrigation should be started to reduce crop water stress.`;
 
-
         if (moistureStatus) {
-
             moistureStatus.textContent =
                 "Soil moisture is below the recommended range.";
         }
 
-
         if (waterAdvice) {
-
             waterAdvice.textContent =
                 "Soil moisture is low. Start irrigation and monitor the moisture level during the watering cycle.";
         }
@@ -256,16 +235,12 @@ function generateIrrigationRecommendation() {
         reason.textContent =
             `Soil moisture is ${moisture}%. The field is approaching the lower limit of the recommended range.`;
 
-
         if (moistureStatus) {
-
             moistureStatus.textContent =
                 "Soil moisture is approaching the lower limit.";
         }
 
-
         if (waterAdvice) {
-
             waterAdvice.textContent =
                 "Prepare the next irrigation cycle and continue monitoring soil moisture.";
         }
@@ -282,16 +257,12 @@ function generateIrrigationRecommendation() {
         reason.textContent =
             `Soil moisture is high at ${moisture}%. Additional irrigation may cause unnecessary water usage or waterlogging.`;
 
-
         if (moistureStatus) {
-
             moistureStatus.textContent =
                 "Soil moisture is above the recommended range.";
         }
 
-
         if (waterAdvice) {
-
             waterAdvice.textContent =
                 "Avoid irrigation for now and monitor the field for excess moisture.";
         }
@@ -306,16 +277,12 @@ function generateIrrigationRecommendation() {
     reason.textContent =
         `Current soil moisture is ${moisture}%. Conditions are within the recommended range.`;
 
-
     if (moistureStatus) {
-
         moistureStatus.textContent =
             "Soil moisture is at an acceptable level.";
     }
 
-
     if (waterAdvice) {
-
         waterAdvice.textContent =
             "Current soil moisture is suitable. Continue monitoring before starting another irrigation cycle.";
     }
@@ -331,7 +298,6 @@ function showNotification(message) {
     const existing =
         getElement("irrigationNotification");
 
-
     if (existing) {
         existing.remove();
     }
@@ -340,10 +306,8 @@ function showNotification(message) {
     const notification =
         document.createElement("div");
 
-
     notification.id =
         "irrigationNotification";
-
 
     notification.textContent =
         message;
@@ -390,16 +354,14 @@ function showNotification(message) {
 
     setTimeout(() => {
 
-        if (notification) {
-            notification.remove();
-        }
+        notification.remove();
 
     }, 2500);
 }
 
 
 /* =========================================================
-   PUMP CONTROLS
+   PUMP BUTTONS
    ========================================================= */
 
 function setupPumpControls() {
@@ -417,6 +379,7 @@ function setupPumpControls() {
             "click",
             startPump
         );
+
     }
 
 
@@ -426,6 +389,7 @@ function setupPumpControls() {
             "click",
             stopPump
         );
+
     }
 }
 
@@ -455,39 +419,27 @@ function setupMobileSidebar() {
     }
 
 
-    function openSidebar() {
-
-        sidebar.classList.add(
-            "open"
-        );
-
-        overlay.classList.add(
-            "active"
-        );
-
-        document.body.style.overflow =
-            "hidden";
-    }
-
-
     function closeSidebar() {
 
-        sidebar.classList.remove(
-            "open"
-        );
+        sidebar.classList.remove("open");
 
-        overlay.classList.remove(
-            "active"
-        );
+        overlay.classList.remove("active");
 
-        document.body.style.overflow =
-            "";
+        document.body.style.overflow = "";
     }
 
 
     menuButton.addEventListener(
         "click",
-        openSidebar
+        () => {
+
+            sidebar.classList.add("open");
+
+            overlay.classList.add("active");
+
+            document.body.style.overflow =
+                "hidden";
+        }
     );
 
 
@@ -499,12 +451,13 @@ function setupMobileSidebar() {
 
     sidebar
         .querySelectorAll("a")
-        .forEach((link) => {
+        .forEach(link => {
 
             link.addEventListener(
                 "click",
                 closeSidebar
             );
+
         });
 }
 
@@ -532,6 +485,10 @@ function setupLogout() {
                 "smartAgriLoggedIn"
             );
 
+            localStorage.removeItem(
+                "smartAgriUser"
+            );
+
             window.location.href =
                 "index.html";
         }
@@ -540,17 +497,16 @@ function setupLogout() {
 
 
 /* =========================================================
-   INITIALIZE IRRIGATION PAGE
+   INITIALIZE
    ========================================================= */
 
 document.addEventListener(
     "DOMContentLoaded",
     () => {
 
-        /*
-         * Authentication is disabled
-         * during frontend development.
-         */
+        if (!checkAuthentication()) {
+            return;
+        }
 
         loadUserProfile();
 
@@ -563,5 +519,6 @@ document.addEventListener(
         setupMobileSidebar();
 
         setupLogout();
+
     }
 );

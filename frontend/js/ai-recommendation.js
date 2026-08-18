@@ -1,11 +1,10 @@
 /* =========================================================
    SmartAgriTwin - AI Recommendation JavaScript
-   Frontend Prototype Version
    ========================================================= */
 
 
 /* =========================================================
-   ELEMENT HELPER
+   HELPER
    ========================================================= */
 
 function getElement(id) {
@@ -22,16 +21,11 @@ function checkAuthentication() {
     const isLoggedIn =
         localStorage.getItem("smartAgriLoggedIn");
 
-    /*
-     * For prototype:
-     * Do not redirect from AI Recommendation page.
-     * If login information is missing, the page still loads.
-     */
-
     if (isLoggedIn !== "true") {
-        console.warn(
-            "SmartAgriTwin: Login state not found. Running prototype mode."
-        );
+
+        window.location.href = "index.html";
+
+        return false;
     }
 
     return true;
@@ -39,259 +33,58 @@ function checkAuthentication() {
 
 
 /* =========================================================
-   USER PROFILE
+   LOAD USER
    ========================================================= */
 
-function loadUserProfile() {
+function loadUser() {
 
     const storedUser =
-        localStorage.getItem("smartAgriUser");
-
-    let user = {
-        name: "Farmer"
-    };
-
-    if (storedUser) {
-
-        try {
-
-            const parsedUser =
-                JSON.parse(storedUser);
-
-            user = {
-                ...user,
-                ...parsedUser
-            };
-
-        } catch (error) {
-
-            console.error(
-                "Unable to load user profile:",
-                error
-            );
-        }
-    }
+        JSON.parse(
+            localStorage.getItem("smartAgriUser")
+        );
 
     const userName =
         getElement("userName");
 
-    if (userName) {
-
+    if (
+        userName &&
+        storedUser &&
+        storedUser.name
+    ) {
         userName.textContent =
-            user.name || "Farmer";
+            storedUser.name;
     }
 }
 
 
 /* =========================================================
-   FARM / SENSOR DATA
+   LOAD FARM DATA
    ========================================================= */
 
 function getFarmData() {
 
-    const savedData =
-        localStorage.getItem("smartAgriFarmData");
+    const data =
+        localStorage.getItem(
+            "smartAgriFarmData"
+        );
 
-    if (!savedData) {
-
-        return {
-            soilMoisture: 42,
-            temperature: 27,
-            humidity: 67,
-            rainProbability: 35,
-            cropHealth: 91,
-            nitrogen: "Slightly Low"
-        };
+    if (!data) {
+        return null;
     }
 
     try {
 
-        const data =
-            JSON.parse(savedData);
-
-        return {
-            soilMoisture:
-                Number(data.soilMoisture ?? 42),
-
-            temperature:
-                Number(data.temperature ?? 27),
-
-            humidity:
-                Number(data.humidity ?? 67),
-
-            rainProbability:
-                Number(data.rainProbability ?? 35),
-
-            cropHealth:
-                Number(data.cropHealth ?? 91),
-
-            nitrogen:
-                data.nitrogen ?? "Slightly Low"
-        };
+        return JSON.parse(data);
 
     } catch (error) {
 
         console.error(
-            "Unable to read farm data:",
+            "Unable to load farm data:",
             error
         );
 
-        return {
-            soilMoisture: 42,
-            temperature: 27,
-            humidity: 67,
-            rainProbability: 35,
-            cropHealth: 91,
-            nitrogen: "Slightly Low"
-        };
+        return null;
     }
-}
-
-
-/* =========================================================
-   IRRIGATION RECOMMENDATION
-   ========================================================= */
-
-function generateIrrigationRecommendation(data) {
-
-    const title =
-        getElement("irrigationRecommendation");
-
-    const text =
-        getElement("irrigationRecommendationText");
-
-    if (!title || !text) {
-        return;
-    }
-
-    const moisture =
-        data.soilMoisture;
-
-    if (moisture < 30) {
-
-        title.textContent =
-            "Irrigation required immediately";
-
-        text.textContent =
-            `Soil moisture is critically low at ${moisture}%. Start irrigation to reduce crop water stress.`;
-
-        return;
-    }
-
-    if (moisture < 35) {
-
-        title.textContent =
-            "Irrigation recommended soon";
-
-        text.textContent =
-            `Soil moisture is ${moisture}%. The field is approaching the lower recommended limit.`;
-
-        return;
-    }
-
-    if (moisture > 60) {
-
-        title.textContent =
-            "Avoid irrigation";
-
-        text.textContent =
-            `Soil moisture is high at ${moisture}%. Additional irrigation may cause waterlogging.`;
-
-        return;
-    }
-
-    title.textContent =
-        "No immediate irrigation required";
-
-    text.textContent =
-        `Soil moisture is ${moisture}%, which is within the recommended range. Continue monitoring the field.`;
-}
-
-
-/* =========================================================
-   SOIL RECOMMENDATION
-   ========================================================= */
-
-function generateSoilRecommendation(data) {
-
-    const title =
-        getElement("soilRecommendation");
-
-    const text =
-        getElement("soilRecommendationText");
-
-    if (!title || !text) {
-        return;
-    }
-
-    if (
-        data.nitrogen === "Low" ||
-        data.nitrogen === "Slightly Low"
-    ) {
-
-        title.textContent =
-            "Monitor nitrogen level";
-
-        text.textContent =
-            "Nitrogen appears slightly below the preferred range. Monitor soil nutrients before applying fertilizer.";
-
-        return;
-    }
-
-    title.textContent =
-        "Soil condition looks healthy";
-
-    text.textContent =
-        "Current soil conditions are suitable. Continue regular monitoring of moisture and nutrients.";
-}
-
-
-/* =========================================================
-   WEATHER RECOMMENDATION
-   ========================================================= */
-
-function generateWeatherRecommendation(data) {
-
-    const title =
-        getElement("weatherRecommendation");
-
-    const text =
-        getElement("weatherRecommendationText");
-
-    if (!title || !text) {
-        return;
-    }
-
-    const rain =
-        data.rainProbability;
-
-    if (rain >= 70) {
-
-        title.textContent =
-            "High rainfall expected";
-
-        text.textContent =
-            `Rain probability is ${rain}%. Avoid unnecessary irrigation and monitor the field for excess moisture.`;
-
-        return;
-    }
-
-    if (rain >= 40) {
-
-        title.textContent =
-            "Monitor rainfall";
-
-        text.textContent =
-            `Rain probability is ${rain}%. Consider rainfall before starting the next irrigation cycle.`;
-
-        return;
-    }
-
-    title.textContent =
-        "Low rainfall probability";
-
-    text.textContent =
-        `Rain probability is ${rain}%. Continue irrigation based on soil moisture and crop requirements.`;
 }
 
 
@@ -299,348 +92,214 @@ function generateWeatherRecommendation(data) {
    CROP RECOMMENDATION
    ========================================================= */
 
-function generateCropRecommendation(data) {
+function analyzeCrop() {
 
-    const title =
-        getElement("cropRecommendation");
-
-    const text =
-        getElement("cropRecommendationText");
-
-    if (!title || !text) {
-        return;
-    }
-
-    const health =
-        data.cropHealth;
-
-    if (health < 60) {
-
-        title.textContent =
-            "Crop health needs attention";
-
-        text.textContent =
-            `Estimated crop health is ${health}%. Inspect the crop for nutrient deficiency, disease or environmental stress.`;
-
-        return;
-    }
-
-    if (health < 80) {
-
-        title.textContent =
-            "Monitor crop health";
-
-        text.textContent =
-            `Estimated crop health is ${health}%. Continue monitoring crop growth and environmental conditions.`;
-
-        return;
-    }
-
-    title.textContent =
-        "Continue current crop management";
-
-    text.textContent =
-        `Crop health is estimated at ${health}%. Maintain current management practices and continue regular monitoring.`;
-}
-
-
-/* =========================================================
-   OVERALL AI RECOMMENDATION
-   ========================================================= */
-
-function generateOverallRecommendation(data) {
-
-    const title =
-        getElement("overallRecommendation");
-
-    const text =
-        getElement("overallRecommendationText");
-
-    const confidence =
-        getElement("aiConfidence");
-
-    const aiStatus =
-        getElement("aiStatus");
-
-    if (aiStatus) {
-        aiStatus.textContent = "Active";
-    }
-
-    let recommendation =
-        "Farm conditions are generally healthy";
-
-    let explanation =
-        "Current soil, weather and crop conditions are within acceptable ranges. Continue regular monitoring.";
-
-    let confidenceValue = 92;
-
-
-    /*
-     * Priority 1:
-     * Very low soil moisture
-     */
-
-    if (data.soilMoisture < 30) {
-
-        recommendation =
-            "Irrigation is urgently recommended";
-
-        explanation =
-            `Soil moisture is critically low at ${data.soilMoisture}%. The crop may experience water stress if irrigation is delayed.`;
-
-        confidenceValue = 95;
-    }
-
-
-    /*
-     * Priority 2:
-     * Very high rainfall
-     */
-
-    else if (data.rainProbability >= 70) {
-
-        recommendation =
-            "Rainfall may reduce irrigation requirements";
-
-        explanation =
-            `Rain probability is ${data.rainProbability}%. Avoid unnecessary irrigation and monitor soil moisture closely.`;
-
-        confidenceValue = 94;
-    }
-
-
-    /*
-     * Priority 3:
-     * Poor crop health
-     */
-
-    else if (data.cropHealth < 60) {
-
-        recommendation =
-            "Crop health requires attention";
-
-        explanation =
-            `AI-estimated crop health is ${data.cropHealth}%. Inspect the crop for possible environmental, nutrient or disease-related stress.`;
-
-        confidenceValue = 89;
-    }
-
-
-    /*
-     * Normal condition
-     */
-
-    if (title) {
-        title.textContent =
-            recommendation;
-    }
-
-    if (text) {
-        text.textContent =
-            explanation;
-    }
-
-    if (confidence) {
-        confidence.textContent =
-            `${confidenceValue}%`;
-    }
-}
-
-
-/* =========================================================
-   UPDATE AI DECISION FACTORS
-   ========================================================= */
-
-function updateDecisionFactors(data) {
-
-    const factors =
-        document.querySelectorAll(
-            ".decision-factor"
+    const button =
+        getElement(
+            "cropRecommendationButton"
         );
 
-    if (!factors || factors.length < 4) {
+    const crop =
+        getElement("recommendedCrop");
+
+    const confidence =
+        getElement("cropConfidence");
+
+    const confidenceBar =
+        getElement("cropConfidenceBar");
+
+
+    if (
+        !button ||
+        !crop ||
+        !confidence ||
+        !confidenceBar
+    ) {
         return;
     }
 
 
-    /* ---------- Soil Moisture ---------- */
-
-    const moistureValue =
-        factors[0].querySelector("span");
-
-    const moistureStatus =
-        factors[0].querySelector("b");
-
-    if (moistureValue) {
-
-        moistureValue.textContent =
-            `Current value: ${data.soilMoisture}%`;
-    }
-
-    if (moistureStatus) {
-
-        if (
-            data.soilMoisture >= 35 &&
-            data.soilMoisture <= 60
-        ) {
-
-            moistureStatus.textContent =
-                "Optimal";
-
-        } else {
-
-            moistureStatus.textContent =
-                "Monitor";
-        }
-    }
+    setButtonLoading(
+        button,
+        "Analyzing..."
+    );
 
 
-    /* ---------- Temperature ---------- */
+    /*
+     * This is currently a frontend demo.
+     *
+     * Later this section will call:
+     *
+     * Spring Boot API
+     *       ↓
+     * ML Model
+     *       ↓
+     * Prediction
+     */
 
-    const temperatureValue =
-        factors[1].querySelector("span");
+    setTimeout(() => {
 
-    const temperatureStatus =
-        factors[1].querySelector("b");
+        const farmData =
+            getFarmData();
 
-    if (temperatureValue) {
 
-        temperatureValue.textContent =
-            `Current value: ${data.temperature}°C`;
-    }
+        let recommendedCrop =
+            "Tomato";
 
-    if (temperatureStatus) {
+        let score =
+            91;
+
+
+        /*
+         * Simple prototype logic.
+         *
+         * NOT the final ML model.
+         */
 
         if (
-            data.temperature >= 18 &&
-            data.temperature <= 35
+            farmData &&
+            farmData.soilType === "black"
         ) {
 
-            temperatureStatus.textContent =
-                "Normal";
+            recommendedCrop =
+                "Soybean";
 
-        } else {
-
-            temperatureStatus.textContent =
-                "Monitor";
+            score =
+                88;
         }
-    }
 
 
-    /* ---------- Rain ---------- */
+        if (
+            farmData &&
+            farmData.soilType === "sandy"
+        ) {
 
-    const rainValue =
-        factors[2].querySelector("span");
+            recommendedCrop =
+                "Groundnut";
 
-    const rainStatus =
-        factors[2].querySelector("b");
-
-    if (rainValue) {
-
-        rainValue.textContent =
-            `Current probability: ${data.rainProbability}%`;
-    }
-
-    if (rainStatus) {
-
-        if (data.rainProbability >= 70) {
-
-            rainStatus.textContent =
-                "High";
-
-        } else if (data.rainProbability >= 40) {
-
-            rainStatus.textContent =
-                "Moderate";
-
-        } else {
-
-            rainStatus.textContent =
-                "Low";
+            score =
+                84;
         }
-    }
 
 
-    /* ---------- Crop Health ---------- */
+        if (
+            farmData &&
+            farmData.soilType === "alluvial"
+        ) {
 
-    const cropValue =
-        factors[3].querySelector("span");
+            recommendedCrop =
+                "Rice";
 
-    const cropStatus =
-        factors[3].querySelector("b");
-
-    if (cropValue) {
-
-        cropValue.textContent =
-            `AI estimated health: ${data.cropHealth}%`;
-    }
-
-    if (cropStatus) {
-
-        if (data.cropHealth >= 80) {
-
-            cropStatus.textContent =
-                "Healthy";
-
-        } else if (data.cropHealth >= 60) {
-
-            cropStatus.textContent =
-                "Monitor";
-
-        } else {
-
-            cropStatus.textContent =
-                "Attention";
+            score =
+                92;
         }
-    }
+
+
+        crop.textContent =
+            recommendedCrop;
+
+        confidence.textContent =
+            score;
+
+        confidenceBar.style.width =
+            `${score}%`;
+
+
+        resetButton(
+            button,
+            "Analyze Crop →"
+        );
+
+
+    }, 900);
 }
 
 
 /* =========================================================
-   YIELD PREDICTION
+   IRRIGATION RECOMMENDATION
    ========================================================= */
 
-function updateYieldPrediction(data) {
+function analyzeIrrigation() {
 
-    const predictedYield =
-        getElement("predictedYield");
+    const button =
+        getElement(
+            "irrigationRecommendationButton"
+        );
 
-    if (!predictedYield) {
+    const recommendation =
+        getElement(
+            "irrigationRecommendation"
+        );
+
+    const water =
+        getElement("waterRequired");
+
+
+    if (
+        !button ||
+        !recommendation ||
+        !water
+    ) {
         return;
     }
 
-    let yieldValue =
-        4.2;
+
+    setButtonLoading(
+        button,
+        "Analyzing..."
+    );
 
 
-    /*
-     * Simple prototype calculation.
-     * This is NOT a real ML model.
-     */
+    setTimeout(() => {
 
-    if (data.cropHealth < 60) {
-
-        yieldValue = 3.2;
-
-    } else if (data.cropHealth < 80) {
-
-        yieldValue = 3.7;
-
-    } else if (
-        data.soilMoisture >= 35 &&
-        data.soilMoisture <= 60
-    ) {
-
-        yieldValue = 4.2;
-
-    } else {
-
-        yieldValue = 3.9;
-    }
+        const farmData =
+            getFarmData();
 
 
-    predictedYield.textContent =
-        yieldValue.toFixed(1);
+        /*
+         * Demo sensor value.
+         *
+         * Later this will come from
+         * ESP32 / IoT backend.
+         */
+
+        const soilMoisture =
+            42;
+
+
+        if (soilMoisture < 30) {
+
+            recommendation.textContent =
+                "Irrigate immediately";
+
+            water.textContent =
+                "25 L/m²";
+
+        } else if (soilMoisture < 50) {
+
+            recommendation.textContent =
+                "Irrigate in 6 hours";
+
+            water.textContent =
+                "18 L/m²";
+
+        } else {
+
+            recommendation.textContent =
+                "No irrigation required";
+
+            water.textContent =
+                "0 L/m²";
+        }
+
+
+        resetButton(
+            button,
+            "Analyze Irrigation →"
+        );
+
+
+    }, 900);
 }
 
 
@@ -648,130 +307,207 @@ function updateYieldPrediction(data) {
    DISEASE RISK
    ========================================================= */
 
-function updateDiseaseRisk(data) {
+function analyzeDiseaseRisk() {
 
-    const diseaseRisk =
+    const button =
+        getElement(
+            "diseaseRiskButton"
+        );
+
+    const risk =
         getElement("diseaseRisk");
 
-    if (!diseaseRisk) {
-        return;
-    }
-
-    let risk = 12;
-
-
-    /*
-     * High humidity + rainfall
-     * increases prototype disease risk.
-     */
-
-    if (
-        data.humidity >= 80 &&
-        data.rainProbability >= 60
-    ) {
-
-        risk = 55;
-
-    } else if (
-        data.humidity >= 70 ||
-        data.rainProbability >= 50
-    ) {
-
-        risk = 30;
-
-    } else {
-
-        risk = 12;
-    }
-
-
-    diseaseRisk.textContent =
-        `${risk}%`;
-
-
-    const riskStatus =
+    const riskInfo =
         document.querySelector(
-            ".risk-content"
+            ".risk-info strong"
+        );
+
+    const riskDescription =
+        document.querySelector(
+            ".risk-info span"
         );
 
 
-    if (riskStatus) {
-
-        const statusElement =
-            document.querySelector(
-                ".card-header .stat-status"
-            );
-
-        if (statusElement) {
-
-            if (risk >= 50) {
-
-                statusElement.textContent =
-                    "HIGH";
-
-                statusElement.className =
-                    "stat-status bad";
-
-            } else if (risk >= 30) {
-
-                statusElement.textContent =
-                    "MEDIUM";
-
-                statusElement.className =
-                    "stat-status warning";
-
-            } else {
-
-                statusElement.textContent =
-                    "LOW";
-
-                statusElement.className =
-                    "stat-status good";
-            }
-        }
+    if (
+        !button ||
+        !risk
+    ) {
+        return;
     }
+
+
+    setButtonLoading(
+        button,
+        "Checking..."
+    );
+
+
+    setTimeout(() => {
+
+        /*
+         * Demo risk value.
+         *
+         * Later:
+         * weather + humidity + crop
+         * + image analysis + ML model
+         */
+
+        const diseaseRisk =
+            18;
+
+
+        risk.textContent =
+            `${diseaseRisk}%`;
+
+
+        if (diseaseRisk < 30) {
+
+            riskInfo.textContent =
+                "Low Risk";
+
+            riskInfo.style.color =
+                "#15803d";
+
+            riskDescription.textContent =
+                "Current conditions appear favorable for crop health.";
+
+        } else if (diseaseRisk < 60) {
+
+            riskInfo.textContent =
+                "Moderate Risk";
+
+            riskInfo.style.color =
+                "#d97706";
+
+            riskDescription.textContent =
+                "Monitor crop and environmental conditions carefully.";
+
+        } else {
+
+            riskInfo.textContent =
+                "High Risk";
+
+            riskInfo.style.color =
+                "#dc2626";
+
+            riskDescription.textContent =
+                "Immediate crop monitoring is recommended.";
+        }
+
+
+        resetButton(
+            button,
+            "Check Disease Risk →"
+        );
+
+
+    }, 900);
 }
 
 
 /* =========================================================
-   AI ANALYSIS
+   FERTILIZER RECOMMENDATION
    ========================================================= */
 
-function runAIAnalysis() {
+function analyzeFertilizer() {
 
-    const farmData =
-        getFarmData();
+    const button =
+        getElement(
+            "fertilizerRecommendationButton"
+        );
 
-    generateOverallRecommendation(
-        farmData
+    if (!button) {
+        return;
+    }
+
+
+    setButtonLoading(
+        button,
+        "Analyzing..."
     );
 
-    generateIrrigationRecommendation(
-        farmData
-    );
 
-    generateSoilRecommendation(
-        farmData
-    );
+    setTimeout(() => {
 
-    generateWeatherRecommendation(
-        farmData
-    );
+        /*
+         * Demo fertilizer analysis.
+         *
+         * Final version will use:
+         *
+         * N + P + K
+         * soil pH
+         * crop requirement
+         * growth stage
+         */
 
-    generateCropRecommendation(
-        farmData
-    );
+        const fertilizerItems =
+            document.querySelectorAll(
+                ".fertilizer-item strong"
+            );
 
-    updateDecisionFactors(
-        farmData
-    );
 
-    updateYieldPrediction(
-        farmData
-    );
+        if (fertilizerItems.length >= 3) {
 
-    updateDiseaseRisk(
-        farmData
+            fertilizerItems[0].textContent =
+                "Moderate";
+
+            fertilizerItems[1].textContent =
+                "Adequate";
+
+            fertilizerItems[2].textContent =
+                "Increase";
+        }
+
+
+        resetButton(
+            button,
+            "Analyze Nutrients →"
+        );
+
+
+    }, 900);
+}
+
+
+/* =========================================================
+   BUTTON LOADING
+   ========================================================= */
+
+function setButtonLoading(
+    button,
+    text
+) {
+
+    button.disabled = true;
+
+    button.dataset.originalText =
+        button.textContent;
+
+    button.textContent =
+        text;
+
+    button.classList.add(
+        "ai-loading"
+    );
+}
+
+
+/* =========================================================
+   RESET BUTTON
+   ========================================================= */
+
+function resetButton(
+    button,
+    text
+) {
+
+    button.disabled = false;
+
+    button.textContent =
+        text;
+
+    button.classList.remove(
+        "ai-loading"
     );
 }
 
@@ -818,7 +554,7 @@ function setupMobileSidebar() {
 
     menuButton.addEventListener(
         "click",
-        function () {
+        () => {
 
             sidebar.classList.add(
                 "open"
@@ -842,15 +578,14 @@ function setupMobileSidebar() {
 
     sidebar
         .querySelectorAll("a")
-        .forEach(
-            function (link) {
+        .forEach((link) => {
 
-                link.addEventListener(
-                    "click",
-                    closeSidebar
-                );
-            }
-        );
+            link.addEventListener(
+                "click",
+                closeSidebar
+            );
+
+        });
 }
 
 
@@ -863,7 +598,6 @@ function setupLogout() {
     const logoutButton =
         getElement("logoutButton");
 
-
     if (!logoutButton) {
         return;
     }
@@ -871,14 +605,10 @@ function setupLogout() {
 
     logoutButton.addEventListener(
         "click",
-        function () {
+        () => {
 
             localStorage.removeItem(
                 "smartAgriLoggedIn"
-            );
-
-            localStorage.removeItem(
-                "smartAgriUser"
             );
 
             window.location.href =
@@ -889,29 +619,66 @@ function setupLogout() {
 
 
 /* =========================================================
-   NOTIFICATION BUTTON
+   BUTTON EVENTS
    ========================================================= */
 
-function setupNotification() {
+function setupAIButtons() {
 
-    const notificationButton =
-        getElement("notificationButton");
+    const cropButton =
+        getElement(
+            "cropRecommendationButton"
+        );
+
+    const irrigationButton =
+        getElement(
+            "irrigationRecommendationButton"
+        );
+
+    const diseaseButton =
+        getElement(
+            "diseaseRiskButton"
+        );
+
+    const fertilizerButton =
+        getElement(
+            "fertilizerRecommendationButton"
+        );
 
 
-    if (!notificationButton) {
-        return;
+    if (cropButton) {
+
+        cropButton.addEventListener(
+            "click",
+            analyzeCrop
+        );
     }
 
 
-    notificationButton.addEventListener(
-        "click",
-        function () {
+    if (irrigationButton) {
 
-            alert(
-                "No new farm alerts. AI monitoring is active."
-            );
-        }
-    );
+        irrigationButton.addEventListener(
+            "click",
+            analyzeIrrigation
+        );
+    }
+
+
+    if (diseaseButton) {
+
+        diseaseButton.addEventListener(
+            "click",
+            analyzeDiseaseRisk
+        );
+    }
+
+
+    if (fertilizerButton) {
+
+        fertilizerButton.addEventListener(
+            "click",
+            analyzeFertilizer
+        );
+    }
 }
 
 
@@ -921,22 +688,19 @@ function setupNotification() {
 
 document.addEventListener(
     "DOMContentLoaded",
-    function () {
+    () => {
 
         if (!checkAuthentication()) {
             return;
         }
 
+        loadUser();
 
-        loadUserProfile();
-
-        runAIAnalysis();
+        setupAIButtons();
 
         setupMobileSidebar();
 
         setupLogout();
-
-        setupNotification();
 
     }
 );

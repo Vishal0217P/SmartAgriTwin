@@ -11,12 +11,7 @@
 
     <meta
         name="description"
-        content="SmartAgriTwin weather monitoring and forecast"
-    >
-
-    <meta
-        name="theme-color"
-        content="#2f7d32"
+        content="SmartAgriTwin Weather and Farming Insights"
     >
 
     <title>SmartAgriTwin | Weather</title>
@@ -34,893 +29,755 @@
 
 <body>
 
-    <div class="app-layout">
+<div class="app-layout">
 
-        <!-- =====================================================
-             SIDEBAR
-             ===================================================== -->
+    <!-- =====================================================
+         SIDEBAR
+         ===================================================== -->
 
-        <aside
-            class="sidebar"
-            id="sidebar"
-        >
+    <aside class="sidebar" id="sidebar">
 
-            <div class="sidebar-brand">
+        <div class="sidebar-brand">
 
-                <div class="brand-logo">
-                    🌱
-                </div>
-
-                <div>
-                    <h1>SmartAgriTwin</h1>
-
-                    <span>
-                        Smart Agriculture
-                    </span>
-                </div>
-
+            <div class="brand-logo">
+                🌱
             </div>
 
+            <div>
+                <h1>SmartAgriTwin</h1>
+                <span>Smart Agriculture</span>
+            </div>
 
-            <nav
-                class="sidebar-nav"
-                aria-label="Main navigation"
+        </div>
+
+
+        <nav class="sidebar-nav">
+
+            <p class="nav-section-title">
+                MAIN
+            </p>
+
+            <a href="dashboard.html" class="nav-item">
+                <span class="nav-icon">📊</span>
+                <span>Dashboard</span>
+            </a>
+
+            <a href="crop-soil.html" class="nav-item">
+                <span class="nav-icon">🌾</span>
+                <span>Crop & Soil</span>
+            </a>
+
+            <a href="irrigation.html" class="nav-item">
+                <span class="nav-icon">💧</span>
+                <span>Irrigation</span>
+            </a>
+
+            <a href="weather.html" class="nav-item active">
+                <span class="nav-icon">🌦️</span>
+                <span>Weather</span>
+            </a>
+
+
+            <p class="nav-section-title">
+                AI & ANALYTICS
+            </p>
+
+            <a href="ai-recommendation.html" class="nav-item">
+                <span class="nav-icon">🤖</span>
+                <span>AI Recommendations</span>
+            </a>
+
+            <a href="digital-twin.html" class="nav-item">
+                <span class="nav-icon">🔮</span>
+                <span>Digital Twin</span>
+            </a>
+
+            <a href="analytics.html" class="nav-item">
+                <span class="nav-icon">📈</span>
+                <span>Analytics</span>
+            </a>
+
+
+            <p class="nav-section-title">
+                FARMER
+            </p>
+
+            <a href="farmer-passport.html" class="nav-item">
+                <span class="nav-icon">👨‍🌾</span>
+                <span>Farmer Passport</span>
+            </a>
+
+        </nav>
+
+
+        <div class="sidebar-bottom">
+
+            <button
+                type="button"
+                class="logout-button"
+                id="logoutButton"
             >
+                <span>🚪</span>
+                <span>Logout</span>
+            </button>
 
-                <p class="nav-section-title">
-                    MAIN
-                </p>
+        </div>
 
-                <a
-                    href="dashboard.html"
-                    class="nav-item"
-                >
-                    <span class="nav-icon">📊</span>
-                    <span>Dashboard</span>
-                </a>
-
-                <a
-                    href="crop-soil.html"
-                    class="nav-item"
-                >
-                    <span class="nav-icon">🌾</span>
-                    <span>Crop &amp; Soil</span>
-                </a>
-
-                <a
-                    href="irrigation.html"
-                    class="nav-item"
-                >
-                    <span class="nav-icon">💧</span>
-                    <span>Irrigation</span>
-                </a>
-
-                <a
-                    href="weather.html"
-                    class="nav-item active"
-                >
-                    <span class="nav-icon">🌦️</span>
-                    <span>Weather</span>
-                </a>
+    </aside>
 
 
-                <p class="nav-section-title">
-                    AI &amp; ANALYTICS
-                </p>
+    <!-- =====================================================
+         MAIN CONTENT
+         ===================================================== -->
 
-                <a
-                    href="ai-recommendation.html"
-                    class="nav-item"
-                >
-                    <span class="nav-icon">🤖</span>
-                    <span>AI Recommendations</span>
-                </a>
+    <main class="main-content">
 
-                <a
-                    href="digital-twin.html"
-                    class="nav-item"
-                >
-                    <span class="nav-icon">🔮</span>
-                    <span>Digital Twin</span>
-                </a>
+        <!-- TOPBAR -->
 
-                <a
-                    href="analytics.html"
-                    class="nav-item"
-                >
-                    <span class="nav-icon">📈</span>
-                    <span>Analytics</span>
-                </a>
+        <header class="topbar">
 
-
-                <p class="nav-section-title">
-                    FARMER
-                </p>
-
-                <a
-                    href="farmer-passport.html"
-                    class="nav-item"
-                >
-                    <span class="nav-icon">👨‍🌾</span>
-                    <span>Farmer Passport</span>
-                </a>
-
-            </nav>
-
-
-            <div class="sidebar-bottom">
+            <div class="topbar-left">
 
                 <button
                     type="button"
-                    class="logout-button"
-                    id="logoutButton"
+                    class="menu-button"
+                    id="menuButton"
+                    aria-label="Open menu"
                 >
-                    <span>🚪</span>
-                    <span>Logout</span>
+                    ☰
                 </button>
+
+                <div>
+
+                    <p class="page-label">
+                        WEATHER MONITORING
+                    </p>
+
+                    <h2>
+                        Weather
+                    </h2>
+
+                </div>
 
             </div>
 
-        </aside>
+
+            <div class="topbar-right">
+
+                <button
+                    type="button"
+                    class="notification-button"
+                    aria-label="Notifications"
+                >
+                    🔔
+                    <span class="notification-dot"></span>
+                </button>
 
 
-        <!-- =====================================================
-             MAIN CONTENT
-             ===================================================== -->
+                <div class="user-profile">
 
-        <main class="main-content">
+                    <div class="user-avatar">
+                        👨‍🌾
+                    </div>
 
-            <!-- TOPBAR -->
+                    <div class="user-details">
 
-            <header class="topbar">
+                        <strong id="userName">
+                            Farmer
+                        </strong>
 
-                <div class="topbar-left">
+                        <span>
+                            Farmer Account
+                        </span>
 
-                    <button
-                        type="button"
-                        class="menu-button"
-                        id="menuButton"
-                        aria-label="Open navigation menu"
-                    >
-                        ☰
-                    </button>
+                    </div>
+
+                </div>
+
+            </div>
+
+        </header>
+
+
+        <!-- =================================================
+             PAGE CONTENT
+             ================================================= -->
+
+        <div class="dashboard-content">
+
+
+            <!-- PAGE HEADER -->
+
+            <section class="weather-page-header">
+
+                <div>
+
+                    <p class="welcome-label">
+                        FARM WEATHER
+                    </p>
+
+                    <h1>
+                        Weather Intelligence 🌦️
+                    </h1>
+
+                    <p>
+                        Monitor current weather conditions,
+                        upcoming forecasts and their impact
+                        on your farm.
+                    </p>
+
+                </div>
+
+
+                <div class="weather-location">
+
+                    <span>
+                        📍
+                    </span>
 
                     <div>
 
-                        <p class="page-label">
-                            WEATHER MONITORING
-                        </p>
+                        <strong id="weatherLocation">
+                            Pune, Maharashtra
+                        </strong>
 
-                        <h2>
-                            Weather
-                        </h2>
-
-                    </div>
-
-                </div>
-
-
-                <div class="topbar-right">
-
-                    <button
-                        type="button"
-                        class="notification-button"
-                        id="notificationButton"
-                        aria-label="Notifications"
-                    >
-                        🔔
-
-                        <span
-                            class="notification-dot"
-                            aria-hidden="true"
-                        ></span>
-
-                    </button>
-
-
-                    <div class="user-profile">
-
-                        <div class="user-avatar">
-                            👨‍🌾
-                        </div>
-
-                        <div class="user-details">
-
-                            <strong id="userName">
-                                Farmer
-                            </strong>
-
-                            <span>
-                                Farmer Account
-                            </span>
-
-                        </div>
+                        <small id="weatherUpdated">
+                            Updated just now
+                        </small>
 
                     </div>
 
                 </div>
 
-            </header>
+            </section>
 
 
             <!-- =================================================
-                 PAGE CONTENT
+                 CURRENT WEATHER
                  ================================================= -->
 
-            <div class="dashboard-content">
+            <section class="current-weather-card">
 
+                <div class="current-weather-main">
 
-                <!-- PAGE HEADER -->
-
-                <section class="dashboard-welcome">
+                    <div class="weather-icon-large">
+                        🌤️
+                    </div>
 
                     <div>
 
-                        <p class="welcome-label">
-                            FARM WEATHER
-                        </p>
-
-                        <h1>
-                            Weather Conditions 🌦️
-                        </h1>
-
-                        <p>
-                            Monitor current weather conditions
-                            and upcoming forecasts for better
-                            farm decisions.
-                        </p>
-
-                    </div>
-
-
-                    <div class="dashboard-date">
-
-                        <span>
-                            LAST UPDATED
+                        <span class="card-label">
+                            CURRENT WEATHER
                         </span>
 
-                        <strong id="weatherUpdated">
-                            Just now
-                        </strong>
+                        <div class="temperature">
+                            <strong id="currentTemperature">
+                                28
+                            </strong>
+
+                            <span>°C</span>
+                        </div>
+
+                        <p id="weatherCondition">
+                            Partly Cloudy
+                        </p>
 
                     </div>
 
-                </section>
+                </div>
 
 
-                <!-- =================================================
-                     CURRENT WEATHER
-                     ================================================= -->
+                <div class="weather-metrics">
 
-                <section class="current-weather-card">
+                    <div class="weather-metric">
 
-                    <div class="current-weather-main">
+                        <span>
+                            💧
+                        </span>
 
-                        <span
-                            class="large-weather-icon"
-                            id="currentWeatherIcon"
-                        >
+                        <div>
+
+                            <small>
+                                Humidity
+                            </small>
+
+                            <strong id="humidity">
+                                67%
+                            </strong>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="weather-metric">
+
+                        <span>
+                            💨
+                        </span>
+
+                        <div>
+
+                            <small>
+                                Wind
+                            </small>
+
+                            <strong id="windSpeed">
+                                14 km/h
+                            </strong>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="weather-metric">
+
+                        <span>
+                            🌧️
+                        </span>
+
+                        <div>
+
+                            <small>
+                                Rain Chance
+                            </small>
+
+                            <strong id="rainChance">
+                                35%
+                            </strong>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="weather-metric">
+
+                        <span>
                             ☀️
                         </span>
 
                         <div>
 
-                            <span class="card-label">
-                                CURRENT CONDITIONS
-                            </span>
+                            <small>
+                                UV Index
+                            </small>
 
-                            <h2 id="currentTemperature">
-                                27°C
-                            </h2>
-
-                            <p id="currentCondition">
-                                Partly Cloudy
-                            </p>
+                            <strong id="uvIndex">
+                                6
+                            </strong>
 
                         </div>
 
                     </div>
 
+                </div>
 
-                    <div class="current-weather-location">
+            </section>
+
+
+            <!-- =================================================
+                 FARM IMPACT
+                 ================================================= -->
+
+            <section class="farm-weather-impact">
+
+                <div class="section-heading">
+
+                    <div>
+
+                        <span class="card-label">
+                            AI ANALYSIS
+                        </span>
+
+                        <h2>
+                            Weather Impact on Your Farm
+                        </h2>
+
+                    </div>
+
+                    <span class="impact-status">
+                        ● Favorable
+                    </span>
+
+                </div>
+
+
+                <div class="impact-grid">
+
+                    <article class="impact-item">
+
+                        <div class="impact-icon">
+                            💧
+                        </div>
+
+                        <div>
+
+                            <strong>
+                                Irrigation
+                            </strong>
+
+                            <p>
+                                Moderate watering recommended.
+                                Soil moisture should be monitored
+                                before the next irrigation cycle.
+                            </p>
+
+                        </div>
+
+                    </article>
+
+
+                    <article class="impact-item">
+
+                        <div class="impact-icon">
+                            🌱
+                        </div>
+
+                        <div>
+
+                            <strong>
+                                Crop Growth
+                            </strong>
+
+                            <p>
+                                Current temperature and humidity
+                                are suitable for the active crop.
+                            </p>
+
+                        </div>
+
+                    </article>
+
+
+                    <article class="impact-item">
+
+                        <div class="impact-icon">
+                            🦠
+                        </div>
+
+                        <div>
+
+                            <strong>
+                                Disease Risk
+                            </strong>
+
+                            <p>
+                                Moderate humidity may slightly
+                                increase fungal disease risk.
+                            </p>
+
+                        </div>
+
+                    </article>
+
+                </div>
+
+            </section>
+
+
+            <!-- =================================================
+                 FORECAST
+                 ================================================= -->
+
+            <section class="forecast-card">
+
+                <div class="section-heading">
+
+                    <div>
+
+                        <span class="card-label">
+                            FORECAST
+                        </span>
+
+                        <h2>
+                            7-Day Weather Forecast
+                        </h2>
+
+                    </div>
+
+                    <span class="forecast-note">
+                        Farming outlook
+                    </span>
+
+                </div>
+
+
+                <div
+                    class="forecast-grid"
+                    id="forecastGrid"
+                >
+
+                    <article class="forecast-day today">
 
                         <span>
-                            📍 FARM LOCATION
+                            Today
                         </span>
 
-                        <strong id="farmLocation">
-                            Your Farm
+                        <strong>
+                            🌤️
                         </strong>
 
-                    </div>
-
-                </section>
-
-
-                <!-- =================================================
-                     WEATHER METRICS
-                     ================================================= -->
-
-                <section>
-
-                    <div class="section-heading">
-
-                        <div>
-
-                            <span class="card-label">
-                                CURRENT DATA
-                            </span>
-
-                            <h2>
-                                Weather Parameters
-                            </h2>
-
+                        <div class="forecast-temp">
+                            <b>28°</b>
+                            <small>21°</small>
                         </div>
 
-                    </div>
+                        <small>
+                            Partly Cloudy
+                        </small>
 
-
-                    <div class="stats-grid">
-
-
-                        <!-- Temperature -->
-
-                        <article class="stat-card">
-
-                            <div class="stat-card-header">
-
-                                <div class="stat-icon orange">
-                                    🌡️
-                                </div>
-
-                                <span class="stat-status good">
-                                    NORMAL
-                                </span>
-
-                            </div>
-
-                            <span class="stat-label">
-                                TEMPERATURE
-                            </span>
-
-                            <h3 id="temperature">
-                                27°C
-                            </h3>
-
-                            <p>
-                                Current air temperature
-                            </p>
-
-                        </article>
-
-
-                        <!-- Humidity -->
-
-                        <article class="stat-card">
-
-                            <div class="stat-card-header">
-
-                                <div class="stat-icon cyan">
-                                    💦
-                                </div>
-
-                                <span class="stat-status good">
-                                    NORMAL
-                                </span>
-
-                            </div>
-
-                            <span class="stat-label">
-                                HUMIDITY
-                            </span>
-
-                            <h3 id="humidity">
-                                68%
-                            </h3>
-
-                            <p>
-                                Relative humidity
-                            </p>
-
-                        </article>
-
-
-                        <!-- Rain Probability -->
-
-                        <article class="stat-card">
-
-                            <div class="stat-card-header">
-
-                                <div class="stat-icon blue">
-                                    🌧️
-                                </div>
-
-                                <span class="stat-status good">
-                                    LOW
-                                </span>
-
-                            </div>
-
-                            <span class="stat-label">
-                                RAIN PROBABILITY
-                            </span>
-
-                            <h3 id="rainProbability">
-                                35%
-                            </h3>
-
-                            <p>
-                                Probability of rainfall
-                            </p>
-
-                        </article>
-
-
-                        <!-- Wind -->
-
-                        <article class="stat-card">
-
-                            <div class="stat-card-header">
-
-                                <div class="stat-icon green">
-                                    💨
-                                </div>
-
-                                <span class="stat-status good">
-                                    NORMAL
-                                </span>
-
-                            </div>
-
-                            <span class="stat-label">
-                                WIND SPEED
-                            </span>
-
-                            <h3 id="windSpeed">
-                                12 km/h
-                            </h3>
-
-                            <p>
-                                Current wind speed
-                            </p>
-
-                        </article>
-
-                    </div>
-
-                </section>
-
-
-                <!-- =================================================
-                     FORECAST
-                     ================================================= -->
-
-                <section class="dashboard-card">
-
-                    <div class="card-header">
-
-                        <div>
-
-                            <span class="card-label">
-                                FORECAST
-                            </span>
-
-                            <h2>
-                                Upcoming Weather
-                            </h2>
-
-                        </div>
-
-                        <span class="ai-badge">
-                            LIVE
+                        <span class="forecast-rain">
+                            🌧️ 35%
                         </span>
-
-                    </div>
-
-
-                    <div class="forecast-grid">
-
-
-                        <!-- Day 1 -->
-
-                        <div class="forecast-item">
-
-                            <span class="forecast-day">
-                                TODAY
-                            </span>
-
-                            <span class="forecast-icon">
-                                ☀️
-                            </span>
-
-                            <strong>
-                                27°C
-                            </strong>
-
-                            <span>
-                                Partly Cloudy
-                            </span>
-
-                            <small>
-                                Rain 35%
-                            </small>
-
-                        </div>
-
-
-                        <!-- Day 2 -->
-
-                        <div class="forecast-item">
-
-                            <span class="forecast-day">
-                                TOMORROW
-                            </span>
-
-                            <span class="forecast-icon">
-                                🌦️
-                            </span>
-
-                            <strong>
-                                28°C
-                            </strong>
-
-                            <span>
-                                Light Rain
-                            </span>
-
-                            <small>
-                                Rain 55%
-                            </small>
-
-                        </div>
-
-
-                        <!-- Day 3 -->
-
-                        <div class="forecast-item">
-
-                            <span class="forecast-day">
-                                DAY 3
-                            </span>
-
-                            <span class="forecast-icon">
-                                ☁️
-                            </span>
-
-                            <strong>
-                                26°C
-                            </strong>
-
-                            <span>
-                                Cloudy
-                            </span>
-
-                            <small>
-                                Rain 40%
-                            </small>
-
-                        </div>
-
-
-                        <!-- Day 4 -->
-
-                        <div class="forecast-item">
-
-                            <span class="forecast-day">
-                                DAY 4
-                            </span>
-
-                            <span class="forecast-icon">
-                                ☀️
-                            </span>
-
-                            <strong>
-                                29°C
-                            </strong>
-
-                            <span>
-                                Sunny
-                            </span>
-
-                            <small>
-                                Rain 20%
-                            </small>
-
-                        </div>
-
-
-                        <!-- Day 5 -->
-
-                        <div class="forecast-item">
-
-                            <span class="forecast-day">
-                                DAY 5
-                            </span>
-
-                            <span class="forecast-icon">
-                                🌤️
-                            </span>
-
-                            <strong>
-                                28°C
-                            </strong>
-
-                            <span>
-                                Mostly Clear
-                            </span>
-
-                            <small>
-                                Rain 25%
-                            </small>
-
-                        </div>
-
-                    </div>
-
-                </section>
-
-
-                <!-- =================================================
-                     FARM IMPACT
-                     ================================================= -->
-
-                <section class="dashboard-grid">
-
-
-                    <!-- Irrigation Impact -->
-
-                    <article class="dashboard-card">
-
-                        <div class="card-header">
-
-                            <div>
-
-                                <span class="card-label">
-                                    FARM IMPACT
-                                </span>
-
-                                <h2>
-                                    Irrigation Advisory
-                                </h2>
-
-                            </div>
-
-                            <span class="ai-badge">
-                                🤖 AI
-                            </span>
-
-                        </div>
-
-
-                        <div class="ai-insight-body">
-
-                            <div class="ai-insight-icon">
-                                💧
-                            </div>
-
-                            <div>
-
-                                <h3 id="irrigationAdvisory">
-                                    Monitor before irrigation
-                                </h3>
-
-                                <p id="irrigationAdvisoryText">
-                                    Rain probability is moderate.
-                                    Check soil moisture before
-                                    starting the next irrigation cycle.
-                                </p>
-
-                            </div>
-
-                        </div>
 
                     </article>
 
 
-                    <!-- Crop Impact -->
+                    <article class="forecast-day">
 
-                    <article class="dashboard-card">
+                        <span>
+                            Tue
+                        </span>
 
-                        <div class="card-header">
+                        <strong>
+                            🌦️
+                        </strong>
 
-                            <div>
-
-                                <span class="card-label">
-                                    CROP IMPACT
-                                </span>
-
-                                <h2>
-                                    Weather Advisory
-                                </h2>
-
-                            </div>
-
-                            <span class="stat-status good">
-                                NORMAL
-                            </span>
-
+                        <div class="forecast-temp">
+                            <b>27°</b>
+                            <small>20°</small>
                         </div>
 
+                        <small>
+                            Light Rain
+                        </small>
 
-                        <div class="weather-advisory">
-
-                            <div class="weather-advisory-icon">
-                                🌾
-                            </div>
-
-                            <div>
-
-                                <h3 id="cropWeatherStatus">
-                                    Suitable Conditions
-                                </h3>
-
-                                <p id="cropWeatherAdvice">
-                                    Current temperature and humidity
-                                    are within a suitable range for
-                                    the current crop.
-                                </p>
-
-                            </div>
-
-                        </div>
+                        <span class="forecast-rain">
+                            🌧️ 62%
+                        </span>
 
                     </article>
 
-                </section>
 
+                    <article class="forecast-day">
 
-                <!-- =================================================
-                     WEATHER SENSOR STATUS
-                     ================================================= -->
+                        <span>
+                            Wed
+                        </span>
 
-                <section class="dashboard-card">
+                        <strong>
+                            🌧️
+                        </strong>
 
-                    <div class="card-header">
-
-                        <div>
-
-                            <span class="card-label">
-                                IoT MONITORING
-                            </span>
-
-                            <h2>
-                                Weather Sensors
-                            </h2>
-
+                        <div class="forecast-temp">
+                            <b>25°</b>
+                            <small>19°</small>
                         </div>
 
-                        <span class="ai-badge">
-                            LIVE
+                        <small>
+                            Rain
+                        </small>
+
+                        <span class="forecast-rain">
+                            🌧️ 78%
+                        </span>
+
+                    </article>
+
+
+                    <article class="forecast-day">
+
+                        <span>
+                            Thu
+                        </span>
+
+                        <strong>
+                            🌤️
+                        </strong>
+
+                        <div class="forecast-temp">
+                            <b>27°</b>
+                            <small>20°</small>
+                        </div>
+
+                        <small>
+                            Cloudy
+                        </small>
+
+                        <span class="forecast-rain">
+                            🌧️ 40%
+                        </span>
+
+                    </article>
+
+
+                    <article class="forecast-day">
+
+                        <span>
+                            Fri
+                        </span>
+
+                        <strong>
+                            ☀️
+                        </strong>
+
+                        <div class="forecast-temp">
+                            <b>29°</b>
+                            <small>21°</small>
+                        </div>
+
+                        <small>
+                            Sunny
+                        </small>
+
+                        <span class="forecast-rain">
+                            🌧️ 18%
+                        </span>
+
+                    </article>
+
+
+                    <article class="forecast-day">
+
+                        <span>
+                            Sat
+                        </span>
+
+                        <strong>
+                            ☀️
+                        </strong>
+
+                        <div class="forecast-temp">
+                            <b>30°</b>
+                            <small>22°</small>
+                        </div>
+
+                        <small>
+                            Sunny
+                        </small>
+
+                        <span class="forecast-rain">
+                            🌧️ 15%
+                        </span>
+
+                    </article>
+
+
+                    <article class="forecast-day">
+
+                        <span>
+                            Sun
+                        </span>
+
+                        <strong>
+                            🌤️
+                        </strong>
+
+                        <div class="forecast-temp">
+                            <b>29°</b>
+                            <small>21°</small>
+                        </div>
+
+                        <small>
+                            Partly Cloudy
+                        </small>
+
+                        <span class="forecast-rain">
+                            🌧️ 28%
+                        </span>
+
+                    </article>
+
+                </div>
+
+            </section>
+
+
+            <!-- =================================================
+                 AI RECOMMENDATION
+                 ================================================= -->
+
+            <section class="weather-ai-card">
+
+                <div class="weather-ai-icon">
+                    🤖
+                </div>
+
+                <div class="weather-ai-content">
+
+                    <span class="card-label">
+                        AI FARMING ADVISORY
+                    </span>
+
+                    <h2>
+                        Weather-Based Recommendation
+                    </h2>
+
+                    <p id="weatherRecommendation">
+                        Rain probability is expected to increase
+                        over the next two days. Consider reducing
+                        irrigation today and monitor soil moisture
+                        before applying additional water.
+                    </p>
+
+                    <div class="recommendation-tags">
+
+                        <span>
+                            💧 Reduce irrigation
+                        </span>
+
+                        <span>
+                            🌧️ Monitor rainfall
+                        </span>
+
+                        <span>
+                            🌱 Check crop health
                         </span>
 
                     </div>
 
+                </div>
 
-                    <div class="sensor-grid">
-
-
-                        <div class="sensor-item">
-
-                            <div class="sensor-icon">
-                                🌡️
-                            </div>
-
-                            <div>
-
-                                <strong>
-                                    Temperature
-                                </strong>
-
-                                <span>
-                                    DHT22 Sensor
-                                </span>
-
-                            </div>
-
-                            <b class="sensor-online">
-                                ● Online
-                            </b>
-
-                        </div>
+            </section>
 
 
-                        <div class="sensor-item">
+            <!-- =================================================
+                 WEATHER DISCLAIMER
+                 ================================================= -->
 
-                            <div class="sensor-icon">
-                                💦
-                            </div>
+            <section class="weather-disclaimer">
 
-                            <div>
+                <span>
+                    ⚠️
+                </span>
 
-                                <strong>
-                                    Humidity
-                                </strong>
+                <p>
+                    Weather values shown in this prototype are
+                    sample data. In the production system, live
+                    weather data can be connected through verified
+                    weather APIs and IoT sensor data.
+                </p>
 
-                                <span>
-                                    DHT22 Sensor
-                                </span>
+            </section>
 
-                            </div>
+        </div>
 
-                            <b class="sensor-online">
-                                ● Online
-                            </b>
+    </main>
 
-                        </div>
-
-
-                        <div class="sensor-item">
-
-                            <div class="sensor-icon">
-                                🌧️
-                            </div>
-
-                            <div>
-
-                                <strong>
-                                    Rain Detection
-                                </strong>
-
-                                <span>
-                                    Rain Sensor
-                                </span>
-
-                            </div>
-
-                            <b class="sensor-online">
-                                ● Online
-                            </b>
-
-                        </div>
+</div>
 
 
-                        <div class="sensor-item">
+<!-- MOBILE OVERLAY -->
 
-                            <div class="sensor-icon">
-                                ☀️
-                            </div>
-
-                            <div>
-
-                                <strong>
-                                    Light Intensity
-                                </strong>
-
-                                <span>
-                                    LDR Sensor
-                                </span>
-
-                            </div>
-
-                            <b class="sensor-online">
-                                ● Online
-                            </b>
-
-                        </div>
-
-                    </div>
-
-                </section>
-
-            </div>
-
-        </main>
-
-    </div>
+<div
+    class="sidebar-overlay"
+    id="sidebarOverlay"
+></div>
 
 
-    <!-- MOBILE SIDEBAR OVERLAY -->
-
-    <div
-        class="sidebar-overlay"
-        id="sidebarOverlay"
-        aria-hidden="true"
-    ></div>
-
-
-    <!-- JAVASCRIPT -->
-
-    <script src="../js/weather.js"></script>
+<script src="../js/weather.js"></script>
 
 </body>
 

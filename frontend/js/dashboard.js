@@ -13,6 +13,26 @@ function getElement(id) {
 
 
 /* =========================================================
+   AUTHENTICATION CHECK
+   ========================================================= */
+
+function checkAuthentication() {
+
+    const isLoggedIn =
+        localStorage.getItem("smartAgriLoggedIn");
+
+    if (isLoggedIn !== "true") {
+
+        window.location.href = "index.html";
+
+        return false;
+    }
+
+    return true;
+}
+
+
+/* =========================================================
    LOAD USER INFORMATION
    ========================================================= */
 
@@ -23,6 +43,11 @@ function loadUserInformation() {
             localStorage.getItem("smartAgriUser")
         );
 
+    if (!storedUser) {
+        return;
+    }
+
+
     const userName =
         getElement("userName");
 
@@ -30,33 +55,22 @@ function loadUserInformation() {
         getElement("welcomeName");
 
 
-    /*
-     * Demo user
-     * Used until backend authentication is connected.
-     */
-
-    const defaultUser = {
-        name: "Farmer"
-    };
-
-
-    const user =
-        storedUser || defaultUser;
-
-
     if (userName) {
 
         userName.textContent =
-            user.name;
+            storedUser.name;
     }
 
 
     if (welcomeName) {
 
+        /*
+         * Display only the first name in
+         * the welcome message.
+         */
+
         const firstName =
-            user.name
-                .trim()
-                .split(" ")[0];
+            storedUser.name.trim().split(" ")[0];
 
         welcomeName.textContent =
             firstName;
@@ -78,8 +92,7 @@ function displayCurrentDate() {
     }
 
 
-    const today =
-        new Date();
+    const today = new Date();
 
 
     const formattedDate =
@@ -157,20 +170,20 @@ function setupMobileSidebar() {
     );
 
 
+    /* Close sidebar after clicking a link */
+
     const navigationLinks =
         sidebar.querySelectorAll("a");
 
 
-    navigationLinks.forEach(
-        (link) => {
+    navigationLinks.forEach((link) => {
 
-            link.addEventListener(
-                "click",
-                closeSidebar
-            );
+        link.addEventListener(
+            "click",
+            closeSidebar
+        );
 
-        }
-    );
+    });
 }
 
 
@@ -183,7 +196,6 @@ function setupLogout() {
     const logoutButton =
         getElement("logoutButton");
 
-
     if (!logoutButton) {
         return;
     }
@@ -193,9 +205,17 @@ function setupLogout() {
         "click",
         () => {
 
+            /*
+             * Remove login session.
+             *
+             * User account itself remains
+             * stored for this frontend demo.
+             */
+
             localStorage.removeItem(
                 "smartAgriLoggedIn"
             );
+
 
             window.location.href =
                 "index.html";
@@ -234,10 +254,7 @@ function updateSoilProgress() {
     const safeValue =
         Math.max(
             0,
-            Math.min(
-                100,
-                moisture
-            )
+            Math.min(100, moisture)
         );
 
 
@@ -255,12 +272,14 @@ document.addEventListener(
     () => {
 
         /*
-         * Authentication is intentionally
-         * disabled during frontend development.
-         *
-         * It will be connected later with
-         * the actual login/backend system.
+         * Stop initialization if the
+         * user is not authenticated.
          */
+
+        if (!checkAuthentication()) {
+            return;
+        }
+
 
         loadUserInformation();
 
@@ -271,5 +290,6 @@ document.addEventListener(
         setupLogout();
 
         updateSoilProgress();
+
     }
 );

@@ -1,11 +1,39 @@
 /* =========================================================
-   SMARTAGRITWIN - COMMON DASHBOARD STYLES
+   SmartAgriTwin - Dashboard Styles
    ========================================================= */
 
+/* ---------- Variables ---------- */
 
-/* =========================================================
-   1. RESET
-   ========================================================= */
+:root {
+    --primary: #2e7d32;
+    --primary-dark: #1b5e20;
+    --primary-light: #e8f5e9;
+
+    --background: #f5f7f5;
+    --surface: #ffffff;
+
+    --text-primary: #1f2937;
+    --text-secondary: #6b7280;
+    --text-light: #9ca3af;
+
+    --border: #e5e7eb;
+
+    --success: #15803d;
+    --warning: #d97706;
+    --danger: #dc2626;
+
+    --sidebar-width: 250px;
+
+    --shadow-sm: 0 2px 10px rgba(0, 0, 0, 0.04);
+    --shadow-md: 0 8px 25px rgba(0, 0, 0, 0.06);
+
+    --radius: 16px;
+
+    --transition: 0.25s ease;
+}
+
+
+/* ---------- Reset ---------- */
 
 * {
     margin: 0;
@@ -18,94 +46,95 @@ html {
 }
 
 body {
-    font-family: "Segoe UI", Arial, sans-serif;
-    background: #f5f7f5;
-    color: #1f2933;
-    line-height: 1.5;
-}
+    font-family:
+        "Segoe UI",
+        Arial,
+        sans-serif;
 
-button,
-input,
-select,
-textarea {
-    font: inherit;
-}
-
-button {
-    cursor: pointer;
+    background: var(--background);
+    color: var(--text-primary);
 }
 
 a {
-    color: inherit;
     text-decoration: none;
+    color: inherit;
+}
+
+button {
+    font-family: inherit;
 }
 
 
 /* =========================================================
-   2. APP LAYOUT
+   APP LAYOUT
    ========================================================= */
 
 .app-layout {
-    display: flex;
     min-height: 100vh;
-    width: 100%;
+
+    display: flex;
 }
 
 
 /* =========================================================
-   3. SIDEBAR
+   SIDEBAR
    ========================================================= */
 
 .sidebar {
     position: fixed;
+
     top: 0;
     left: 0;
+    bottom: 0;
 
-    width: 260px;
-    height: 100vh;
+    width: var(--sidebar-width);
 
     display: flex;
     flex-direction: column;
 
-    background: #ffffff;
-    border-right: 1px solid #e5e7eb;
+    padding: 22px 14px;
 
-    z-index: 1000;
+    background: var(--surface);
 
-    overflow-y: auto;
+    border-right: 1px solid var(--border);
+
+    z-index: 100;
+
+    transition: transform var(--transition);
 }
 
 
-/* Brand */
+/* ---------- Brand ---------- */
 
 .sidebar-brand {
     display: flex;
     align-items: center;
-    gap: 12px;
 
-    padding: 24px 20px;
+    gap: 11px;
 
-    border-bottom: 1px solid #eef1ee;
+    padding: 5px 10px 25px;
+
+    border-bottom: 1px solid var(--border);
 }
 
 .brand-logo {
-    width: 44px;
-    height: 44px;
+    width: 42px;
+    height: 42px;
 
     display: flex;
     align-items: center;
     justify-content: center;
 
-    background: #e9f7ea;
-    border-radius: 12px;
+    border-radius: 11px;
 
-    font-size: 23px;
+    background: var(--primary-light);
+
+    font-size: 22px;
 }
 
 .sidebar-brand h1 {
-    font-size: 18px;
+    font-size: 17px;
     font-weight: 700;
-    color: #256b2a;
 }
 
 .sidebar-brand span {
@@ -113,79 +142,84 @@ a {
 
     margin-top: 2px;
 
-    font-size: 11px;
-    color: #7b8794;
+    font-size: 10px;
+
+    color: var(--text-secondary);
 }
 
 
-/* Navigation */
+/* =========================================================
+   NAVIGATION
+   ========================================================= */
 
 .sidebar-nav {
     flex: 1;
-    padding: 18px 12px;
+
+    overflow-y: auto;
+
+    padding-top: 20px;
 }
 
 .nav-section-title {
-    padding: 14px 12px 8px;
+    margin: 17px 12px 8px;
 
-    font-size: 10px;
+    font-size: 9px;
+
     font-weight: 700;
 
     letter-spacing: 1px;
-    color: #98a2ad;
+
+    color: var(--text-light);
 }
 
 .nav-item {
     display: flex;
     align-items: center;
+
     gap: 12px;
 
-    width: 100%;
+    margin-bottom: 3px;
 
-    margin-bottom: 4px;
-    padding: 11px 13px;
+    padding: 11px 12px;
 
-    border-radius: 9px;
+    border-radius: 10px;
 
-    font-size: 14px;
-    font-weight: 500;
+    font-size: 13px;
 
-    color: #59636e;
+    color: var(--text-secondary);
 
-    transition:
-        background 0.2s ease,
-        color 0.2s ease,
-        transform 0.2s ease;
+    transition: var(--transition);
 }
 
 .nav-item:hover {
-    background: #f1f8f1;
-    color: #28732d;
+    background: var(--primary-light);
+
+    color: var(--primary);
 }
 
 .nav-item.active {
-    background: #e8f5e9;
-    color: #24752a;
+    background: var(--primary-light);
+
+    color: var(--primary);
+
     font-weight: 600;
 }
 
 .nav-icon {
     width: 22px;
 
-    display: flex;
-    align-items: center;
-    justify-content: center;
+    text-align: center;
 
     font-size: 17px;
 }
 
 
-/* Sidebar bottom */
+/* ---------- Sidebar Bottom ---------- */
 
 .sidebar-bottom {
-    padding: 16px;
+    padding-top: 15px;
 
-    border-top: 1px solid #eef1ee;
+    border-top: 1px solid var(--border);
 }
 
 .logout-button {
@@ -193,62 +227,64 @@ a {
 
     display: flex;
     align-items: center;
-    gap: 10px;
 
-    padding: 11px 13px;
+    gap: 12px;
 
-    border: 0;
-    border-radius: 9px;
+    padding: 11px 12px;
+
+    border: none;
+
+    border-radius: 10px;
 
     background: transparent;
 
-    color: #69737d;
+    color: var(--text-secondary);
+
+    font-size: 13px;
+
+    cursor: pointer;
 
     text-align: left;
 
-    transition: 0.2s ease;
+    transition: var(--transition);
 }
 
 .logout-button:hover {
-    background: #fff1f1;
-    color: #c0392b;
+    background: #fef2f2;
+
+    color: var(--danger);
 }
 
 
 /* =========================================================
-   4. MAIN CONTENT
+   MAIN CONTENT
    ========================================================= */
 
 .main-content {
-    width: calc(100% - 260px);
-    min-height: 100vh;
+    width: calc(100% - var(--sidebar-width));
 
-    margin-left: 260px;
+    margin-left: var(--sidebar-width);
+
+    min-height: 100vh;
 }
 
 
 /* =========================================================
-   5. TOPBAR
+   TOPBAR
    ========================================================= */
 
 .topbar {
-    position: sticky;
-    top: 0;
-
-    min-height: 76px;
+    height: 78px;
 
     display: flex;
     align-items: center;
     justify-content: space-between;
 
-    padding: 14px 30px;
+    padding: 0 32px;
 
-    background: rgba(255, 255, 255, 0.96);
-    border-bottom: 1px solid #e5e7eb;
+    background: var(--surface);
 
-    backdrop-filter: blur(8px);
-
-    z-index: 900;
+    border-bottom: 1px solid var(--border);
 }
 
 .topbar-left,
@@ -258,7 +294,7 @@ a {
 }
 
 .topbar-left {
-    gap: 14px;
+    gap: 15px;
 }
 
 .topbar-right {
@@ -268,40 +304,41 @@ a {
 .page-label {
     margin-bottom: 2px;
 
-    font-size: 10px;
+    font-size: 9px;
+
     font-weight: 700;
 
     letter-spacing: 1px;
-    color: #8a959f;
+
+    color: var(--primary);
 }
 
 .topbar h2 {
     font-size: 20px;
-    font-weight: 700;
-    color: #25313b;
 }
 
 
-/* Mobile menu */
+/* ---------- Menu Button ---------- */
 
 .menu-button {
     display: none;
 
-    width: 40px;
-    height: 40px;
+    width: 38px;
+    height: 38px;
 
-    border: 1px solid #e1e5e8;
-    border-radius: 8px;
+    border: 1px solid var(--border);
 
-    background: #ffffff;
+    border-radius: 9px;
 
-    color: #46515b;
+    background: white;
 
-    font-size: 20px;
+    cursor: pointer;
+
+    font-size: 18px;
 }
 
 
-/* Notifications */
+/* ---------- Notification ---------- */
 
 .notification-button {
     position: relative;
@@ -309,159 +346,215 @@ a {
     width: 40px;
     height: 40px;
 
-    border: 1px solid #e4e8ea;
+    border: 1px solid var(--border);
+
     border-radius: 10px;
 
-    background: #ffffff;
+    background: white;
 
-    font-size: 18px;
+    cursor: pointer;
+
+    font-size: 17px;
+
+    transition: var(--transition);
 }
 
 .notification-button:hover {
-    background: #f5f8f5;
+    background: var(--primary-light);
 }
 
 .notification-dot {
     position: absolute;
 
-    top: 7px;
-    right: 7px;
+    top: 8px;
+    right: 8px;
 
-    width: 7px;
-    height: 7px;
+    width: 6px;
+    height: 6px;
 
-    background: #e74c3c;
-
-    border: 2px solid #ffffff;
     border-radius: 50%;
+
+    background: var(--danger);
+
+    border: 1px solid white;
 }
 
 
-/* User */
+/* ---------- User ---------- */
 
 .user-profile {
     display: flex;
     align-items: center;
+
     gap: 10px;
 }
 
 .user-avatar {
-    width: 40px;
-    height: 40px;
+    width: 38px;
+    height: 38px;
 
     display: flex;
     align-items: center;
     justify-content: center;
 
-    background: #eaf5eb;
     border-radius: 50%;
 
-    font-size: 19px;
+    background: var(--primary-light);
+
+    font-size: 18px;
 }
 
 .user-details strong {
     display: block;
 
-    font-size: 13px;
-    color: #29343d;
+    font-size: 12px;
 }
 
 .user-details span {
     display: block;
 
-    margin-top: 1px;
+    margin-top: 2px;
 
-    font-size: 11px;
-    color: #89939c;
+    font-size: 10px;
+
+    color: var(--text-secondary);
 }
 
 
 /* =========================================================
-   6. DASHBOARD CONTENT
+   DASHBOARD CONTENT
    ========================================================= */
 
 .dashboard-content {
-    width: 100%;
     max-width: 1500px;
 
     margin: 0 auto;
-    padding: 30px;
+
+    padding: 30px 32px 45px;
 }
 
 
 /* =========================================================
-   7. PAGE WELCOME
+   WELCOME SECTION
    ========================================================= */
 
-.dashboard-welcome {
+.welcome-section {
     display: flex;
-    align-items: flex-start;
+    align-items: center;
     justify-content: space-between;
-    gap: 25px;
 
-    margin-bottom: 28px;
+    margin-bottom: 25px;
 }
 
 .welcome-label {
     margin-bottom: 5px;
 
     font-size: 10px;
+
     font-weight: 700;
 
     letter-spacing: 1px;
-    color: #6f8d72;
+
+    color: var(--primary);
 }
 
-.dashboard-welcome h1 {
-    margin-bottom: 7px;
+.welcome-section h1 {
+    margin-bottom: 5px;
 
     font-size: 28px;
-    line-height: 1.2;
 
-    color: #25332a;
+    letter-spacing: -0.7px;
 }
 
-.dashboard-welcome p:not(.welcome-label) {
-    max-width: 680px;
-
-    font-size: 14px;
-    color: #77817a;
+.welcome-section h1 span {
+    color: var(--primary);
 }
 
-.dashboard-date {
-    min-width: 145px;
+.welcome-section > div > p:last-child {
+    font-size: 13px;
 
-    padding: 12px 16px;
-
-    background: #ffffff;
-    border: 1px solid #e3e8e3;
-
-    border-radius: 10px;
+    color: var(--text-secondary);
 }
 
-.dashboard-date span {
+
+/* ---------- Date Card ---------- */
+
+.date-card {
+    display: flex;
+    align-items: center;
+
+    gap: 10px;
+
+    padding: 11px 15px;
+
+    border: 1px solid var(--border);
+
+    border-radius: 11px;
+
+    background: white;
+
+    box-shadow: var(--shadow-sm);
+}
+
+.date-card > span {
+    font-size: 20px;
+}
+
+.date-card small {
     display: block;
 
-    margin-bottom: 3px;
+    font-size: 8px;
 
-    font-size: 9px;
     font-weight: 700;
 
-    letter-spacing: 1px;
-    color: #909a93;
+    color: var(--text-light);
 }
 
-.dashboard-date strong {
-    font-size: 14px;
-    color: #2d6d31;
+.date-card strong {
+    display: block;
+
+    margin-top: 2px;
+
+    font-size: 12px;
 }
 
 
 /* =========================================================
-   8. SECTION HEADING
+   STAT CARDS
    ========================================================= */
 
-.section-heading {
+.stats-grid {
+    display: grid;
+
+    grid-template-columns:
+        repeat(4, minmax(0, 1fr));
+
+    gap: 16px;
+
+    margin-bottom: 20px;
+}
+
+.stat-card {
+    padding: 20px;
+
+    border: 1px solid var(--border);
+
+    border-radius: var(--radius);
+
+    background: white;
+
+    box-shadow: var(--shadow-sm);
+
+    transition: var(--transition);
+}
+
+.stat-card:hover {
+    transform: translateY(-2px);
+
+    box-shadow: var(--shadow-md);
+}
+
+.stat-header {
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -469,192 +562,144 @@ a {
     margin-bottom: 15px;
 }
 
-.section-heading h2 {
-    margin-top: 3px;
-
-    font-size: 19px;
-    color: #2b3730;
-}
-
-
-/* =========================================================
-   9. COMMON LABELS
-   ========================================================= */
-
-.card-label {
-    display: block;
-
-    font-size: 9px;
-    font-weight: 700;
-
-    letter-spacing: 1px;
-
-    color: #89958d;
-}
-
-
-/* =========================================================
-   10. STAT CARDS
-   ========================================================= */
-
-.stats-grid {
-    display: grid;
-
-    grid-template-columns: repeat(4, 1fr);
-
-    gap: 16px;
-
-    margin-bottom: 25px;
-}
-
-.stat-card {
-    padding: 19px;
-
-    background: #ffffff;
-    border: 1px solid #e3e8e4;
-
-    border-radius: 12px;
-
-    box-shadow: 0 2px 8px rgba(30, 50, 35, 0.03);
-
-    transition:
-        transform 0.2s ease,
-        box-shadow 0.2s ease;
-}
-
-.stat-card:hover {
-    transform: translateY(-2px);
-
-    box-shadow: 0 7px 20px rgba(30, 50, 35, 0.07);
-}
-
-.stat-card-header {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-
-    margin-bottom: 16px;
-}
-
 .stat-icon {
-    width: 39px;
-    height: 39px;
+    width: 40px;
+    height: 40px;
 
     display: flex;
     align-items: center;
     justify-content: center;
 
-    border-radius: 10px;
+    border-radius: 11px;
 
-    font-size: 18px;
+    font-size: 19px;
 }
 
-.stat-icon.green {
-    background: #e8f6e9;
+.moisture-icon {
+    background: #e0f2fe;
 }
 
-.stat-icon.blue {
-    background: #e8f3fb;
+.temperature-icon {
+    background: #fff7ed;
 }
 
-.stat-icon.orange {
-    background: #fff2df;
+.humidity-icon {
+    background: #eff6ff;
 }
 
-.stat-icon.purple {
-    background: #f1ebfa;
+.crop-icon {
+    background: #ecfdf5;
 }
 
-.stat-label {
-    display: block;
+.stat-card > p {
+    margin-bottom: 4px;
 
-    margin-bottom: 5px;
+    font-size: 12px;
 
-    font-size: 9px;
-    font-weight: 700;
-
-    letter-spacing: 0.9px;
-
-    color: #89938c;
+    color: var(--text-secondary);
 }
 
 .stat-card h3 {
-    margin-bottom: 4px;
+    margin-bottom: 8px;
 
-    font-size: 25px;
-    font-weight: 700;
-
-    color: #26352a;
-}
-
-.stat-card p {
-    font-size: 11px;
-    color: #8a938d;
+    font-size: 27px;
 }
 
 
-/* =========================================================
-   11. STATUS
-   ========================================================= */
+/* ---------- Status Badges ---------- */
 
-.stat-status {
-    display: inline-flex;
-    align-items: center;
-
-    padding: 4px 7px;
+.status-badge {
+    padding: 4px 8px;
 
     border-radius: 20px;
 
     font-size: 9px;
-    font-weight: 700;
+
+    font-weight: 600;
 }
 
-.stat-status.good {
-    background: #eaf7eb;
-    color: #31803a;
+.status-badge.good {
+    background: #ecfdf5;
+
+    color: var(--success);
 }
 
-.stat-status.warning {
-    background: #fff4df;
-    color: #b7791f;
+.status-badge.normal {
+    background: #eff6ff;
+
+    color: #2563eb;
 }
 
-.stat-status.danger {
-    background: #fdecec;
-    color: #c0392b;
+
+/* ---------- Progress ---------- */
+
+.progress-bar {
+    height: 5px;
+
+    margin-bottom: 7px;
+
+    overflow: hidden;
+
+    border-radius: 10px;
+
+    background: #edf0ed;
+}
+
+.progress-fill {
+    width: 42%;
+
+    height: 100%;
+
+    border-radius: inherit;
+
+    background: var(--primary);
+}
+
+.stat-card small {
+    font-size: 10px;
+
+    color: var(--text-light);
 }
 
 
 /* =========================================================
-   12. DASHBOARD GRID
+   DASHBOARD GRID
    ========================================================= */
 
 .dashboard-grid {
     display: grid;
 
-    grid-template-columns: repeat(2, minmax(0, 1fr));
+    grid-template-columns:
+        repeat(2, minmax(0, 1fr));
 
     gap: 18px;
 
-    margin-bottom: 20px;
+    margin-bottom: 25px;
 }
 
 
 /* =========================================================
-   13. COMMON CARDS
+   DASHBOARD CARD
    ========================================================= */
 
 .dashboard-card {
-    padding: 20px;
+    min-height: 260px;
 
-    background: #ffffff;
-    border: 1px solid #e3e8e4;
+    padding: 23px;
 
-    border-radius: 12px;
+    border: 1px solid var(--border);
 
-    box-shadow: 0 2px 8px rgba(30, 50, 35, 0.03);
+    border-radius: var(--radius);
 
-    margin-bottom: 20px;
+    background: white;
+
+    box-shadow: var(--shadow-sm);
+
+    transition: var(--transition);
+}
+
+.dashboard-card:hover {
+    box-shadow: var(--shadow-md);
 }
 
 .card-header {
@@ -662,458 +707,566 @@ a {
     align-items: flex-start;
     justify-content: space-between;
 
-    gap: 15px;
+    margin-bottom: 22px;
+}
 
-    margin-bottom: 20px;
+.card-label {
+    display: block;
+
+    margin-bottom: 5px;
+
+    font-size: 9px;
+
+    font-weight: 700;
+
+    letter-spacing: 1px;
+
+    color: var(--primary);
 }
 
 .card-header h2 {
-    margin-top: 4px;
+    font-size: 17px;
+}
+
+.ai-icon,
+.weather-icon,
+.twin-icon,
+.irrigation-icon {
+    width: 40px;
+    height: 40px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    border-radius: 11px;
+
+    font-size: 20px;
+}
+
+.ai-icon {
+    background: #f0fdf4;
+}
+
+.weather-icon {
+    background: #fff7ed;
+}
+
+.twin-icon {
+    background: #f5f3ff;
+}
+
+.irrigation-icon {
+    background: #eff6ff;
+}
+
+
+/* =========================================================
+   AI RECOMMENDATION
+   ========================================================= */
+
+.recommendation {
+    display: flex;
+    align-items: flex-start;
+
+    gap: 14px;
+
+    padding: 15px;
+
+    border-radius: 12px;
+
+    background: var(--primary-light);
+}
+
+.recommendation-icon {
+    width: 40px;
+    height: 40px;
+
+    flex-shrink: 0;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    border-radius: 10px;
+
+    background: white;
 
     font-size: 18px;
-    color: #29362d;
 }
 
-.ai-badge {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-
-    padding: 5px 9px;
-
-    border-radius: 20px;
-
-    background: #edf7ee;
-
-    color: #35743a;
-
-    font-size: 9px;
-    font-weight: 700;
-
-    letter-spacing: 0.5px;
-}
-
-
-/* =========================================================
-   14. BUTTONS
-   ========================================================= */
-
-.primary-button {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-
-    min-height: 42px;
-
-    padding: 0 17px;
-
-    border: 0;
-    border-radius: 8px;
-
-    background: #2f7d32;
-
-    color: #ffffff;
+.recommendation h3 {
+    margin-bottom: 5px;
 
     font-size: 13px;
-    font-weight: 600;
-
-    transition: 0.2s ease;
 }
 
-.primary-button:hover {
-    background: #256629;
+.recommendation p {
+    font-size: 11px;
 
-    transform: translateY(-1px);
+    line-height: 1.55;
+
+    color: var(--text-secondary);
 }
 
-.primary-button:active {
-    transform: translateY(0);
-}
-
-
-/* =========================================================
-   15. PROGRESS BAR
-   ========================================================= */
-
-.stat-progress {
-    width: 100%;
-    height: 7px;
+.recommendation-footer {
+    display: flex;
+    justify-content: space-between;
 
     margin-top: 17px;
 
-    overflow: hidden;
+    font-size: 10px;
 
-    background: #edf1ed;
-
-    border-radius: 20px;
+    color: var(--text-secondary);
 }
 
-.progress-bar {
-    height: 100%;
+.recommendation-footer strong {
+    color: var(--primary);
+}
 
-    background: #4d934f;
+.confidence-bar {
+    height: 5px;
+
+    margin-top: 6px;
+
+    overflow: hidden;
+
+    border-radius: 10px;
+
+    background: #edf0ed;
+}
+
+.confidence-bar div {
+    width: 91%;
+
+    height: 100%;
 
     border-radius: inherit;
 
-    transition: width 0.5s ease;
+    background: var(--primary);
 }
 
-.progress-caption {
-    margin-top: 7px;
+
+/* =========================================================
+   WEATHER
+   ========================================================= */
+
+.weather-main {
+    display: flex;
+    align-items: center;
+
+    gap: 17px;
+
+    margin-bottom: 22px;
+}
+
+.weather-temperature {
+    font-size: 46px;
+
+    font-weight: 600;
+
+    letter-spacing: -2px;
+}
+
+.weather-main strong {
+    font-size: 14px;
+}
+
+.weather-main p {
+    margin-top: 3px;
 
     font-size: 10px;
-    color: #8a938d;
+
+    color: var(--text-secondary);
 }
 
-
-/* =========================================================
-   16. ANALYTICS HIGHLIGHT
-   ========================================================= */
-
-.analytics-highlight strong {
-    display: block;
-
-    margin-bottom: 3px;
-
-    font-size: 28px;
-    color: #2c6f31;
-}
-
-.analytics-highlight span {
-    font-size: 12px;
-    color: #7d8780;
-}
-
-
-/* =========================================================
-   17. TABLES
-   ========================================================= */
-
-.crop-performance-table,
-.crop-history-table {
-    width: 100%;
-    overflow-x: auto;
-}
-
-.table-header,
-.table-row,
-.history-header,
-.history-row {
+.weather-details {
     display: grid;
-    align-items: center;
 
-    gap: 15px;
+    grid-template-columns:
+        repeat(3, 1fr);
 
-    min-width: 620px;
-
-    padding: 13px 8px;
-
-    border-bottom: 1px solid #edf0ed;
-
-    font-size: 12px;
-}
-
-.table-header,
-.history-header {
-    font-size: 9px;
-    font-weight: 700;
-
-    letter-spacing: 0.8px;
-
-    color: #8a948d;
-    text-transform: uppercase;
-}
-
-.table-header,
-.table-row {
-    grid-template-columns: 1.5fr 0.8fr 0.9fr 0.9fr;
-}
-
-.history-header,
-.history-row {
-    grid-template-columns: 1fr 1.2fr 1fr 1fr 1fr;
-}
-
-.table-row:last-child,
-.history-row:last-child {
-    border-bottom: 0;
-}
-
-.table-row strong,
-.history-row strong {
-    color: #344139;
-}
-
-.table-status {
-    width: fit-content;
-
-    padding: 4px 8px;
-
-    border-radius: 20px;
-
-    font-size: 9px;
-    font-weight: 700;
-}
-
-.table-status.good {
-    background: #eaf7eb;
-    color: #31803a;
-}
-
-.table-status.warning {
-    background: #fff3dc;
-    color: #b7791f;
-}
-
-
-/* =========================================================
-   18. INSIGHTS
-   ========================================================= */
-
-.insights-list {
-    display: flex;
-    flex-direction: column;
-
-    gap: 14px;
-}
-
-.insight-item {
-    display: flex;
-    align-items: flex-start;
-    gap: 13px;
-
-    padding: 13px;
-
-    background: #f8faf8;
-
-    border: 1px solid #edf1ed;
-    border-radius: 9px;
-}
-
-.insight-icon {
-    width: 36px;
-    height: 36px;
-
-    flex-shrink: 0;
-
-    display: flex;
-    align-items: center;
-    justify-content: center;
-
-    background: #eaf5ea;
-
-    border-radius: 9px;
-
-    font-size: 17px;
-}
-
-.insight-item strong {
-    display: block;
-
-    margin-bottom: 3px;
-
-    font-size: 13px;
-    color: #354138;
-}
-
-.insight-item p {
-    font-size: 11px;
-    color: #7d8780;
-}
-
-
-/* =========================================================
-   19. DEVICE LIST
-   ========================================================= */
-
-.device-list {
-    display: flex;
-    flex-direction: column;
     gap: 10px;
+
+    margin-bottom: 16px;
 }
 
-.device-item {
-    display: flex;
-    align-items: center;
-    gap: 12px;
+.weather-details div {
+    padding: 10px;
 
-    padding: 12px;
+    border-radius: 9px;
 
     background: #f8faf8;
 
-    border: 1px solid #edf1ed;
-
-    border-radius: 9px;
+    text-align: center;
 }
 
-.device-icon {
-    width: 38px;
-    height: 38px;
+.weather-details span,
+.weather-details strong,
+.weather-details small {
+    display: block;
+}
 
-    flex-shrink: 0;
+.weather-details span {
+    margin-bottom: 3px;
+}
+
+.weather-details strong {
+    font-size: 11px;
+}
+
+.weather-details small {
+    margin-top: 2px;
+
+    font-size: 8px;
+
+    color: var(--text-light);
+}
+
+
+/* =========================================================
+   DIGITAL TWIN
+   ========================================================= */
+
+.twin-status {
+    display: flex;
+    align-items: center;
+
+    gap: 20px;
+
+    margin-bottom: 17px;
+}
+
+.twin-visual {
+    width: 130px;
+    height: 100px;
 
     display: flex;
     align-items: center;
     justify-content: center;
 
-    background: #eaf5ea;
+    flex-shrink: 0;
 
-    border-radius: 9px;
+    border-radius: 12px;
 
-    font-size: 17px;
+    background:
+        linear-gradient(
+            145deg,
+            #e8f5e9,
+            #f1f8e9
+        );
 }
 
-.device-item div:nth-child(2) {
+.farm-field {
+    font-size: 18px;
+
+    line-height: 1.8;
+
+    text-align: center;
+}
+
+.twin-data {
     flex: 1;
 }
 
-.device-item strong {
+.twin-data div {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    padding: 7px 0;
+
+    border-bottom: 1px solid #f0f1f0;
+}
+
+.twin-data div:last-child {
+    border-bottom: none;
+}
+
+.twin-data span {
+    font-size: 10px;
+
+    color: var(--text-secondary);
+}
+
+.twin-data strong {
+    font-size: 11px;
+}
+
+
+/* =========================================================
+   IRRIGATION
+   ========================================================= */
+
+.irrigation-status {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    margin-bottom: 18px;
+}
+
+.pump-status {
+    display: flex;
+    align-items: center;
+
+    gap: 10px;
+}
+
+.status-indicator {
+    width: 10px;
+    height: 10px;
+
+    border-radius: 50%;
+
+    background: #9ca3af;
+
+    box-shadow:
+        0 0 0 4px #f3f4f6;
+}
+
+.pump-status strong,
+.water-level strong {
     display: block;
 
     font-size: 12px;
-    color: #354139;
 }
 
-.device-item span {
+.pump-status small {
     display: block;
 
-    margin-top: 2px;
+    margin-top: 3px;
 
-    font-size: 10px;
-    color: #8a938d;
+    font-size: 9px;
+
+    color: var(--text-secondary);
 }
 
-.sensor-online {
-    white-space: nowrap;
+.water-level {
+    text-align: right;
+}
 
-    font-size: 10px;
+.water-level span {
+    display: block;
 
-    color: #3b8843;
+    margin-bottom: 3px;
+
+    font-size: 9px;
+
+    color: var(--text-secondary);
+}
+
+.water-progress {
+    height: 8px;
+
+    margin-bottom: 17px;
+
+    overflow: hidden;
+
+    border-radius: 10px;
+
+    background: #e5e7eb;
+}
+
+.water-progress div {
+    height: 100%;
+
+    border-radius: inherit;
+
+    background: #3b82f6;
 }
 
 
 /* =========================================================
-   20. PROTOTYPE NOTICE
+   CARD ACTION
    ========================================================= */
 
-.prototype-notice {
-    display: flex;
-    align-items: flex-start;
-    gap: 10px;
+.card-action {
+    display: inline-block;
 
-    margin-top: 5px;
-    padding: 13px 15px;
-
-    background: #f0f7f1;
-
-    border: 1px solid #dcebdd;
-    border-radius: 9px;
-
-    color: #58705b;
-}
-
-.prototype-notice > span {
-    flex-shrink: 0;
-
-    font-size: 15px;
-}
-
-.prototype-notice p {
     font-size: 11px;
-    line-height: 1.6;
+
+    font-weight: 600;
+
+    color: var(--primary);
+
+    transition: var(--transition);
+}
+
+.card-action:hover {
+    color: var(--primary-dark);
+
+    transform: translateX(2px);
 }
 
 
 /* =========================================================
-   21. SIDEBAR OVERLAY
+   QUICK ACTIONS
+   ========================================================= */
+
+.quick-actions-section {
+    margin-top: 5px;
+}
+
+.section-heading {
+    margin-bottom: 14px;
+}
+
+.section-heading h2 {
+    font-size: 18px;
+}
+
+.quick-actions-grid {
+    display: grid;
+
+    grid-template-columns:
+        repeat(4, minmax(0, 1fr));
+
+    gap: 13px;
+}
+
+.quick-action {
+    display: flex;
+    align-items: center;
+
+    gap: 12px;
+
+    padding: 15px;
+
+    border: 1px solid var(--border);
+
+    border-radius: 13px;
+
+    background: white;
+
+    box-shadow: var(--shadow-sm);
+
+    transition: var(--transition);
+}
+
+.quick-action:hover {
+    border-color: #c8dfc9;
+
+    transform: translateY(-2px);
+
+    box-shadow: var(--shadow-md);
+}
+
+.quick-action > span {
+    width: 38px;
+    height: 38px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    flex-shrink: 0;
+
+    border-radius: 10px;
+
+    background: var(--primary-light);
+
+    font-size: 18px;
+}
+
+.quick-action div {
+    flex: 1;
+}
+
+.quick-action strong {
+    display: block;
+
+    font-size: 11px;
+}
+
+.quick-action small {
+    display: block;
+
+    margin-top: 3px;
+
+    font-size: 9px;
+
+    color: var(--text-secondary);
+}
+
+.quick-action b {
+    color: var(--primary);
+
+    font-size: 14px;
+}
+
+
+/* =========================================================
+   SIDEBAR OVERLAY
    ========================================================= */
 
 .sidebar-overlay {
     display: none;
 
     position: fixed;
+
     inset: 0;
 
     background: rgba(0, 0, 0, 0.35);
 
-    z-index: 950;
+    z-index: 90;
 }
 
 
 /* =========================================================
-   22. FOCUS ACCESSIBILITY
+   RESPONSIVE
    ========================================================= */
 
-button:focus-visible,
-a:focus-visible,
-select:focus-visible,
-input:focus-visible {
-    outline: 3px solid rgba(47, 125, 50, 0.25);
-    outline-offset: 2px;
-}
-
-
-/* =========================================================
-   23. RESPONSIVE - TABLET
-   ========================================================= */
-
-@media (max-width: 1100px) {
-
-    .sidebar {
-        width: 230px;
-    }
-
-    .main-content {
-        width: calc(100% - 230px);
-        margin-left: 230px;
-    }
+@media (max-width: 1200px) {
 
     .stats-grid {
-        grid-template-columns: repeat(2, 1fr);
+        grid-template-columns:
+            repeat(2, 1fr);
     }
 
-    .dashboard-content {
-        padding: 24px;
+    .quick-actions-grid {
+        grid-template-columns:
+            repeat(2, 1fr);
     }
-
 }
 
 
-/* =========================================================
-   24. RESPONSIVE - MOBILE
-   ========================================================= */
-
-@media (max-width: 768px) {
+@media (max-width: 900px) {
 
     .sidebar {
-        width: 260px;
-
         transform: translateX(-100%);
-
-        transition: transform 0.25s ease;
     }
 
     .sidebar.open {
         transform: translateX(0);
     }
 
-    .sidebar-overlay.active {
-        display: block;
-    }
-
     .main-content {
         width: 100%;
+
         margin-left: 0;
     }
 
     .menu-button {
-        display: flex;
-        align-items: center;
-        justify-content: center;
+        display: block;
     }
 
+    .sidebar-overlay.active {
+        display: block;
+    }
+
+    .dashboard-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+
+@media (max-width: 650px) {
+
     .topbar {
-        padding: 12px 16px;
+        height: 68px;
+
+        padding: 0 18px;
     }
 
     .topbar-right {
@@ -1125,80 +1278,73 @@ input:focus-visible {
     }
 
     .dashboard-content {
-        padding: 20px 16px;
+        padding: 22px 17px 35px;
     }
 
-    .dashboard-welcome {
+    .welcome-section {
+        align-items: flex-start;
+
         flex-direction: column;
+
+        gap: 15px;
     }
 
-    .dashboard-date {
-        width: 100%;
-    }
-
-    .dashboard-welcome h1 {
+    .welcome-section h1 {
         font-size: 24px;
     }
 
-    .stats-grid {
-        grid-template-columns: 1fr 1fr;
-
-        gap: 12px;
+    .date-card {
+        width: 100%;
     }
 
-    .dashboard-grid {
+    .stats-grid {
         grid-template-columns: 1fr;
     }
 
+    .quick-actions-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .dashboard-card {
+        padding: 18px;
+    }
+
+    .twin-status {
+        align-items: flex-start;
+
+        flex-direction: column;
+    }
+
+    .twin-visual {
+        width: 100%;
+    }
+
+    .twin-data {
+        width: 100%;
+    }
 }
 
 
-/* =========================================================
-   25. RESPONSIVE - SMALL MOBILE
-   ========================================================= */
-
-@media (max-width: 480px) {
+@media (max-width: 400px) {
 
     .topbar h2 {
         font-size: 17px;
     }
 
-    .notification-button {
-        width: 36px;
-        height: 36px;
-    }
-
-    .user-avatar {
-        width: 36px;
-        height: 36px;
+    .page-label {
+        display: none;
     }
 
     .dashboard-content {
-        padding: 17px 12px;
-    }
-
-    .stats-grid {
-        grid-template-columns: 1fr;
+        padding-left: 13px;
+        padding-right: 13px;
     }
 
     .stat-card {
-        padding: 16px;
+        padding: 17px;
     }
 
-    .dashboard-card {
-        padding: 16px;
+    .weather-details {
+        gap: 6px;
     }
-
-    .card-header {
-        margin-bottom: 16px;
-    }
-
-    .dashboard-welcome h1 {
-        font-size: 22px;
-    }
-
-    .primary-button {
-        width: 100%;
-    }
-
 }

@@ -1,6 +1,10 @@
-css
 /* =========================================================
    SmartAgriTwin - Digital Twin
+   ========================================================= */
+
+
+/* =========================================================
+   PAGE HEADER
    ========================================================= */
 
 .twin-page-header {
@@ -12,25 +16,21 @@ css
 }
 
 .twin-page-header h1 {
-    margin: 0 0 6px;
+    margin-bottom: 6px;
     font-size: 28px;
-    color: #1f2937;
-}
-
-.twin-page-header p {
-    margin: 0;
+    letter-spacing: -0.6px;
 }
 
 .twin-page-header p:last-child {
     max-width: 650px;
     font-size: 13px;
     line-height: 1.5;
-    color: #6b7280;
+    color: var(--text-secondary);
 }
 
 
 /* =========================================================
-   STATUS
+   TWIN STATUS
    ========================================================= */
 
 .twin-status {
@@ -41,43 +41,45 @@ css
     border: 1px solid #dcebdd;
     border-radius: 20px;
     background: #f1f8f2;
-    color: #15803d;
+    color: var(--success);
     font-size: 10px;
     font-weight: 600;
+    white-space: nowrap;
 }
 
 .twin-status-dot {
     width: 7px;
     height: 7px;
     border-radius: 50%;
-    background: #15803d;
+    background: var(--success);
+    box-shadow: 0 0 0 4px rgba(21, 128, 61, 0.08);
 }
 
 
 /* =========================================================
-   OVERVIEW
+   OVERVIEW GRID
    ========================================================= */
 
 .twin-overview-grid {
     display: grid;
-    grid-template-columns: 1.6fr 0.9fr;
+    grid-template-columns: minmax(0, 1.6fr) minmax(280px, 0.9fr);
     gap: 18px;
     margin-bottom: 20px;
 }
 
 
 /* =========================================================
-   COMMON CARDS
+   COMMON CARD
    ========================================================= */
 
 .twin-visual-card,
 .twin-status-card,
 .simulation-card,
 .pipeline-card {
-    border: 1px solid #e5e7eb;
-    border-radius: 14px;
-    background: #ffffff;
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    background: white;
+    box-shadow: var(--shadow-sm);
 }
 
 
@@ -93,18 +95,8 @@ css
 }
 
 .card-top h2 {
-    margin: 3px 0 0;
+    margin-top: 3px;
     font-size: 17px;
-    color: #1f2937;
-}
-
-.live-badge {
-    padding: 5px 8px;
-    border-radius: 6px;
-    background: #ecfdf5;
-    color: #15803d;
-    font-size: 8px;
-    font-weight: 700;
 }
 
 
@@ -114,6 +106,15 @@ css
 
 .twin-visual-card {
     padding: 22px;
+}
+
+.live-badge {
+    padding: 5px 8px;
+    border-radius: 6px;
+    background: #ecfdf5;
+    color: var(--success);
+    font-size: 8px;
+    font-weight: 700;
 }
 
 
@@ -200,7 +201,7 @@ css
 
 
 /* =========================================================
-   METRICS
+   TWIN METRICS
    ========================================================= */
 
 .twin-metrics {
@@ -220,12 +221,12 @@ css
     display: block;
     margin-bottom: 5px;
     font-size: 8px;
-    color: #6b7280;
+    color: var(--text-secondary);
 }
 
 .twin-metric strong {
     font-size: 13px;
-    color: #2f7d32;
+    color: var(--primary);
 }
 
 
@@ -243,12 +244,12 @@ css
     gap: 15px;
     margin: 22px 0;
     padding-bottom: 20px;
-    border-bottom: 1px solid #e5e7eb;
+    border-bottom: 1px solid var(--border);
 }
 
 .health-circle {
     display: flex;
-    align-items: center;
+    align-items: baseline;
     justify-content: center;
     width: 90px;
     height: 90px;
@@ -259,13 +260,14 @@ css
 }
 
 .health-circle strong {
+    margin-top: 30px;
     font-size: 23px;
-    color: #15803d;
+    color: var(--success);
 }
 
 .health-circle span {
     font-size: 9px;
-    color: #6b7280;
+    color: var(--text-secondary);
 }
 
 .health-score > div:last-child strong {
@@ -276,16 +278,10 @@ css
 
 .health-score p {
     max-width: 180px;
-    margin: 0;
     font-size: 9px;
     line-height: 1.5;
-    color: #6b7280;
+    color: var(--text-secondary);
 }
-
-
-/* =========================================================
-   HEALTH LIST
-   ========================================================= */
 
 .health-list > div {
     display: flex;
@@ -301,7 +297,7 @@ css
 
 .health-list span {
     font-size: 10px;
-    color: #6b7280;
+    color: var(--text-secondary);
 }
 
 .health-list strong {
@@ -309,16 +305,16 @@ css
 }
 
 .status-good {
-    color: #15803d;
+    color: var(--success);
 }
 
 .status-medium {
-    color: #d97706;
+    color: var(--warning);
 }
 
 
 /* =========================================================
-   SIMULATION
+   SIMULATION CARD
    ========================================================= */
 
 .simulation-card {
@@ -332,7 +328,7 @@ css
     justify-content: space-between;
     gap: 20px;
     padding-bottom: 20px;
-    border-bottom: 1px solid #e5e7eb;
+    border-bottom: 1px solid var(--border);
 }
 
 .simulation-header h2 {
@@ -342,10 +338,9 @@ css
 
 .simulation-header p {
     max-width: 650px;
-    margin: 0;
     font-size: 10px;
     line-height: 1.5;
-    color: #6b7280;
+    color: var(--text-secondary);
 }
 
 .simulation-icon {
@@ -367,14 +362,14 @@ css
 
 .simulation-body {
     display: grid;
-    grid-template-columns: 0.8fr 1.2fr;
+    grid-template-columns: minmax(250px, 0.8fr) minmax(0, 1.2fr);
     gap: 25px;
     padding-top: 22px;
 }
 
 
 /* =========================================================
-   INPUTS
+   SIMULATION INPUTS
    ========================================================= */
 
 .simulation-field {
@@ -386,24 +381,24 @@ css
     margin-bottom: 7px;
     font-size: 10px;
     font-weight: 600;
-    color: #1f2937;
+    color: var(--text-primary);
 }
 
 .simulation-field select {
     width: 100%;
     height: 38px;
     padding: 0 10px;
-    border: 1px solid #d1d5db;
+    border: 1px solid var(--border);
     border-radius: 8px;
     outline: none;
-    background: #ffffff;
-    color: #1f2937;
+    background: white;
+    color: var(--text-primary);
     font-family: inherit;
     font-size: 10px;
 }
 
 .simulation-field select:focus {
-    border-color: #2f7d32;
+    border-color: var(--primary);
 }
 
 
@@ -419,7 +414,7 @@ css
 
 .range-row input[type="range"] {
     width: 100%;
-    accent-color: #2f7d32;
+    accent-color: var(--primary);
     cursor: pointer;
 }
 
@@ -427,12 +422,12 @@ css
     width: 45px;
     text-align: right;
     font-size: 10px;
-    color: #2f7d32;
+    color: var(--primary);
 }
 
 
 /* =========================================================
-   BUTTON
+   SIMULATE BUTTON
    ========================================================= */
 
 .simulate-button {
@@ -441,16 +436,18 @@ css
     margin-top: 4px;
     border: none;
     border-radius: 9px;
-    background: #2f7d32;
-    color: #ffffff;
+    background: var(--primary);
+    color: white;
     font-family: inherit;
     font-size: 10px;
     font-weight: 600;
     cursor: pointer;
+    transition: var(--transition);
 }
 
 .simulate-button:hover {
-    opacity: 0.9;
+    opacity: 0.92;
+    transform: translateY(-1px);
 }
 
 .simulate-button:disabled {
@@ -473,8 +470,12 @@ css
     margin-bottom: 13px;
     font-size: 10px;
     font-weight: 700;
-    color: #1f2937;
 }
+
+
+/* =========================================================
+   RESULT GRID
+   ========================================================= */
 
 .result-grid {
     display: grid;
@@ -486,30 +487,30 @@ css
     padding: 15px;
     border: 1px solid #e5ebe5;
     border-radius: 10px;
-    background: #ffffff;
+    background: white;
 }
 
 .result-card span {
     display: block;
     margin-bottom: 7px;
     font-size: 8px;
-    color: #6b7280;
+    color: var(--text-secondary);
 }
 
 .result-card strong {
     display: block;
     margin-bottom: 5px;
     font-size: 17px;
-    color: #2f7d32;
+    color: var(--primary);
 }
 
 .result-card small {
     font-size: 8px;
-    color: #6b7280;
+    color: var(--text-secondary);
 }
 
 .result-card small.positive {
-    color: #15803d;
+    color: var(--success);
 }
 
 .result-card small.negative {
@@ -518,15 +519,15 @@ css
 
 
 /* =========================================================
-   RECOMMENDATION
+   AI RECOMMENDATION
    ========================================================= */
 
 .simulation-recommendation {
     margin-top: 13px;
     padding: 13px;
-    border-left: 3px solid #2f7d32;
+    border-left: 3px solid var(--primary);
     border-radius: 7px;
-    background: #ffffff;
+    background: white;
 }
 
 .simulation-recommendation span {
@@ -534,14 +535,13 @@ css
     margin-bottom: 5px;
     font-size: 9px;
     font-weight: 700;
-    color: #2f7d32;
+    color: var(--primary);
 }
 
 .simulation-recommendation p {
-    margin: 0;
     font-size: 9px;
     line-height: 1.55;
-    color: #6b7280;
+    color: var(--text-secondary);
 }
 
 
@@ -589,12 +589,12 @@ css
 .pipeline-step span {
     display: block;
     font-size: 7px;
-    color: #6b7280;
+    color: var(--text-secondary);
 }
 
 .pipeline-arrow {
     flex-shrink: 0;
-    color: #2f7d32;
+    color: var(--primary);
     font-size: 17px;
     font-weight: 700;
 }
@@ -611,7 +611,7 @@ css
 
 
 /* =========================================================
-   TABLET
+   RESPONSIVE
    ========================================================= */
 
 @media (max-width: 1050px) {
@@ -625,10 +625,6 @@ css
     }
 }
 
-
-/* =========================================================
-   MOBILE
-   ========================================================= */
 
 @media (max-width: 800px) {
 
@@ -660,10 +656,6 @@ css
 }
 
 
-/* =========================================================
-   SMALL MOBILE
-   ========================================================= */
-
 @media (max-width: 600px) {
 
     .twin-page-header h1 {
@@ -686,47 +678,15 @@ css
         letter-spacing: 6px;
     }
 
+    .twin-metrics {
+        grid-template-columns: 1fr 1fr;
+    }
+
     .result-grid {
         grid-template-columns: 1fr;
     }
 
     .pipeline-step {
         flex-basis: 45%;
-    }
-
-    .simulation-body {
-        grid-template-columns: 1fr;
-    }
-
-    .simulation-header {
-        flex-direction: column;
-    }
-
-    .health-score {
-        align-items: flex-start;
-    }
-}
-
-
-/* =========================================================
-   EXTRA SMALL
-   ========================================================= */
-
-@media (max-width: 400px) {
-
-    .twin-metrics {
-        grid-template-columns: 1fr;
-    }
-
-    .health-score {
-        flex-direction: column;
-    }
-
-    .pipeline-step {
-        flex-basis: 100%;
-    }
-
-    .farm-model {
-        height: 175px;
     }
 }
