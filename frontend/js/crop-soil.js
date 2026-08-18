@@ -23,7 +23,7 @@ function checkAuthentication() {
 
     if (isLoggedIn !== "true") {
 
-        window.location.href = "index.html";
+        window.location.href = "../../index.html";
 
         return false;
     }
@@ -441,7 +441,7 @@ function setupLogout() {
             );
 
             window.location.href =
-                "index.html";
+                "../../index.html";
         }
     );
 }

@@ -282,7 +282,7 @@ function setupLogin() {
         setTimeout(() => {
 
             window.location.href =
-                "dashboard.html";
+                "frontend/html/dashboard.html";
 
         }, 600);
     });
@@ -524,7 +524,7 @@ function setupRegister() {
         setTimeout(() => {
 
             window.location.href =
-                "index.html";
+                "../../index.html";
 
         }, 1200);
     });
@@ -654,3 +654,4 @@ document.addEventListener("DOMContentLoaded", () => {
     );
 
 });
+
